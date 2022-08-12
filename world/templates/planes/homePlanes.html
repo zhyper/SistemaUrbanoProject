@@ -4,6 +4,16 @@
 
 {% block title %}{{title}}{% endblock  %}
 
+{% block meta %}
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <meta name="description" content="..">
+    
+    <meta property="og:title" content="{{og_title}}">
+    <meta name="description" property="og:description" content="{{og_description}}">
+    <meta property="og:image" content="{{og_image}}">
+{% endblock  %}
+
 {% block style_header %}
 
     <link rel="stylesheet" href="{% static '/css/home-style.css' %}">
@@ -82,47 +92,47 @@
                 </div>
               </div><!-- End Icon List Item-->
 
-              <div class="col-md-6">
+              <!--<div class="col-md-6">
                 <div class="icon-list d-flex">
                   <i class="ri-calendar-todo-line" style="color: #e80368;"></i>
                   <span>Ipsum Rerum Explicabo</span>
                 </div>
-              </div><!-- End Icon List Item-->
+              </div>
 
               <div class="col-md-6">
-                <div class="icon-list d-flex">
+                <div
                   <i class="ri-paint-brush-line" style="color: #e361ff;"></i>
                   <span>Easy Cart Features</span>
                 </div>
-              </div><!-- End Icon List Item-->
+              </div>
 
               <div class="col-md-6">
                 <div class="icon-list d-flex">
                   <i class="ri-database-2-line" style="color: #47aeff;"></i>
                   <span>Easy Cart Features</span>
                 </div>
-              </div><!-- End Icon List Item-->
+              </div>
 
               <div class="col-md-6">
                 <div class="icon-list d-flex">
                   <i class="ri-gradienter-line" style="color: #ffa76e;"></i>
                   <span>Sit amet consectetur adipisicing</span>
                 </div>
-              </div><!-- End Icon List Item-->
+              </div>
 
               <div class="col-md-6">
                 <div class="icon-list d-flex">
                   <i class="ri-file-list-3-line" style="color: #11dbcf;"></i>
                   <span>Ipsum Rerum Explicabo</span>
                 </div>
-              </div><!-- End Icon List Item-->
+              </div>
 
               <div class="col-md-6">
                 <div class="icon-list d-flex">
                   <i class="ri-base-station-line" style="color: #ff5828;"></i>
                   <span>Easy Cart Features</span>
                 </div>
-              </div><!-- End Icon List Item-->
+              </div>-->
             </div>
           </div>
           <div class="col-lg-5 position-relative" data-aos="fade-left" data-aos-delay="200">

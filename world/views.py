@@ -45,7 +45,7 @@ def Home(request):
     slideData = serializers.serialize("json", slide)
 
     # Metadata OpenGraph----------------------------------------------------------------------------------
-    og_title = "Plataforma de Gestión Territorial del Cusco"
+    og_title = "Plataforma de Gestión Territorial Provincial Cusco"
     og_description = "Municipalidad Provincial del Cusco"
     og_image = "http://sgot.cusco.gob.pe:90/zre41media/slides/home/banner_planes_1200.jpg"
 

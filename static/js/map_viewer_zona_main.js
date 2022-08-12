@@ -171,7 +171,7 @@ function toUpperCase(str) {
     
         new ol.interaction.DragPan({
               condition: function (event) {
-                return this.getPointerCount() === 2 || platformModifierKeyOnly(event);
+                return this.getPointerCount() === 2 || ol.events.condition.platformModifierKeyOnly(event);
               },
             }),
         new ol.interaction.MouseWheelZoom({
