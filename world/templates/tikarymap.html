@@ -1,0 +1,414 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>
+      {% block title %}{{ title }}{% endblock  %}
+
+    </title>
+
+    {% block javascript_header %}
+    
+      <!--<script src="https://unpkg.com/elm-pep@1.0.6/dist/elm-pep.js"></script>-->
+      <!-- The lines below are only needed for old environments like Internet Explorer and Android 4.x -->
+      <!--<script src="https://cdn.polyfill.io/v3/polyfill.min.js?features=fetch,requestAnimationFrame,Element.prototype.classList,TextDecoder"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/3.18.3/minified.js"></script>-->
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.6.1/jszip.min.js"></script>
+    
+    {% endblock  %}
+
+    
+    {% block style_header %}
+
+    <!--
+      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">-->
+    
+    <!-- Ol.CSS -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css"
+        type="text/css"
+      />
+      
+      <link
+        rel="stylesheet"
+        href="{% static '/css/ol-ext.css' %}"
+        type="text/css"
+        />
+
+        <link rel="stylesheet" href="{% static '/css/ol3-sidebar.css'%}" />
+        
+        <link
+        rel="stylesheet"
+        href="{% static '/css/map_viewer.css' %}"
+        type="text/css"
+        />
+
+      <link rel="stylesheet" href="{% static '/css/home-style.css' %}">
+
+      <style>
+        .carousel-mini{
+          font-size: 12px
+        }
+        
+        .accordion-button{
+          padding: 3px 5px;
+          /*font-family: 'Open Sans';*/
+          font-size: 11px;
+        }
+        .accordion-body{
+          padding: 3px 0px;
+        }
+        .accordion-button::after {
+          width: 15px;
+          height: 15px;
+          background-size: 13px;
+        }
+        .list-group-item {
+          padding: 3px 5px;
+
+        }
+        .accordion-item > h2 {
+          font-family: 'Oswald',Helvetica,sans-serif !important
+
+        }
+        .item-list-mapa-popup{
+          display: flex;
+          justify-content: space-between;
+        }
+        .item-list-mapa-popup > span{
+          display: flex;
+          align-items: center;
+        }
+        .item-right{
+          justify-content: end;
+
+        }
+
+        .mini{
+          font-size: 9px;
+        }
+
+        .img-list-mapa-thumbnails{
+          height: 30px;
+          width: auto;
+        }
+        .list-group-item:hover{
+          background-color: #f5f5f5;
+        }
+
+        
+        
+      </style>
+      
+    {% endblock  %}
+      
+
+
+   
+  </head>
+
+  <body >
+    {% block navbar %}
+        {% include 'includes/navbar2.html' %}
+    {% endblock  %}
+
+    
+    
+    {% block content %}
+
+    <div class="mb-3">
+      <img src="{% static '/images/misc/map-background-00.jpg' %}" class="bg-map-img" alt="" srcset="">
+    </div>
+    
+    {% comment %} CARROUSEL MINI {% endcomment %}
+
+    {% include 'includes/carouselZonasMini.html' %}
+    
+    
+  <div class="container-fluid g-0 mt-3">
+    
+    <div class="row g-0">
+      <div id="map_viewer" class="col-12">
+        
+      </div>
+    </div>
+  </div>
+      {% comment %} </div> {% endcomment %}
+      <div id="popup" class="ol-popup">
+        <a id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content-header">          
+        </div>
+        <div id="popup-content">
+        </div>
+        <div id="popup-content-habilitacion" class="mt-1">          
+        </div>
+        <div id="popup-content-manzana" class="mt-1">          
+        </div>
+        <div id="popup-content-coordenada" class="mt-1">          
+        </div>
+      </div>
+      
+      {% comment %} <div>
+        
+        <button id="btn-toggle">Button</button>
+      </div>
+      <div>
+        <a id="download" download></a>
+        <button id="download-kmz" class="btn btn-primary">Download sample</button>
+      </div> {% endcomment %}
+      
+      <button class="btn btn-warning fw-light btn-sm shadow-none mb-1 mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#infoKmlFile" aria-expanded="false" aria-controls="infoKmlFile">
+        <i class="ri-eye-line"></i> &nbsp; <i class="ri-table-line"></i>  &nbsp; Ver detalles del archivo KML
+      </button>
+      <div class="collapse" id="infoKmlFile">
+        <div id="info">&nbsp;</div>
+      </div>
+      <div id="info2">&nbsp;</div>
+      <select
+        name="lista-zonas"
+        id="lista-zonas"
+        onchange="zoomToZona(this.value)"
+        class="form-select"
+      >
+        {% for zoni in zonas %}
+          <option value="{{zoni.codigo_zona}}">
+          {{zoni.codigo_zona}} - {{zoni.nombre}}
+        </option>
+        {% endfor%}
+      </select>
+      <div id="element"></div>
+
+      {% comment %} <ul>
+        {% for zon in zonas %}
+        <li>{{ zon.codigo_zona }}</li>
+        {% endfor %}
+      </ul> {% endcomment %}
+      <div class="loader">
+        cargando.....
+      </div>
+
+      <ul id="data-receiver">
+        <li>OK</li>
+      </ul>
+  
+      
+  
+      
+
+  {% endblock  %}
+
+
+
+
+
+    {% block javascript_extra_footer %}
+
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+      <script>
+          AOS.init({
+              
+          });
+          
+      </script>
+    
+      <script>
+        //get DATA from View:
+        const data = "{{zonasjson|escapejs}}";
+
+        const urlWebserver = 'http://144.91.84.249';
+        //dirección del Servidor de Mapas
+        const urlGeoserver =
+          //"http://sistemas41zre:8080/geoserver/sgotp-41zre/wms";
+          //"http://localhost/geoserver/sgotp-41zre/wms";
+          "http://144.91.84.249/geoserver/sgotp-41zre/wms";
+
+        var WMSSources = [];
+        const infoGeneral = [];
+
+        /**
+        * Elements that make up the popup.
+        */
+        const container = document.getElementById("popup");
+        const content = document.getElementById("popup-content");
+        const closer = document.getElementById("popup-closer");
+        // document.getElementById("info2").innerHTML = "INNNN";
+
+      
+
+        function zoomToZona(zz) {
+          //alert(zz)
+          var value1 = $("#lista-zonas").val();
+          //var url = "http://localhost:3011/api/zonas/codzona/" + value1;
+          var url = "http://144.91.84.249/zonas/codzona/" + value1;
+          console.log('enviando al Zoom: ',url);
+          $.ajax({
+            type: "GET",
+            url: url,
+            dataType: "json",
+            data: { codzona: $("#lista-zonas").val() },
+            success: function (result) {
+              console.log(result[0]);
+              updateView(result[0]);
+            },
+          });
+        }
+
+        function updateView(destino) {
+          view.animate({
+            center: ol.proj.fromLonLat([destino.lng, destino.lat]),
+            duration: 2000,
+            zoom: destino.zoom,
+          });
+        }
+      </script>
+      <script>
+        // $('#lista-zonas').on('change', function(){
+        //   var value1 = $('#lista-zonas').val();
+        //   var url="http://localhost:3011/api/zonas/codzona/"+value1;
+        //   $.ajax({
+        //     type: "POST",
+        //     url: url,
+        //     dataType: 'json',
+        //     data: { codzona: $('#lista-zonas').value},
+        //     success: function(result){
+        //       console.log(result);
+        //     }
+        //   })
+        // })
+      </script>
+      <script>
+        function mostrar(){
+
+          $.ajax({
+            //url: `http://144.91.84.249:3011/api/planes`,
+            url: `http://144.91.84.249/api/planesfull`,
+            type: "GET",
+            dataType:'json',
+            success: function (data) {
+              
+              console.log("Zona:", data);
+              
+              
+            },
+            error: function (error) {
+              
+            },
+          });
+        }
+
+        mostrar()
+      </script>
+
+      <!-- Ol.Js -->
+      <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
+      <script src="{% static '/js/ol-ext.js'%}"></script>
+      <script src="{% static '/js/ol3-sidebar.js' %}"></script>
+      <script
+        type="text/javascript"
+        src="{% static '/js/baseLayersSources.js' %}"
+      ></script>
+      <script
+        type="text/javascript"
+        src="{% static '/js/baseLayers.js' %}"
+      ></script>
+      <script
+        type="text/javascript"
+        src="{% static '/js/map_viewer.js' %}"
+      ></script>
+
+      <script>
+        $(function(){
+          var todosinteresados = [
+
+            {% for zona in zonas %}
+            {elemento: "{{zona.nombre}} - {{zona.codigo_zona}}"},
+            {% endfor %}
+          ];
+          console.log('todosinteresados: ',todosinteresados)
+          //--------------------------------
+          $('#btn-toggle').click(function () {
+            $('#side').toggleClass('col-md-4 col-md-0 ',2000);
+            $('#map_viewer').toggleClass('col-md-8 col-md-12',2000)
+              map.updateSize()
+          });
+        });
+        {% comment %} var p1 = new Promise(function(resolve, reject) {
+          resolve('Success!');
+          // or
+          // reject ("Error!");
+        });
+
+        p1.then(function(value) {
+          console.log(value); // Success!
+        }, function(reason) {
+          console.log(reason); // Error!
+        }); {% endcomment %}
+
+
+
+      </script>
+      <script>
+
+        /*
+        $('#myTabMapa a').on('click', function (event) {
+          event.preventDefault()
+          $(this).tab('show')
+        })
+        */
+
+        
+      </script>
+      <script>
+        var owl = $('#owl-zonas-mini');
+            owl.owlCarousel({
+              stagePadding: 50,
+              loop:true,
+              margin:10,
+              nav:true,
+              autoplay:true,
+              autoplayTimeout:5000,
+              autoplayHoverPause:false,
+              dots:false,
+              responsive:{
+                  0:{
+                      items:1
+                  },
+                  600:{
+                      items:3
+                  },
+                  1000:{
+                      items:5
+                  }
+              }
+                
+                
+                
+                
+            });
+    </script>
+    <script>
+      lightbox.option({
+        'alwaysShowNavOnTouchDevices': false,
+        //'wrapAround': true
+      })
+  </script>
+
+   {% endblock %}
+
+
+
+  </body>
+</html>

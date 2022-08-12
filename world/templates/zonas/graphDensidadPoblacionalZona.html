@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+      integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"
+      integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E="
+      crossorigin="anonymous"
+    />
+    <!--VEr 1-->
+    <script src="https://cdn.jsdelivr.net/gh/emn178/chartjs-plugin-labels/src/chartjs-plugin-labels.js"></script>
+    <!--VEr 2-->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.5.0"></script>
+    
+
+  </head>
+  <body>
+    <!--<h1>{{codigo_zona}}</h1>-->
+
+    {% comment %} {% for mapa in mapaslist %}
+    <p>{{mapa}}</p>
+    {% endfor %} {% endcomment %} {% comment %} {% for po in poblacion %}
+    <p>{{po.ge_0_5}}</p>
+    <p>{{po.ge_6_12}}</p>
+    <p>{{po.ge_13_18}}</p>
+    {% endfor %} {% for po in poblacion_tabla %}
+    <p>{{po.rango}}</p>
+    {% endfor %} {% endcomment %}
+
+
+
+    <div class="container tablas-stats-zona" >
+    
+      
+      <div class="row">
+        <div class="col-12 col-sm-12">
+            <!--<table class="table ">
+                <thead>
+                    <tr>
+                        {% for col in poblacion_tabla %}
+                            <th>{{col.rango}}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for val in poblacion_tabla %}
+                            <td>{{val.valor}}</td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>-->
+
+            
+
+            <table class="table table-bordered table-striped table-hover table-responsive table-sm">
+                <thead>
+                    <tr>
+                        <th colspan="5" class="text-center">DENSIDAD POBLACIONAL EN EL AMBITO DE ESTUDIO {{codigo_zona}} - CUSCO</th>
+                    </tr>
+                <thead>
+                    <tr>
+                        <th >Area de Estudio</th>
+                        <th >Nro. de Habit.</th>
+                        <th >Superf. (ha)</th>
+                        <th >Tipo de Densidad</th>
+                        <th >Densidad (hab./ha)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 {% for val in densidad_poblacional_tabla %}
+                    {% if val.aoi == 'Ambito de Estudio' %}
+                        <tr>
+                            <td>{{val.aoi}}</td>
+                            <td>{{val.nro_habitantes}}</td>
+                            <td>{{val.superficie_aoi}}</td>
+                            <td>{{val.tipo_densidad}}</td>
+                            <td class="text-end" >{{val.valor}}</td>
+                        </tr>
+                    {% else %}
+                    {% endif %}
+                 {% endfor %}
+                </tbody>
+                <tr>
+                   <td colspan='2'><span style="font-size:10px;"><strong>Elaboración:</strong> Equipo técnico PM41ZRE.</span></td>
+               </tr>
+            </table>
+
+            <table class="table table-bordered table-striped table-hover table-responsive table-sm mt-5">
+                <thead>
+                    <tr>
+                        <th colspan="5" class="text-center">DENSIDAD POBLACIONAL EN EL AREA DE INFLUENCIA {{codigo_zona}} - CUSCO</th>
+                    </tr>
+                <thead>
+                    <tr>
+                        
+                        <th >Area de Estudio</th>
+                        <th >Nro. de Habit.</th>
+                        <th >Superf. (ha)</th>
+                        <th >Tipo de Densidad</th>
+                        <th >Densidad (hab./ha)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 {% for val in densidad_poblacional_tabla %}
+                    {% if val.aoi == 'Area de Influencia' %}
+                        <tr>
+                            <td>{{val.aoi}}</td>
+                            <td>{{val.nro_habitantes}}</td>
+                            <td>{{val.superficie_aoi}}</td>
+                            <td>{{val.tipo_densidad}}</td>
+                            <td class="text-end" >{{val.valor}}</td>
+                        </tr>
+                    {% else %}
+                    {% endif %}
+                 {% endfor %}
+                </tbody>
+                <tr>
+                   <td colspan='2'><span style="font-size:10px;"><strong>Elaboración:</strong> Equipo técnico PM41ZRE.</span></td>
+               </tr>
+            </table>
+
+            <table class="table table-bordered table-striped table-hover table-responsive table-sm mt-5">
+                <thead>
+                    <tr>
+                        <th colspan="5" class="text-center">DENSIDAD POBLACIONAL EN LA ZONA DE REGLAMENTACION ESPECIAL {{codigo_zona}} - CUSCO</th>
+                    </tr>
+                <thead>
+                    <tr>
+                        
+                        <th >Area de Estudio</th>
+                        <th >Nro. de Habit.</th>
+                        <th >Superf. (ha)</th>
+                        <th >Tipo de Densidad</th>
+                        <th >Densidad (hab./ha)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 {% for val in densidad_poblacional_tabla %}
+                    {% if val.aoi == 'Zona de Reglamentación Especial' %}
+                        <tr>
+                            <td>{{val.aoi}}</td>
+                            <td>{{val.nro_habitantes}}</td>
+                            <td>{{val.superficie_aoi}}</td>
+                            <td>{{val.tipo_densidad}}</td>
+                            <td class="text-end" >{{val.valor}}</td>
+                        </tr>
+                    {% else %}
+                    {% endif %}
+                 {% endfor %}
+                </tbody>
+                <tr>
+                   <td colspan='2'><span style="font-size:10px;"><strong>Elaboración:</strong> Equipo técnico PM41ZRE.</span></td>
+               </tr>
+            </table>
+        </div>
+        <!--<div class="col-12 col-sm-6">
+            <canvas id="myChart3"  width="250" height="200"></canvas>
+        </div>-->
+      </div>
+
+    </div>
+
+  
+
+
+
+    
+    
+
+
+  </body>
+</html>

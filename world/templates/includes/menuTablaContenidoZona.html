@@ -1,0 +1,104 @@
+<div  class="sticky-top-home-zona-tabla-contenido">
+  <h3>Contenido</h3>
+    <div class="accordion accordion-flush" id="accordionIndiceTablaContenidos">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+            <button type="button" class="accordion-button shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                CAPÍTULO I: CONSIDERACIONES GENERALES 
+                
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+            <div class="accordion-body">
+                <ul class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action" href="{% url 'zona_consideraciones_generales' codigozona=zona.codigo_zona  %}#menu_floating">1.	Consideraciones Generales</a>
+                    <a class="list-group-item list-group-item-action" href="{% url 'zona_objetivos' codigozona=zona.codigo_zona  %}#menu_floating">2.	Objetivos</a>
+                    <a class="list-group-item list-group-item-action" href="{% url 'zona_justificacion' codigozona=zona.codigo_zona  %}#menu_floating">3.	Justificación</a>
+                    <a class="list-group-item list-group-item-action" href="{% url 'zona_metodologia' codigozona=zona.codigo_zona  %}#menu_floating">4.	Metodología</a>
+                    <a class="list-group-item list-group-item-action" href="{% url 'zona_delimitacion' codigozona=zona.codigo_zona  %}#menu_floating">5.	Delimitación del ámbito de estudio</a>
+                    <a class="list-group-item list-group-item-action" href="{% url 'zona_planeamiento' codigozona=zona.codigo_zona  %}#menu_floating">6.	Planeamiento para la ZRECU01</a>
+                  </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+            <button class="accordion-button  shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+                CAPÍTULO II: CARACTERIZACIÓN
+                
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo">
+            <div class="accordion-body">
+                <ul class="list-group list-group-flush">
+                    <a type="button" class="list-group-item list-group-item-action" href="{% url 'zona_caracterizacion_socioeconomica' codigozona=zona.codigo_zona  %}#menu_floating">7.	Caracterización Socio Económica</a>
+                    <a type="button" class="list-group-item list-group-item-action" href="{% url 'zona_caracterizacion_legal' codigozona=zona.codigo_zona  %}#menu_floating">8.	Caracterización Legal</a>
+                    <!--<a type="button" class="list-group-item list-group-item-action">9.	Caracterización de la Gestión del Riesgo de Desastres</a>-->
+
+                    <div class="accordion accordion-flush" id="accordionIndiceTablaContenidos-grd">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingOne-grd">
+                          <button type="button" class="accordion-button shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne-grd" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne-grd">
+                            9.	Caracterización de la Gestión del Riesgo de Desastres
+                              
+                          </button>
+                          <div id="panelsStayOpen-collapseOne-grd" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne-grd">
+                            <div class="accordion-body">
+                              <ul class="list-group list-group-flush">
+                                <a type="button" class="list-group-item list-group-item-action" href="{% url 'zona_determinacion_peligro' codigozona=zona.codigo_zona  %}#menu_floating">9.1.	Determinación del Peligro</a>
+                                <a type="button" class="list-group-item list-group-item-action" href="{% url 'zona_analisis_vulnerabilidad' codigozona=zona.codigo_zona  %}#menu_floating">9.2.	Análisis de Vulnerabilidad</a>
+                                <a type="button" class="list-group-item list-group-item-action" href="{% url 'zona_calculo_niveles_riesgo' codigozona=zona.codigo_zona  %}#menu_floating">9.3.	Cálculo de los Niveles de Riesgo</a>
+                                <a type="button" class="list-group-item list-group-item-action" href="{% url 'zona_calculo_perdidas' codigozona=zona.codigo_zona  %}#menu_floating">9.4.	Cálculo de Pérdidas</a>
+                                <a type="button" class="list-group-item list-group-item-action" href="{% url 'zona_control_riesgo' codigozona=zona.codigo_zona  %}#menu_floating">9.5.	Control del Riesgo</a>
+                              </ul>
+      
+                            </div>
+      
+                          </div>
+                        </h2>
+                      </div>
+                    </div>
+
+                    <button type="button" class="list-group-item list-group-item-action">10. Caracterización Ambiental</button>
+                    <button type="button" class="list-group-item list-group-item-action">11. Caracterización Físico-construido</button>
+                    <button type="button" class="list-group-item list-group-item-action">12. Síntesis del Diagnóstico</button>
+                  </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+            <button class="accordion-button  shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">
+              CAPITULO III: PROPUESTA
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
+            <div class="accordion-body">
+                <ul class="list-group list-group-flush">
+                    <button type="button" class="list-group-item list-group-item-action">13. Propuesta General</button>
+                    <button type="button" class="list-group-item list-group-item-action">14. Propuestas Específicas</button>
+                    
+                  </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+            <button class="accordion-button  shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="true" aria-controls="panelsStayOpen-collapseFour">
+                CAPÍTULO IV: GESTIÓN DEL PLAN ESPECÍFICO                                
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingFour">
+            <div class="accordion-body">
+                <ul class="list-group list-group-flush">
+                    <button type="button" class="list-group-item list-group-item-action">13. Propuesta General</button>
+                    <button type="button" class="list-group-item list-group-item-action">14. Propuestas Específicas</button>
+                    
+                  </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,141 @@
+#sticky-top-home-zona{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 96px;
+    z-index: 20;
+}
+
+
+.sticky-top-home-zona-tabla-contenido{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 96px;
+    z-index: 20;
+}
+
+.sticky-top-homex{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 96px;
+    z-index: 21;
+}
+
+.container_sticky_menu_zona {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    /*border: 2px dashed rgba(114, 186, 94, 0.35);*/
+    /*height: 400px;*/
+    /*height: 100vh;*/
+    
+    /*background: rgba(114, 186, 94, 0.05);*/
+    background: rgba(138, 138, 138, 0.05);
+  }
+  
+  .shark-1 {
+    position: sticky;
+    top: 0;
+  }
+  
+  .shark-2 {
+    position: sticky;
+    top: 4rem;
+  }
+  
+  .shark-3 {
+    position: sticky;
+    bottom: 1rem;
+    align-self: flex-end;
+  }
+
+  .anchor_link{
+    padding: 30px 0px;
+    content: "";
+  }
+
+.fs-6-custom{
+    font-size: 0.6rem !important
+}
+.fs-6-custom-2{
+    font-size: 0.7rem !important
+}
+.fs-6-custom-3{
+    font-size: 0.6rem !important;
+    color: #999;
+}
+
+.card-mapas-41zre{
+
+    border: 1px solid  rgba(0, 0, 0, 5%);
+}
+.card-mapas-41zre:hover{
+
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.2);
+
+}
+.ri-lg {
+    font-size: 1.3333em;
+    line-height: 0.75em;
+    vertical-align: -5px;
+}
+
+.list-downloads-floating-wrapper{
+    list-style-type: none;
+}
+.list-downloads-floating-wrapper > li{
+    float: left;
+    margin: 5px 5px;
+}
+/*
+*/
+.scroll-downs {
+    position: absolute;
+    top: 70%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    
+    width :34px;
+    height: 55px;
+  }
+.mousey {
+    width: 3px;
+    padding: 10px 15px;
+    height: 35px;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    opacity: 0.75;
+    box-sizing: content-box;
+  }
+.scroller {
+    width: 3px;
+    height: 10px;
+    border-radius: 25%;
+    background-color: #fff;
+    animation-name: scroll;
+    animation-duration: 2.2s;
+    animation-timing-function: cubic-bezier(.15,.41,.69,.94);
+    animation-iteration-count: infinite;
+  }
+@keyframes scroll {
+    0% { opacity: 0; }
+    10% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(15px); opacity: 0;}
+  }
+.text-samll-item{
+    font-size: 11px !important;
+  }
+
+
+
+
+
+/********/
+
+#accordionTablasPresentacion{
+    font-size: 14px;
+    font-weight: 100;
+}
+
+

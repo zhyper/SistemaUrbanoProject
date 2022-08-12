@@ -1,0 +1,24 @@
+{% comment %} {{zonas}} {% endcomment %}
+{% comment %} {{ current_year }} {% endcomment %}
+<div class="owl-carousel owl-theme carousel-mini" id="owl-zonas-mini" data-aos="fade-up" data-aos-once="false">
+    {% for zona  in zonas %}
+        <div class="item container-owl-item bg-light p-2"> 
+            {% comment %} <img src="{{WebsiteName.ip_production}}/41zre-media/images/cards/{{zona.image}}" alt=""> {% endcomment %}
+            <!--<h5>{{item}}</h5>-->
+            <div >
+                <p >{{zona.codigo_zona}}</p>
+                {% comment %} {% for plan in zona.plan_set.all %}
+                
+                <p class="container-body-subtitle">{{plan.nombre}}</p>
+                {% endfor %} {% endcomment %}
+                {% comment %} <p class="container-body-subtitle">distrito {{zona.distrito}}</p> {% endcomment %}
+                
+                {% comment %} <a href="{{WebsiteName.ip_production}}/41zre/41zre{{zona.codigo_zona}}" class="btn btn-outline-warning btn-block">ver más</a> {% endcomment %}
+                <a href="{{WebsiteName.ip_production}}/zonas/{{zona.codigo_zona}}" class="btn btn-sm btn-outline-warning btn-block">ver más</a>
+            </div>
+        </div>
+        
+    {% endfor %}
+
+</div>
+

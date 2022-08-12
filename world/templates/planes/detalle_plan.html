@@ -1,0 +1,387 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block style_header %}
+
+    <link rel="stylesheet" href="{% static '/css/home-style.css' %}">
+    <link rel="stylesheet" href="{% static '/css/zona/home-zona.css' %}">
+
+    <style>
+        .card-mapas-41zre{
+
+            border: 1px solid  rgba(0, 0, 0, 5%);
+        }
+        .card-mapas-41zre:hover{
+
+            box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.2);
+
+        }
+        .ri-lg {
+            font-size: 1.3333em;
+            line-height: 0.75em;
+            vertical-align: -5px;
+        }
+
+        .sticky-top-planes-menu-floating{
+            position: -webkit-sticky;
+            position: sticky;
+            top: 63px;
+            z-index: 20;
+            /*float: left;*/
+        }
+        .list-downloads-floating-wrapper{
+            list-style-type: none;
+        }
+        .list-downloads-floating-wrapper > li{
+            float: left;
+            margin: 5px 5px;
+        }
+        .list-planes-floating-wrapper{
+            list-style-type: none;
+        }
+        .list-planes-floating-wrapper > li{
+            float: left;
+            margin: 5px 5px;
+        }
+        /*
+        */
+        .scroll-downs {
+            position: absolute;
+            top: 70%;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            
+            width :34px;
+            height: 55px;
+          }
+          .mousey {
+            width: 3px;
+            padding: 10px 15px;
+            height: 35px;
+            border: 2px solid #fff;
+            border-radius: 25px;
+            opacity: 0.75;
+            box-sizing: content-box;
+          }
+          .scroller {
+            width: 3px;
+            height: 10px;
+            border-radius: 25%;
+            background-color: #fff;
+            animation-name: scroll;
+            animation-duration: 2.2s;
+            animation-timing-function: cubic-bezier(.15,.41,.69,.94);
+            animation-iteration-count: infinite;
+          }
+          @keyframes scroll {
+            0% { opacity: 0; }
+            10% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(15px); opacity: 0;}
+          }
+    </style>
+    
+{% endblock  %}
+
+{% block navbar %}
+    {% include 'includes/navbar2.html' %}
+
+{% endblock  %}
+    
+
+{% block content %}
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="hero d-flex align-items-center" style="background-image: url('{% static "/assets/img/sections/"|add:plan.image2 %}')">
+        
+        {% comment %} <img class="card-img-top" src="{% static '/assets/img/sections/'|add:plan.image2 %}" alt="Card image"> {% endcomment %}
+
+        {% comment %} <p>{{plan}}</p> {% endcomment %}
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4">
+                <h2 data-aos="fade-up">{{zona.codigo_zona}}</h2>
+                <blockquote data-aos="fade-up" data-aos-delay="100">
+                    <p>{{plan.nombre}}</p>
+                </blockquote>
+                <ul  class="list-downloads-floating-wrapper"  data-aos="fade-up" data-aos-delay="200">
+                    <li>
+                        <a
+                            class="btn-get-started mx-1"
+                            href="{{WebsiteName.ip_production}}:90/zre41media/documents/{{plan.codigo_plan}}/{% filter upper %}{{plan.url_documento}}{% endfilter %}.pdf"
+                            target="_blank" 
+                        > Documento&nbsp;<i class="ri-file-ppt-2-fill ri-lg"></i>&nbsp;<i class="ri-download-cloud-2-line ri-lg"></i>
+                        
+                        
+                        </a>
+                    </li>
+                    <li>
+                        <a 
+                            href="{{WebsiteName.ip_production}}:90/zre41media/documents/{{plan.codigo_plan}}/{% filter upper %}{{plan.url_reglamento}}{% endfilter %}.pdf"
+                            target="_blank" 
+                            class="btn-get-started  mx-1"
+                            > Reglamento&nbsp;<i class="ri-book-mark-line ri-lg"></i> &nbsp;<i class="ri-download-cloud-2-line ri-lg"></i>
+                        </a>
+                    </li>
+                    {% comment %} <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> {% endcomment %}
+                    <li>
+                        <a 
+                            href="{{WebsiteName.ip_production}}:90/zre41media/documents/{{plan.codigo_plan}}/ORDENANZA/{% filter upper %}{{plan.aprobacion_documento}}{% endfilter %}.pdf"
+                            target="_blank" 
+                            class="btn-get-started  mx-1"
+                            >Ordenanza &nbsp;<i class="ri-newspaper-line ri-lg"></i>&nbsp;<i class="ri-download-cloud-2-line ri-lg"></i>
+                        </a>
+
+                    </li>
+                </ul>
+                <div class="scroll-downs">
+                    <div class="mousey">
+                    <div class="scroller"></div>
+                    </div>
+                </div>
+            
+                </div>
+            </div>
+
+            
+        </div>
+        <br>
+        
+    </section><!-- End Hero Section -->
+
+
+    {% comment %} <div class="container">
+        <h1>{{nombre_plan}}</h1>
+        <p>{{plan}}</p>
+    </div> {% endcomment %}
+
+    <div class="container sticky-top-planes-menu-floating" data-aos="fade-up">
+        <div class="row">
+            <div class="col-4">
+                <ul class="list-planes-floating-wrapper">
+                    <li><a href="#">PDU</a></li>
+                    <li><a href="#">PUD</a></li>
+                    <li><a href="#">PAT</a></li>
+                    <li><a href="#">EOU</a></li>
+                    <li><a href="#">PDM</a></li>
+                    <li><a href="#">PI</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container mt-5" data-aos="fade-up">
+        <div class="row">
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="sticky-top-home-zona">
+
+                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                ETAPAS &nbsp;<i class="ri-mist-fill ri-lg"></i>
+                            </button>
+                          </h2>
+                          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                            <div class="accordion-body">
+                                <div class="list-group">
+                                    
+                                    {% comment %} <label class="list-group-item">
+                                        <input class="form-check-input me-1" type="checkbox" value="">
+                                        Todos <span class="badge bg-primary"> {{mapascaracterizacion_count|addition:mapaspropuesta_count}} </span>
+                                    </label>
+                                    <label class="list-group-item">
+                                        <input class="form-check-input me-1" type="checkbox" value="">
+                                        Caracterización <span class="badge bg-primary"> {{mapascaracterizacion_count}} </span>
+                                    </label>
+                                    <label class="list-group-item">
+                                        <input class="form-check-input me-1" type="checkbox" value="">
+                                        Propuesta <span class="badge bg-primary"> {{mapaspropuesta_count}} </span>
+                                    </label> {% endcomment %}
+                                    <li class="list-group-item list-group-item-action"><a href='.'>Todos <span class="badge bg-primary"> {{mapas_plan_all|length}} </span></a></li>
+                                    
+                                    {% for mapa in mapas_plan %}
+                                        <li class="list-group-item list-group-item-action"><a href='{{mapa.plan_etapa__slug}}'>{{mapa.plan_etapa__nombre}} <span class="badge bg-primary"> {{mapa.plan_etapa__count}} </span></a></li>
+                                    {% endfor %}
+
+                                    
+                                  </div>
+                                  
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+                              COMPONENTES &nbsp; <i class="ri-stack-line ri-lg"></i>
+                            </button>
+                          </h2>
+                          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo">
+                            <div class="accordion-body">
+                                <div class="list-group">
+                                    {% comment %} <li class="list-group-item">Todos</li>
+                                    <li class="list-group-item">Ambiental</li>
+                                    <li class="list-group-item">Fisico Construído</li>
+                                    <li class="list-group-item">Gestión de Riesgos de Desastres</li> {% endcomment %}
+                                    <label class="list-group-item">
+                                        <input type="checkbox" class="form-check-input me-1" value="">
+                                        Todos
+                                    </label>
+                                    <label class="list-group-item">
+                                        <input type="checkbox" class="form-check-input me-1" value="">
+                                        Ambiental
+                                    </label>
+                                    <label class="list-group-item">
+                                        <input type="checkbox" class="form-check-input me-1" value="">
+                                        Fisico Construído
+                                    </label>
+                                    <label class="list-group-item">
+                                        <input type="checkbox" class="form-check-input me-1" value="">
+                                        Gestión de Riesgos de Desastres
+                                    </label>
+                                  </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-8">
+                
+                        <div class="row">
+                            {% for mapa in mapaslist %}
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-up">
+
+                                                        
+                                    {% if mapa.componente.nombre == 'Ambiental' %}
+                                        
+                                        <div class="card card-mapas-41zre mb-5" >
+                                        <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{plan.codigo_plan}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/AMB/{{mapa.url}}.jpg" class="glightbox" data-glightbox="title: {{mapa.nombre}}">
+                                            <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{plan.codigo_plan}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/AMB/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                        </a>
+                                            <div class="card-body">
+                                            <h5 class="card-title">{{mapa.nombre}}</h5>
+                                            <p class="card-text fw-light fs-6-custom"><i class="ri-road-map-line ri-xl"></i> &nbsp; {{mapa.codigo}}</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush fs-6-custom-2">
+                                            <li class="list-group-item">{{mapa.componente.nombre}} | {{mapa.plan_etapa}}</li>
+                                            
+                                            </ul>
+                                            <div class="card-body d-grid gap-2">
+                                                <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{plan.codigo_plan}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/AMB/{{mapa.url}}.pdf" target="_blank" class="btn btn-warning btn-sm btn-block">Descargar &nbsp;<i class="ri-download-cloud-2-line ri-lg"></i></a>
+                                            
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if mapa.componente.nombre == 'Físico Construido' %}
+                                        
+                                        <div class="card card-mapas-41zre mb-5" >
+                                        <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{plan.codigo_plan}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/FC/{{mapa.url}}.jpg" class="glightbox" data-glightbox="title: {{mapa.nombre}}">
+                                            <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{plan.codigo_plan}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/FC/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                        </A>
+                                            <div class="card-body">
+                                            <h5 class="card-title">{{mapa.nombre}}</h5>
+                                            <p class="card-text  fw-light fs-6-custom"><i class="ri-road-map-line ri-xl"></i> &nbsp; {{mapa.codigo}}</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush fs-6-custom-2">
+                                            <li class="list-group-item">{{mapa.componente.nombre}} | {{mapa.plan_etapa}}</li>
+                                            
+                                            </ul>
+                                            <div class="card-body d-grid gap-2">
+                                            
+                                            <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{plan.codigo_plan}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/FC/{{mapa.url}}.pdf" target="_blank" class="btn btn-warning btn-sm btn-block">Descargar &nbsp;<i class="ri-download-cloud-2-line ri-lg"></i></a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if mapa.componente.nombre == 'Gestión de Riesgos' %}
+                                        
+                                        <div class="card card-mapas-41zre mb-5" >
+                                        <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{plan.codigo_plan}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/GRD/{{mapa.url}}.jpg" class="glightbox" data-glightbox="title: {{mapa.nombre}}">
+                                            <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{plan.codigo_plan}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/GRD/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                        </a>    
+                                            <div class="card-body">
+                                            <h5 class="card-title">{{mapa.nombre}}</h5>
+                                            <p class="card-text fw-light fs-6-custom"><i class="ri-road-map-line ri-xl"></i> &nbsp; {{mapa.codigo}}</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush fs-6-custom-2">
+                                            <li class="list-group-item">{{mapa.componente.nombre}} | {{mapa.plan_etapa}}</li>
+                                            
+                                            </ul>
+                                            <div class="card-body d-grid gap-2">
+                                            
+                                            <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{plan.codigo_plan}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/GRD/{{mapa.url}}.pdf" target="_blank" class="btn btn-warning btn-sm btn-block">Descargar &nbsp;<i class="ri-download-cloud-2-line ri-lg"></i></a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <nav aria-label="...">
+                                    {% if mapaslist.has_other_pages %}
+                                    <ul class="pagination">
+                                        {% if mapaslist.has_previous %}
+                                        <li class="page-item ">
+                                            <a class="page-link link-warning" href="?page={{ mapaslist.previous_page_number }}" >&laquo;</a>
+                                        </li>
+                                        {% else %}
+                                            <li class="page-item disabled">
+                                                <span class="page-link link-warning">&laquo;</span>
+                                            </li>
+                                        {% endif %}
+
+
+                                        {% for i in mapaslist.paginator.page_range %}
+                                        {% if mapaslist.number == i %}
+                                            <li class="page-item active" aria-current="page">
+                                                <a class="page-link border border-warning bg-warning" href="#">{{ i }} </a>
+                                            </li>
+                                        {% else %}
+                                            <li class="page-item"><a class="page-link link-warning" href="?page={{ i }}">{{ i }}</a></li>
+                                        {% endif %}
+                                        {% endfor %}
+
+                                        {% if mapaslist.has_next %}
+                                            <li class="page-item">
+                                                <a class="page-link link-warning" href="?page={{ mapaslist.next_page_number }}">&raquo;</a>
+                                            </li>
+                                        {% else %}
+                                            <li class="page-item disabled">
+                                                <span class="page-link link-warning">&raquo;</span>
+                                            </li>
+                                        {% endif %}
+
+                                    </ul>
+                                    {% endif %}
+                                </nav>
+                            </div>
+                        </div>
+                 
+                
+            </div>
+
+        </div>
+        
+        
+    </div>
+
+{% endblock  %}
+
+
+
+
+http://144.91.84.249:90/zre41media/images/mapas/PDUPC20132023/CARACTERIZACION/AMB/2%20DISTRIBUCION%20POLITICA%20URBANA%20-%20RURAL%20Y%20DERECHOS%20MINEROS.pdf
+http://144.91.84.249:90/zre41media/images/mapas//PROPUESTA/AMB/MP-01%20AREAS%20DE%20PROTECCION%20ECOLOGICA%20NATURAL.pdf

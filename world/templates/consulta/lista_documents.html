@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Lista de Documents</h3>
+    
+    {% if documents %}
+
+        All documents in the dataBase !
+        <ul>
+            
+            {% for document in documents %}
+
+                <li><a >{{document.direccion}}</a><a href="{{document.docfile.url}}">{{document.docfile.name}}</a></li>
+                
+            {% endfor %}
+                
+        </ul>
+    {% else %}
+
+        <p>No docuemnts....</p>
+        
+    {% endif %}
+
+    <form action="{% url 'my-view' %}" method='POST' enctype="multipart/form-data">
+        {% csrf_token %}
+        {{message}}
+        
+        <p>{{form.non_files_errors}}</p>
+
+        <p>{{form.direccion.label_tag}}{{form.direccion.help_text}}{{form.direccion}}</p>
+        <p>{{form.docfile.label_tag}}{{form.docfile.help_text}}</p>
+
+        <p>
+            {{form.docfile.errors}}
+            {{form.docfile}}
+        </p>
+
+        <p><input type="submit" value="Upload"></p>
+    </form>
+
+        
+</body>
+</html>

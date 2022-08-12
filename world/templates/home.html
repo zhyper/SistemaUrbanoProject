@@ -1,0 +1,329 @@
+{% extends 'base2.html' %} 
+
+{% load static %} 
+
+{% block meta %}
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <meta name="description" content="..">
+    
+    <meta property="og:title" content="{{og_title}}">
+    <meta name="description" property="og:description" content="{{og_description}}">
+    <meta property="og:image" content="{{og_image}}">
+{% endblock  %}
+
+{% block title %}{{title}}{% endblock %} 
+
+{% block style_header %}
+
+    <link rel="stylesheet" href="{% static '/css/home-style.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <style>
+        .owl-theme .owl-nav {
+            margin-top: 0px !important;
+        }
+    </style>
+
+{% endblock  %}
+
+<body class="page-index">
+
+
+    {% block navbar %}
+        {% include 'includes/navbar2.html' %}
+    {% endblock  %}
+
+{% block content %}
+
+    <!-- corousel-->
+    
+
+    <div class="owl-carousel owl-theme" id="carousel-home">
+        {% for item  in slidehome %}
+            <div class="item container-owl-item text-light"> 
+                <img src="{{WebsiteName.ip_production}}:90/zre41media{{ item.url }}/{{item.image}}" alt="">
+                <!--<h5>{{item}}</h5>-->
+                <div class="container-body">
+                    <p class="container-body-title">{{item.titulo}}</p>
+                    <p class="container-body-subtitle">{{item.subtitle}}</p>
+                </div>
+            </div>
+        {% endfor %}
+        
+    </div>
+
+    
+    
+
+    <div class="headerx">
+            
+        <!--Content before waves-->
+        <div class="inner-header flex">
+            
+            <h1>Plataforma de Gestión Terrirorial Cusco</h1>
+        </div>
+        
+        <!--Waves Container-->
+        <div>
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                </g>
+            </svg>
+        </div>
+        <!--Waves end-->
+        
+    </div>
+    <!--Header ends-->
+
+ 
+    {% comment %} <div class="container">
+        <ul>
+            
+            {% for sli in  slide %}
+                
+                <li>{{sli}}</li>
+                <ul>
+                    
+                    {% for item in sli.slideitem_set.all %}
+
+                        <li>
+                            {{item.nombre}}
+                        </li>
+
+                    {% endfor %}
+                </ul>
+                 
+                
+            {% endfor %}
+                
+        </ul>
+    </div> {% endcomment %}
+    <br>
+    {% comment %} <div class="container">
+        <ul>
+            {% for plan in planes %}
+                <li>{{plan.nombre}}</li>
+            {% endfor %}
+        </ul>
+    </div> {% endcomment %}
+    <br>
+    <br>
+    {% comment %} <div class="container">
+        <ul>
+            {% for zona in zonas %}
+                <li>{{zona.codigo_zona}}</li>
+                <ul>
+                    {% for plan in zona.plan_set.all %}
+                        <li>{{plan.nombre}}</li>
+                    {% endfor %}
+                </ul>
+
+            {% endfor %}
+        </ul>
+    </div> {% endcomment %}
+    <br>
+    <br>
+    {% comment %} <select
+        name="lista-zonas"
+        id="lista-zonas"
+        onchange="zoomToZona(this.value)"
+        class="form-select"
+    >
+        {% for zoni in zonas %}
+        <option value="{{zoni.codigo_zona}}">
+        {{zoni.codigo_zona}} - {{zoni.nombre}}
+        </option>
+        {% endfor%}
+    </select> {% endcomment %}
+    <br>
+    {% comment %} <P>{% for zoni in zonas %}
+        {{zoni.codigo_zona}}
+            {% for plan in zoni.planes.all %}
+                {{plan.nombre}}
+            {% endfor %}
+        {% endfor %}</P> {% endcomment %}
+    <br>
+    <br>
+    <br>
+    <div class="container">
+
+        <!-- corousel-->
+        <div class="owl-carousel owl-theme" id="carousel-zonas-all" data-aos="fade-up" data-aos-once="false">
+            {% for zona  in zonas %}
+                <div class="item container-owl-item text-light"> 
+                    <img src="{{WebsiteName.ip_production}}:90/zre41media/images/cards/{{zona.image}}" alt="">
+                    <!--<h5>{{item}}</h5>-->
+                    <div class="container-body home-carousel">
+                        <p class="container-body-title">{{zona.codigo_zona}}</p>
+                        <p>{{zona.plan_nombre}}</p>
+                        {% for plan in zona.planes.all %}
+                        
+                            <p class="container-body-subtitle" data-bs-toggle="tooltip" data-bs-html="true" title="{{plan.nombre}}">{{plan.nombre|slice:30}} ...</p>
+                            
+                        {% endfor %}
+
+                        <p class="container-body-subtitle">distrito {{zona.distrito}}</p>
+                        
+                        {% comment %} <a href="{{WebsiteName.ip_production}}/41zre/41zre{{zona.codigo_zona}}" class="btn btn-outline-warning btn-block">ver más</a> {% endcomment %}
+                        <a href="{{WebsiteName.ip_production}}/zonas/{{zona.codigo_zona}}" class="btn btn-outline-warning btn-block">ver más</a>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    <br>
+    <br>
+
+
+
+
+
+
+{% endblock %} 
+
+{% comment %} {% block footer %}
+    
+    {% include 'includes/footer2.html' %}
+
+{% endblock  %} {% endcomment %}
+
+
+
+{% block javascript_extra_footer %}
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            
+        });
+        
+    </script>
+
+    <script>
+        //var owl = $('.owl-carousel');
+        var owl1 = $('#carousel-home');
+        owl1.owlCarousel({
+            items:1,
+            loop:true,
+            margin:0,
+            lazyLoad:true,
+            
+            dots:false,
+            autoHeight:false,
+            autoplay:true,
+            autoplayTimeout:4000,
+            autoplayHoverPause:true,
+            animateOut: 'fadeOut',
+            nav: true,
+            dots: false,
+            navText: ['<span class="ri-arrow-left-s-line ri-2x"></span>','<span class="ri-arrow-right-s-line ri-2x"></span>'], 
+            
+            
+        });
+        
+        var owl2 = $('#owlex');
+        owl2.owlCarousel({
+            items:3,
+            loop:true,
+            margin:0,
+            lazyLoad:true,
+            
+            
+            autoHeight:true,
+            autoplay:true,
+            autoplayTimeout:4000,
+            autoplayHoverPause:true,
+            animateOut: 'fadeOut',
+            nav: true,
+            dots: false,
+            navText: ['<span class="ri-arrow-left-s-line ri-2x"></span>','<span class="ri-arrow-right-s-line ri-2x"></span>'],
+            
+            
+        });
+
+        var owl3 = $('#carousel-zonas-all');
+        owl3.owlCarousel({
+            //items:4,
+            responsive:{
+                0:{
+                    items:1
+                },
+                300:{
+                    items:2
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:5
+                }
+            },
+            loop:true,
+            margin:10,
+            lazyLoad:true,
+            navigation : false,
+            stagePadding: 50,
+            dots:false,
+            autoplay:true,
+            autoplayTimeout:2000,
+            autoplayHoverPause:true,
+            nav: true,
+            
+            navText: ['<span class="ri-arrow-left-s-line ri-2x"></span>','<span class="ri-arrow-right-s-line ri-2x"></span>'],
+        });
+        
+        var owl4 = $('#carousel-zonas-all2');
+        owl4.owlCarousel({
+            //items:4,
+            responsive:{
+                0:{
+                    items:1
+                },
+                300:{
+                    items:2
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:5
+                }
+            },
+            loop:true,
+            margin:10,
+            lazyLoad:true,
+            navigation : false,
+            stagePadding: 50,
+            dots:false,
+            autoplay:true,
+            autoplayTimeout:2000,
+            autoplayHoverPause:true
+            
+        });
+
+
+        
+    </script>
+
+    
+{% endblock %}
+
+</body>
+
+</html>

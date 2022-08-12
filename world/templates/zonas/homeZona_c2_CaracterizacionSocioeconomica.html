@@ -1,0 +1,473 @@
+{% extends 'base2.html' %}
+
+{% load static %}
+{% load mathfilters %}
+
+  {% block title %}{{title}}{% endblock  %}
+
+
+  {% block style_header %}
+    
+    <link rel="stylesheet" href="{% static '/css/home-style.css' %}">
+    <link rel="stylesheet" href="{% static '/css/zona/home-zona.css' %}">
+    <!--Chart.js-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" />
+
+    <style>
+        #accordionTablas .accordion-button{
+            
+            font-weight: 400;
+            font-family: var(--bs-font-sans-serif);
+        }
+        #accordionTablas .accordion-button:not(.collapsed) {
+            color: #000000;
+            background-color: #ffc107;
+            box-shadow: inset 0 -1px 0;
+            font-weight: 700;
+        }
+        .tablas-stats-zona{
+            font-size: 12px;
+            font-family: var(--bs-font-sans-serif);
+        }
+        
+        #accordionEtapasPlan .accordion-button:not(.collapsed) {
+            color: #000000;
+            background-color: rgba(255, 255, 25, 0.0);
+            box-shadow: inset 0 -1px 0;
+            font-weight: 700;
+        }
+
+
+        #accordionIndiceTablaContenidos {
+            font-size: 11px;
+            font-family: var(--bs-font-sans-serif);
+        }
+        #accordionIndiceTablaContenidos .accordion-button{
+            color: rgba(0,0,0,0.85);
+            background-color: rgba(255, 255, 25, 0.0);
+            box-shadow: inset 0 -1px 0;
+            font-weight: 700;
+            font-size: 12px;
+            font-family: var(--bs-font-sans-serif);
+        }
+        #accordionIndiceTablaContenidos .accordion-button:not(.collapsed) {
+            font-size: 12px;
+            font-family: var(--bs-font-sans-serif);
+        }
+        
+        #accordionIndiceTablaContenidos .accordion-body {
+            padding: 0.0rem 0.5rem;
+        }
+        
+        #accordionIndiceTablaContenidos .accordion-button {
+            padding: 0.5rem 0.5rem;
+        }
+        #accordionIndiceTablaContenidos .list-group-item {
+            padding: 0.3rem 1rem;
+            border-bottom: 0;
+        }
+        #accordionIndiceTablaContenidos .accordion-item {
+            border-bottom: 0;
+        }
+
+        #accordionTablasPresentacion .accordion-button{
+            color: rgb(171 48 48);
+            background-color: rgba(255, 255, 25, 0.0);
+            box-shadow: inset 0 -1px 0;
+            font-weight: 700;
+            font-size: 30px;
+            font-family: var(--bs-font-sans-serif);
+        }
+
+        
+    </style>
+  {% endblock  %}
+
+<body class="page-index">
+    <script>
+        $(document).ready(function() {
+            alert ("Hola Mundo"); 
+        });
+    </script>
+
+    {% block navbar %}
+        {% include 'includes/navbar2.html' %}
+    {% endblock  %}
+
+    {% block content %}
+    
+      <!-- ======= Hero Section ======= -->
+    <section id="hero" class="hero d-flex align-items-center" style="background-image: url('{{WebsiteName.ip_development}}/41zre-media/documents/{{zona.codigo_zona}}/{% filter upper %}{{plan.url_documento}}{% endfilter %}.jpg')">
+       
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4">
+                <h2 data-aos="fade-up">{{zona.codigo_zona}}</h2>
+                <blockquote data-aos="fade-up" data-aos-delay="100">
+                    <p>{{plan.nombre}}</p>
+                </blockquote>
+                <ul  class="list-downloads-floating-wrapper"  data-aos="fade-up" data-aos-delay="200">
+
+                    <li>
+                        <a
+                            class="btn-get-started mx-1"
+                            href="{{WebsiteName.ip_production}}/41zre-media/documents/{{zona.codigo_zona}}/{% filter upper %}{{plan.url_documento}}{% endfilter %}.pdf"
+                            target="_blank" 
+                        > Documento&nbsp;<i class="ri-file-ppt-2-fill ri-lg"></i>&nbsp;<i class="ri-download-cloud-2-line ri-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a 
+                            href="{{WebsiteName.ip_production}}/41zre-media/documents/{{zona.codigo_zona}}/{{plan.url_reglamento}}.pdf"
+                            
+                            target="_blank" 
+                            class="btn-get-started  mx-1"
+                            > Reglamento&nbsp;<i class="ri-book-mark-line ri-lg"></i> &nbsp;<i class="ri-download-cloud-2-line ri-lg"></i>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+                <div class="scroll-downs">
+                    <div class="mousey">
+                    <div class="scroller"></div>
+                    </div>
+                </div>
+                
+            
+                </div>
+            </div>
+        </div>
+    </section><!-- End Hero Section -->
+
+
+
+    {% comment %} <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {{zona.codigo_zona}}
+                <ul>
+                    {% for plan in zona.plan_set.all  %}
+                        <li>{{plan}}</li>
+                        <ul>
+                            {% for mapa in plan.planmapa_set.all %}
+                                <li>{{mapa.nombre}} - {{mapa.plan_etapa}}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div> {% endcomment %}
+
+
+    {% comment %} <div class="container">
+        {% for etapa in etapas_plan %}
+
+            <p>{{etapa}}</p>
+        
+        {% endfor %}
+    </div> {% endcomment %}
+
+    {% comment %} <div class="container">
+        {% for maa in mapaslist  %}
+            <p>{{maa}}</p>
+        {% endfor %}
+    </div> {% endcomment %}
+
+
+
+    <!-- ======= Call To Action Section ======= -->
+    <section id="call-to-action" class="call-to-action">
+        <div class="container" data-aos="fade-up">
+            <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+                <h3>Presentación</h3>
+                <!--<p>Demografía</p>-->
+                <!--<a class="cta-btn" href="#">Call To Action</a>-->
+            </div>
+            </div>
+        </div>
+    </section><!-- End Call To Action Section -->
+
+
+    {% comment %} <div class="container">
+        <div class="row">
+            <div class="col-12 p-5">
+                {{zona_presentacion.descripcion | safe}}
+            </div>
+        </div>
+    </div>
+ {% endcomment %}
+
+ <div id="menu_floating" class="anchor_link"></div>
+
+    <div class="container mt-5 " >
+           
+
+        <div class="row mt-5">
+            <div class="col-12 col-md-3 container_sticky_menu_zona">
+
+                
+                {% block menu_inside %}
+
+                    {% include 'includes/menuTablaContenidoZona.html' %}
+                
+                
+                {% endblock  %}
+                
+            </div>
+            <div class="col-12 col-md-9">
+                <div class="accordion accordion-flush" id="accordionTablasPresentacion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingPoblacion">
+                            <button class="accordion-button shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePoblacion" aria-expanded="true" aria-controls="collapsePoblacion">
+                                <img src="{% static '/svgs/noun-people-4970540.svg' %}" height=30 style="clip-path: inset(0% 10% 25% 10%);"> Caracterización Socioeconómica
+                            </button>
+                        </h2>
+                        <div id="collapsePoblacion" class="accordion-collapse collapse show" aria-labelledby="headingPoblacion" >
+                            <div class="accordion-body">
+                                {{caracterizacion_socioeconomica.descripcion | safe}} 
+                                {% comment %} {% include 'zonas/graphPoblacionZona.html' with codigo_zona=zona.codigo_zona mapas_list=mapaslist poblacion=poblacion poblacion_tabla=poblacion_tabla total_poblacion=poblacion_tabla_total %} {% endcomment %}
+                               
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {% comment %} <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingDensidadPoblacional">
+                        <button class="accordion-button shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDensidadPoblacional" aria-expanded="false" aria-controls="collapseDensidadPoblacional">
+                            <img src="{% static '/svgs/noun-land-4946885.svg' %}" height=30 style="clip-path: inset(0% 10% 25% 10%);">Densidad Poblacional
+                        </button>
+                      </h2>
+                      <div id="collapseDensidadPoblacional" class="accordion-collapse collapse" aria-labelledby="headingDensidadPoblacional" >
+                        <div class="accordion-body">
+                            {% include 'zonas/graphDensidadPoblacionalZona.html' with codigo_zona=zona.codigo_zona mapas_list=mapaslist  densidad_poblacional_tabla=densidad_poblacional_tabla %}
+                          
+                        </div>
+                      </div>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+        </div>
+
+         
+    </div>
+
+    <section id="call-to-action" class="call-to-action">
+    </section>
+
+    <main id="main">
+
+        <!-- ======= Why Choose Us Section ======= -->
+        <section id="why-us" class="why-us">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+            <h2>Why Choose Us</h2>
+
+            </div>
+
+            <div class="row g-0" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="col-xl-5 img-bg" style="background-image: url('http://localhost/41zre-media/slides/home/banner_planes_1.jpg')"></div>
+            <div class="col-xl-7 slides  position-relative">
+
+                <div class="slides-1 swiper">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                    <div class="item">
+                        <h3 class="mb-3">Let's grow your business together</h3>
+                        <h4 class="mb-3">Optio reiciendis accusantium iusto architecto at quia minima maiores quidem, dolorum.</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, ipsam perferendis asperiores explicabo vel tempore velit totam, natus nesciunt accusantium dicta quod quibusdam ipsum maiores nobis non, eum. Ullam reiciendis dignissimos laborum aut, magni voluptatem velit doloribus quas sapiente optio.</p>
+                    </div>
+                    </div><!-- End slide item -->
+
+                    <div class="swiper-slide">
+                    <div class="item">
+                        <h3 class="mb-3">Unde perspiciatis ut repellat dolorem</h3>
+                        <h4 class="mb-3">Amet cumque nam sed voluptas doloribus iusto. Dolorem eos aliquam quis.</h4>
+                        <p>Dolorem quia fuga consectetur voluptatem. Earum consequatur nulla maxime necessitatibus cum accusamus. Voluptatem dolorem ut numquam dolorum delectus autem veritatis facilis. Et ea ut repellat ea. Facere est dolores fugiat dolor.</p>
+                    </div>
+                    </div><!-- End slide item -->
+
+                    <div class="swiper-slide">
+                    <div class="item">
+                        <h3 class="mb-3">Aliquid non alias minus</h3>
+                        <h4 class="mb-3">Necessitatibus voluptatibus explicabo dolores a vitae voluptatum.</h4>
+                        <p>Neque voluptates aut. Soluta aut perspiciatis porro deserunt. Voluptate ut itaque velit. Aut consectetur voluptatem aspernatur sequi sit laborum. Voluptas enim dolorum fugiat aut.</p>
+                    </div>
+                    </div><!-- End slide item -->
+
+                    <div class="swiper-slide">
+                    <div class="item">
+                        <h3 class="mb-3">Necessitatibus suscipit non voluptatem quibusdam</h3>
+                        <h4 class="mb-3">Tempora quos est ut quia adipisci ut voluptas. Deleniti laborum soluta nihil est. Eum similique neque autem ut.</h4>
+                        <p>Ut rerum et autem vel. Et rerum molestiae aut sit vel incidunt sit at voluptatem. Saepe dolorem et sed voluptate impedit. Ad et qui sint at qui animi animi rerum.</p>
+                    </div>
+                    </div><!-- End slide item -->
+
+                </div>
+                <div class="swiper-pagination"></div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+
+            </div>
+
+        </div>
+        </section><!-- End Why Choose Us Section -->
+
+        <!-- ======= Our Services Section ======= -->
+        <section id="services-list" class="services-list">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+            <h2>Our Services</h2>
+
+            </div>
+
+            <div class="row gy-5">
+
+            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
+                <div class="icon flex-shrink-0"><i class="bi bi-briefcase" style="color: #f57813;"></i></div>
+                <div>
+                <h4 class="title"><a href="#" class="stretched-link">Lorem Ipsum</a></h4>
+                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                </div>
+            </div>
+            <!-- End Service Item -->
+
+            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon flex-shrink-0"><i class="bi bi-card-checklist" style="color: #15a04a;"></i></div>
+                <div>
+                <h4 class="title"><a href="#" class="stretched-link">Dolor Sitema</a></h4>
+                <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+                </div>
+            </div><!-- End Service Item -->
+
+            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon flex-shrink-0"><i class="bi bi-bar-chart" style="color: #d90769;"></i></div>
+                <div>
+                <h4 class="title"><a href="#" class="stretched-link">Sed ut perspiciatis</a></h4>
+                <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                </div>
+            </div><!-- End Service Item -->
+
+            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon flex-shrink-0"><i class="bi bi-binoculars" style="color: #15bfbc;"></i></div>
+                <div>
+                <h4 class="title"><a href="#" class="stretched-link">Magni Dolores</a></h4>
+                <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                </div>
+            </div><!-- End Service Item -->
+
+            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="500">
+                <div class="icon flex-shrink-0"><i class="bi bi-brightness-high" style="color: #f5cf13;"></i></div>
+                <div>
+                <h4 class="title"><a href="#" class="stretched-link">Nemo Enim</a></h4>
+                <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+                </div>
+            </div><!-- End Service Item -->
+
+            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
+                <div class="icon flex-shrink-0"><i class="bi bi-calendar4-week" style="color: #1335f5;"></i></div>
+                <div>
+                <h4 class="title"><a href="#" class="stretched-link">Eiusmod Tempor</a></h4>
+                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+                </div>
+            </div><!-- End Service Item -->
+
+            </div>
+
+        </div>
+        </section><!-- End Our Services Section -->
+
+        <!-- ======= Call To Action Section ======= -->
+        <section id="call-to-action" class="call-to-action mb-5">
+        <div class="container" data-aos="fade-up">
+            <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+                <h3>Ut fugiat aliquam aut non</h3>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                <a class="cta-btn" href="#">Call To Action</a>
+            </div>
+            </div>
+
+        </div>
+        </section><!-- End Call To Action Section -->
+
+        
+
+        
+
+        
+
+    </main><!-- End #main -->
+
+    <div class="container">
+        
+        {% include 'includes/carouselZonas.html' %}
+
+    </div>
+
+
+    
+    
+    
+    {% endblock  %}
+  
+  
+    {% comment %} {% block footer %}
+    
+        {% include 'includes/footer2.html' %}
+    
+    {% endblock  %} {% endcomment %}
+
+
+
+{% block javascript_extra_footer %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script>
+        var owl = $('#owl-zonas-mini');
+            owl.owlCarousel({
+                //items:3,
+                responsive:{
+                0:{
+                    items:1
+                },
+                300:{
+                    items:2
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:5
+                }
+                },
+                loop:true,
+                margin:10,
+                lazyLoad:true,
+                navigation : false,
+                stagePadding: 50,
+                dots:false,
+                autoplay:true,
+                autoplayTimeout:2000,
+                autoplayHoverPause:true,
+                nav: true,
+                navText: ['<span class="ri-arrow-left-s-line ri-2x"></span>','<span class="ri-arrow-right-s-line ri-2x"></span>'],
+            });
+    </script>
+    
+{% endblock  %}
+    
+
+ 
+</body>
+
+
+</html>

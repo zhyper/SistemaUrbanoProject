@@ -1,0 +1,122 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block title %}{{title}}{% endblock  %}
+
+{% block style_header %}
+    <style>
+        body{
+            /*background-image: url("{% static 'images/misc/grupo-de-personas.jpeg' %}");*/
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        /* Container holding the image and the text */
+        .container-main-wrapper {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+        
+        /* Bottom left text */
+        .bottom-left {
+            position: absolute;
+            bottom: 8px;
+            left: 16px;
+        }
+        
+        /* Top left text */
+        .top-left {
+            position: absolute;
+            top: 8px;
+            left: 16px;
+        }
+        
+        /* Top right text */
+        .top-right {
+            position: absolute;
+            top: 8px;
+            right: 16px;
+        }
+        
+        /* Bottom right text */
+        .bottom-right {
+            position: absolute;
+            bottom: 8px;
+            right: 16px;
+        }
+        
+        /* Centered text */
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .main-title{
+            font-size:4.0rem;
+            line-height:4.0rem;
+
+        }
+        .main-subtitle{
+            font-size:1.0rem;
+
+        }
+        .img-bg{
+            filter: brightness(0.5)
+        }
+    </style>
+
+
+{% endblock  %}
+
+{% block navbar %}
+    {% include 'includes/navbar2.html' %}
+{% endblock  %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 container-main-wrapper mt-5">
+            <img src="{% static '/images/misc/grupo-de-personas.jpeg' %}" class="img-fluid img-bg"  alt="">
+            <div class="centered">
+                <p class="main-title fw-light">Consulta Ciudadana</p> 
+                <p class="main-subtitle fw-light">Formato de Observaciones y/o Recomendaciones de los Planes para Zonas de Reglamentación Especial ZRE </p>
+            </div>
+            
+        </div>
+    </div>
+    <div class="row justify-content-evenly mt-5 mb-5">
+        <div class="col-md-6">
+
+            {% if form.erros %}
+            
+                <p style="color: red;">Revisa este campo</p>
+                
+            {% endif %}
+                
+            <form action="" method="POST" enctype="multipart/form-data"> 
+                {% csrf_token %}
+            
+                <table>
+                    {{form.as_p}}
+                    
+                    
+                </table>
+                <div class="d-grid mx-auto">
+                    <input type="submit" class="btn btn-success" value='enviar'>
+
+                </div>
+            
+            </form>
+        </div>
+    </div>
+
+    
+</div>
+
+
+{% endblock  %}

@@ -1,0 +1,1140 @@
+{% extends 'base2.html' %}
+
+{% load static %}
+{% load mathfilters %}
+
+  {% block title %}{{title}}{% endblock  %}
+
+
+  {% block style_header %}
+    
+    <link rel="stylesheet" href="{% static '/css/home-style.css' %}">
+    <link rel="stylesheet" href="{% static '/css/zona/home-zona.css' %}">
+    <!--Chart.js-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" />
+
+    <style>
+        #accordionTablas .accordion-button{
+            font-weight: 400;
+            font-family: var(--bs-font-sans-serif);
+        }
+        #accordionTablas .accordion-button:not(.collapsed) {
+            color: #000000;
+            background-color: #ffc107;
+            box-shadow: inset 0 -1px 0;
+            font-weight: 700;
+        }
+        .tablas-stats-zona{
+            font-size: 12px;
+            font-family: var(--bs-font-sans-serif);
+        }
+        
+        #accordionEtapasPlan .accordion-button:not(.collapsed) {
+            color: #000000;
+            background-color: rgba(255, 255, 25, 0.0);
+            box-shadow: inset 0 -1px 0;
+            font-weight: 700;
+        }
+
+
+        #accordionIndiceTablaContenidos {
+            font-size: 11px;
+            font-family: var(--bs-font-sans-serif);
+        }
+        #accordionIndiceTablaContenidos .accordion-button{
+            color: rgba(0,0,0,0.85);
+            background-color: rgba(255, 255, 25, 0.0);
+            box-shadow: inset 0 -1px 0;
+            font-weight: 700;
+            font-size: 12px;
+            font-family: var(--bs-font-sans-serif);
+        }
+        #accordionIndiceTablaContenidos .accordion-button:not(.collapsed) {
+            font-size: 12px;
+            font-family: var(--bs-font-sans-serif);
+        }
+        
+        #accordionIndiceTablaContenidos .accordion-body {
+            padding: 0.0rem 0.5rem;
+        }
+        
+        #accordionIndiceTablaContenidos .accordion-button {
+            padding: 0.5rem 0.5rem;
+        }
+        #accordionIndiceTablaContenidos .list-group-item {
+            padding: 0.3rem 1rem;
+            border-bottom: 0;
+        }
+        #accordionIndiceTablaContenidos .accordion-item {
+            border-bottom: 0;
+        }
+
+        
+    </style>
+  {% endblock  %}
+
+<body class="page-index">
+    <script>
+        $(document).ready(function() {
+            alert ("Hola Mundo"); 
+        });
+    </script>
+
+    {% block navbar %}
+        {% include 'includes/navbar2.html' %}
+    {% endblock  %}
+
+    {% block content %}
+    
+      <!-- ======= Hero Section ======= -->
+    <section id="hero" class="hero d-flex align-items-center" style="background-image: url('{{WebsiteName.ip_production}}:90/zre41media/documents/{{zona.codigo_zona}}/{% filter upper %}{{plan.url_documento}}{% endfilter %}.jpg')">
+       
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4">
+                <h2 data-aos="fade-up">{{zona.codigo_zona}}</h2>
+                <blockquote data-aos="fade-up" data-aos-delay="100">
+                    <p>{{plan.nombre}}</p>
+                </blockquote>
+                <ul  class="list-downloads-floating-wrapper"  data-aos="fade-up" data-aos-delay="200">
+
+                    <li>
+                        <a
+                            class="btn-get-started mx-1"
+                            href="{{WebsiteName.ip_production}}:90/zre41media/documents/{{zona.codigo_zona}}/{% filter upper %}{{plan.url_documento}}{% endfilter %}.pdf"
+                            target="_blank" 
+                        > Documento&nbsp;<i class="ri-file-ppt-2-fill ri-lg"></i>&nbsp;<i class="ri-download-cloud-2-line ri-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a 
+                            href="{{WebsiteName.ip_production}}:90/zre41media/documents/{{zona.codigo_zona}}/{{plan.url_reglamento}}.pdf"
+                            
+                            target="_blank" 
+                            class="btn-get-started  mx-1"
+                            > Reglamento&nbsp;<i class="ri-book-mark-line ri-lg"></i> &nbsp;<i class="ri-download-cloud-2-line ri-lg"></i>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+                <div class="scroll-downs">
+                    <div class="mousey">
+                    <div class="scroller"></div>
+                    </div>
+                </div>
+                
+            
+                </div>
+            </div>
+        </div>
+    </section><!-- End Hero Section -->
+
+
+
+    {% comment %} <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {{zona.codigo_zona}}
+                <ul>
+                    {% for plan in zona.plan_set.all  %}
+                        <li>{{plan}}</li>
+                        <ul>
+                            {% for mapa in plan.planmapa_set.all %}
+                                <li>{{mapa.nombre}} - {{mapa.plan_etapa}}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div> {% endcomment %}
+
+
+    {% comment %} <div class="container">
+        {% for etapa in etapas_plan %}
+
+            <p>{{etapa}}</p>
+        
+        {% endfor %}
+    </div> {% endcomment %}
+
+    {% comment %} <div class="container">
+        {% for maa in mapaslist  %}
+            <p>{{maa}}</p>
+        {% endfor %}
+    </div> {% endcomment %}
+
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-3">
+                <a href="{{WebsiteName.ip_production}}/zonas/{{zona.codigo_zona}}" class="p-3" >&laquo; Volver</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container mt-5" data-aos="fade-up">
+        <div class="row">
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="sticky-top-home-zona">
+
+                    <div class="accordion accordion-flush" id="accordionEtapasPlan">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                            <button class="accordion-button shadow-none " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                <i class="ri-mist-fill ri-lg"></i> &nbsp; ETAPAS 
+                            </button>
+                          </h2>
+                          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                            <div class="accordion-body">
+                                <div class="list-group">
+                                    
+                                    {% comment %} <label class="list-group-item">
+                                        <input class="form-check-input me-1" type="checkbox" value="">
+                                        Todos <span class="badge bg-primary"> {{mapascaracterizacion_count|addition:mapaspropuesta_count}} </span>
+                                    </label>
+                                    <label class="list-group-item">
+                                        <input class="form-check-input me-1" type="checkbox" value="">
+                                        Caracterización <span class="badge bg-primary"> {{mapascaracterizacion_count}} </span>
+                                    </label>
+                                    <label class="list-group-item">
+                                        <input class="form-check-input me-1" type="checkbox" value="">
+                                        Propuesta <span class="badge bg-primary"> {{mapaspropuesta_count}} </span>
+                                    </label> {% endcomment %}
+                                    <li class="list-group-item list-group-item-action"><a href='.'>Todos <span class="badge bg-primary"> {{mapas_plan_all|length}} </span></a></li>
+                                    
+                                    {% for mapa in mapas_plan %}
+                                        <li class="list-group-item list-group-item-action"><a href='{{mapa.plan_etapa__slug}}'>{{mapa.plan_etapa__nombre}} <span class="badge bg-primary"> {{mapa.plan_etapa__count}} </span></a></li>
+                                    {% endfor %}
+
+                                    
+                                  </div>
+                                  
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                            <button class="accordion-button shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+                                <i class="ri-stack-line ri-lg"></i>  &nbsp;  COMPONENTES
+                            </button>
+                          </h2>
+                          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse " aria-labelledby="panelsStayOpen-headingTwo">
+                            <div class="accordion-body">
+                                <div class="list-group">
+                                    {% comment %} <li class="list-group-item">Todos</li>
+                                    <li class="list-group-item">Ambiental</li>
+                                    <li class="list-group-item">Fisico Construído</li>
+                                    <li class="list-group-item">Gestión de Riesgos de Desastres</li> {% endcomment %}
+                                    <label class="list-group-item">
+                                        <input type="checkbox" class="form-check-input me-1" value="">
+                                        Todos
+                                    </label>
+                                    <label class="list-group-item">
+                                        <input type="checkbox" class="form-check-input me-1" value="">
+                                        Ambiental
+                                    </label>
+                                    <label class="list-group-item">
+                                        <input type="checkbox" class="form-check-input me-1" value="">
+                                        Fisico Construído
+                                    </label>
+                                    <label class="list-group-item">
+                                        <input type="checkbox" class="form-check-input me-1" value="">
+                                        Gestión de Riesgos de Desastres
+                                    </label>
+                                  </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-8">
+                
+                        <div class="row">
+                            {% for mapa in mapaslist %}
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-up">
+
+                                                        
+                                    {% if mapa.componente.nombre == 'Ambiental' %}
+                                        
+                                        <div class="card card-mapas-41zre mb-5" >
+                                        <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/AMB/{{mapa.url}}.jpg" class="glightbox" data-glightbox="title: {{mapa.nombre}}">
+                                            <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/AMB/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                        </a>
+                                            <div class="card-body">
+                                            <h5 class="card-title">{{mapa.nombre}}</h5>
+                                            <p class="card-text fw-light fs-6-custom"><i class="ri-road-map-line ri-xl"></i> &nbsp; {{mapa.codigo}}</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush fs-6-custom-2">
+                                                <li class="list-group-item">{{mapa.componente.nombre}} | {{mapa.plan_etapa}}</li>
+                                                <li class="list-group-item fs-6-custom-3 text-end">Actualizado al {{mapa.fecha_updated|date:"d/m/Y"}}</li>
+                                            </ul>
+                                            <div class="card-body d-grid gap-2">
+                                                <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/AMB/{{mapa.url}}.pdf" target="_blank" class="btn btn-warning btn-sm btn-block">Descargar &nbsp;<i class="ri-download-cloud-2-line ri-lg"></i></a>
+                                            
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if mapa.componente.nombre == 'Físico Construido' %}
+                                        
+                                        <div class="card card-mapas-41zre mb-5" >
+                                        <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/FC/{{mapa.url}}.jpg" class="glightbox" data-glightbox="title: {{mapa.nombre}}">
+                                            <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/FC/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                        </a>
+                                            <div class="card-body">
+                                            <h5 class="card-title">{{mapa.nombre}}</h5>
+                                            <p class="card-text  fw-light fs-6-custom"><i class="ri-road-map-line ri-xl"></i> &nbsp; {{mapa.codigo}}</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush fs-6-custom-2">
+                                            <li class="list-group-item">{{mapa.componente.nombre}} | {{mapa.plan_etapa}}</li>
+                                            
+                                            </ul>
+                                            <div class="card-body d-grid gap-2">
+                                            
+                                            <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/FC/{{mapa.url}}.pdf" target="_blank" class="btn btn-warning btn-sm btn-block">Descargar &nbsp;<i class="ri-download-cloud-2-line ri-lg"></i></a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if mapa.componente.nombre == 'Gestión de Riesgos' %}
+                                        
+                                        <div class="card card-mapas-41zre mb-5" >
+                                        <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/GRD/{{mapa.url}}.jpg" class="glightbox" data-glightbox="title: {{mapa.nombre}}">
+                                            <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/GRD/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                        </a>    
+                                            <div class="card-body">
+                                            <h5 class="card-title">{{mapa.nombre}}</h5>
+                                            <p class="card-text fw-light fs-6-custom"><i class="ri-road-map-line ri-xl"></i> &nbsp; {{mapa.codigo}}</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush fs-6-custom-2">
+                                            <li class="list-group-item">{{mapa.componente.nombre}} | {{mapa.plan_etapa}}</li>
+                                            
+                                            </ul>
+                                            <div class="card-body d-grid gap-2">
+                                            
+                                            <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/GRD/{{mapa.url}}.pdf" target="_blank" class="btn btn-warning btn-sm btn-block">Descargar &nbsp;<i class="ri-download-cloud-2-line ri-lg"></i></a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    
+                                    {% if mapa.componente.nombre == 'General' %}
+                                        
+                                        <div class="card card-mapas-41zre mb-5" >
+                                        <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/GRL/{{mapa.url}}.jpg" class="glightbox" data-glightbox="title: {{mapa.nombre}}">
+                                            <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/GRL/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                        </a>    
+                                            <div class="card-body">
+                                            <h5 class="card-title">{{mapa.nombre}}</h5>
+                                            <p class="card-text fw-light fs-6-custom"><i class="ri-road-map-line ri-xl"></i> &nbsp; {{mapa.codigo}}</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush fs-6-custom-2">
+                                            <li class="list-group-item">{{mapa.componente.nombre}} | {{mapa.plan_etapa}}</li>
+                                            
+                                            </ul>
+                                            <div class="card-body d-grid gap-2">
+                                            
+                                            <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/GRD/{{mapa.url}}.pdf" target="_blank" class="btn btn-warning btn-sm btn-block">Descargar &nbsp;<i class="ri-download-cloud-2-line ri-lg"></i></a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    
+                                    {% if mapa.componente.nombre == 'Legal' %}
+                                        
+                                        <div class="card card-mapas-41zre mb-5" >
+                                        <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/LEG/{{mapa.url}}.jpg" class="glightbox" data-glightbox="title: {{mapa.nombre}}">
+                                            <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/LEG/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                        </a>    
+                                            <div class="card-body">
+                                            <h5 class="card-title">{{mapa.nombre}}</h5>
+                                            <p class="card-text fw-light fs-6-custom"><i class="ri-road-map-line ri-xl"></i> &nbsp; {{mapa.codigo}}</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush fs-6-custom-2">
+                                            <li class="list-group-item">{{mapa.componente.nombre}} | {{mapa.plan_etapa}}</li>
+                                            
+                                            </ul>
+                                            <div class="card-body d-grid gap-2">
+                                            
+                                            <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/GRD/{{mapa.url}}.pdf" target="_blank" class="btn btn-warning btn-sm btn-block">Descargar &nbsp;<i class="ri-download-cloud-2-line ri-lg"></i></a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    
+                                    {% if mapa.componente.nombre == 'Social' %}
+                                        
+                                        <div class="card card-mapas-41zre mb-5" >
+                                        <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/SOC/{{mapa.url}}.jpg" class="glightbox" data-glightbox="title: {{mapa.nombre}}">
+                                            <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/SOC/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                        </a>    
+                                            <div class="card-body">
+                                            <h5 class="card-title">{{mapa.nombre}}</h5>
+                                            <p class="card-text fw-light fs-6-custom"><i class="ri-road-map-line ri-xl"></i> &nbsp; {{mapa.codigo}}</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush fs-6-custom-2">
+                                            <li class="list-group-item">{{mapa.componente.nombre}} | {{mapa.plan_etapa}}</li>
+                                            
+                                            </ul>
+                                            <div class="card-body d-grid gap-2">
+                                            
+                                            <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/GRD/{{mapa.url}}.pdf" target="_blank" class="btn btn-warning btn-sm btn-block">Descargar &nbsp;<i class="ri-download-cloud-2-line ri-lg"></i></a>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <nav aria-label="...">
+                                    {% if mapaslist.has_other_pages %}
+                                    <ul class="pagination">
+                                        {% if mapaslist.has_previous %}
+                                        <li class="page-item ">
+                                            <a class="page-link link-warning" href="?page={{ mapaslist.previous_page_number }}" >&laquo;</a>
+                                        </li>
+                                        {% else %}
+                                            <li class="page-item disabled">
+                                                <span class="page-link link-warning">&laquo;</span>
+                                            </li>
+                                        {% endif %}
+
+
+                                        {% for i in mapaslist.paginator.page_range %}
+                                        {% if mapaslist.number == i %}
+                                            <li class="page-item active" aria-current="page">
+                                                <a class="page-link border border-warning bg-warning" href="#">{{ i }} </a>
+                                            </li>
+                                        {% else %}
+                                            <li class="page-item"><a class="page-link link-warning" href="?page={{ i }}">{{ i }}</a></li>
+                                        {% endif %}
+                                        {% endfor %}
+
+                                        {% if mapaslist.has_next %}
+                                            <li class="page-item">
+                                                <a class="page-link link-warning" href="?page={{ mapaslist.next_page_number }}">&raquo;</a>
+                                            </li>
+                                        {% else %}
+                                            <li class="page-item disabled">
+                                                <span class="page-link link-warning">&raquo;</span>
+                                            </li>
+                                        {% endif %}
+
+                                    </ul>
+                                    {% endif %}
+                                </nav>
+                            </div>
+                        </div>
+                 
+                {% comment %} <div class="row">
+                    <div class="col-12">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" id="myTabMapas" role="tablist">
+                            <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#caracterizacion" type="button" role="tab" aria-controls="caracterizacion" aria-selected="true">Caracterización</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#propuesta" type="button" role="tab" aria-controls="propuesta" aria-selected="false">Propuesta</button>
+                            </li>
+                            
+                        </ul>
+                        
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="caracterizacion" role="tabpanel" aria-labelledby="caracterizacion-tab" tabindex="0">
+                                
+                                <div class="row">
+                                    {% for mapa in mapasCaracterizacion %}
+                                     
+                                         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                                     
+                                             {% if mapa.componente.nombre == 'Ambiental' %}
+                                                 
+                                                 <div class="card card-mapas-41zre mt-5" >
+                                                    <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/CARACTERIZACION/AMB/{{mapa.url}}.jpg" class="glightbox" data-glightbox="title: {{mapa.nombre}}">
+                                                        <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/CARACTERIZACION/AMB/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                                    </a>
+                                                     <div class="card-body">
+                                                     <h5 class="card-title">{{mapa.nombre}}</h5>
+                                                     <p class="card-text fw-light fs-6-custom">{{mapa.codigo}}</p>
+                                                     </div>
+                                                     <ul class="list-group list-group-flush fs-6-custom-2">
+                                                        <li class="list-group-item">{{mapa.componente.nombre}} | {{mapa.plan_etapa}}</li>
+                                                     
+                                                     </ul>
+                                                     <div class="card-body d-grid gap-2">
+                                                        <a href="" class="btn btn-warning btn-sm btn-block">Descargar &nbsp;<i class="fa fa-download" aria-hidden="true"></i></a>
+                                                     </div>
+                                                 </div>
+                                             {% endif %}
+         
+                                             {% if mapa.componente.nombre == 'Físico Construido' %}
+                                                 
+                                                 <div class="card card-mapas-41zre mt-5" >
+                                                    <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/CARACTERIZACION/FC/{{mapa.url}}.jpg" class="glightbox" data-glightbox="title: {{mapa.nombre}}">
+                                                        <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/CARACTERIZACION/FC/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                                    </A>
+                                                     <div class="card-body">
+                                                     <h5 class="card-title">{{mapa.nombre}}</h5>
+                                                     <p class="card-text  fw-light fs-6-custom">{{mapa.codigo}}</p>
+                                                     </div>
+                                                     <ul class="list-group list-group-flush fs-6-custom-2">
+                                                        <li class="list-group-item">{{mapa.componente.nombre}} | {{mapa.plan_etapa}}</li>
+                                                     
+                                                     </ul>
+                                                     <div class="card-body d-grid gap-2">
+                                                        <a href="" class="btn btn-warning btn-sm btn-block">Descargar &nbsp;<i class="fa fa-download" aria-hidden="true"></i></a>
+                                                     </div>
+                                                 </div>
+                                             {% endif %}
+         
+                                             {% if mapa.componente.nombre == 'Gestión de Riesgos' %}
+                                                 
+                                                 <div class="card card-mapas-41zre mt-5" >
+                                                    <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/CARACTERIZACION/GRD/{{mapa.url}}.jpg" class="glightbox" data-glightbox="title: {{mapa.nombre}}">
+                                                        <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/CARACTERIZACION/GRD/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                                    </a>    
+                                                     <div class="card-body">
+                                                     <h5 class="card-title">{{mapa.nombre}}</h5>
+                                                     <p class="card-text fw-light fs-6-custom">{{mapa.codigo}}</p>
+                                                     </div>
+                                                     <ul class="list-group list-group-flush fs-6-custom-2">
+                                                        <li class="list-group-item">{{mapa.componente.nombre}} | {{mapa.plan_etapa}}</li>
+                                                     
+                                                     </ul>
+                                                     <div class="card-body d-grid gap-2">
+                                                        <a href="" class="btn btn-warning btn-sm btn-block">Descargar &nbsp;<i class="fa fa-download" aria-hidden="true"></i></a>
+                                                     </div>
+                                                 </div>
+                                             {% endif %}
+                                         </div>
+                                    {% endfor %}
+                                     
+                                 </div>
+        
+                            </div>
+                            <div class="tab-pane" id="propuesta" role="tabpanel" aria-labelledby="propuesta-tab" tabindex="0">
+                                <div class="row">
+                                   {% for mapa in mapasPropuesta %}
+                                    
+                                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                                    
+                                            {% if mapa.componente.nombre == 'Ambiental' %}
+                                                
+                                                <div class="card card-mapas-41zre mt-5" >
+                                                    <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/PROPUESTA/AMB/{{mapa.url}}.jpg" class="glightbox" data-glightbox="title: {{mapa.nombre}}">
+                                                        <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/PROPUESTA/AMB/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                                    </a>   
+                                                    <div class="card-body">
+                                                    <h5 class="card-title">{{mapa.nombre}}</h5>
+                                                    <p class="card-text fw-light fs-6-custom">{{mapa.codigo}}</p>
+                                                    </div>
+                                                    <ul class="list-group list-group-flush fs-6-custom-2">
+                                                        <li class="list-group-item">{{mapa.componente.nombre}} | {{mapa.plan_etapa}}</li>
+                                                    </ul>
+                                                    <div class="card-body d-grid gap-2">
+                                                        <a href="" class="btn btn-warning btn-sm btn-block">Descargar &nbsp;<i class="fa fa-download" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+        
+                                            {% if mapa.componente.nombre == 'Físico Construido' %}
+                                                
+                                                <div class="card card-mapas-41zre mt-5" >
+                                                    <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/PROPUESTA/FC/{{mapa.url}}.jpg" class="glightbox" data-glightbox="title: {{mapa.nombre}}">
+                                                        <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/PROPUESTA/FC/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                                    </a>    
+                                                    <div class="card-body">
+                                                    <h5 class="card-title">{{mapa.nombre}}</h5>
+                                                    <p class="card-text fw-light fs-6-custom">{{mapa.codigo}}</p>
+                                                    </div>
+                                                    <ul class="list-group list-group-flush fs-6-custom-2">
+                                                        <li class="list-group-item">{{mapa.componente.nombre}} | {{mapa.plan_etapa}}</li>
+                                                    </ul>
+                                                    <div class="card-body d-grid gap-2">
+                                                        <a href="" class="btn btn-warning btn-sm btn-block">Descargar &nbsp;<i class="fa fa-download" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+        
+                                            {% if mapa.componente.nombre == 'Gestión de Riesgos' %}
+                                                
+                                                <div class="card card-mapas-41zre mt-5" >
+                                                    <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/PROPUESTA/GRD/{{mapa.url}}.jpg" class="glightbox" data-glightbox="title: {{mapa.nombre}}">
+                                                        <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/PROPUESTA/GRD/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                                    </a>    
+                                                    <div class="card-body">
+                                                    <h5 class="card-title">{{mapa.nombre}}</h5>
+                                                    <p class="card-text fw-light fs-6-custom">{{mapa.codigo}}</p>
+                                                    </div>
+                                                    <ul class="list-group list-group-flush fs-6-custom-2">
+                                                        <li class="list-group-item">{{mapa.componente.nombre}} | {{mapa.plan_etapa}}</li>
+                                                    </ul>
+                                                    <div class="card-body d-grid gap-2">
+                                                        <a href="" class="btn btn-warning btn-sm btn-block">Descargar &nbsp;<i class="fa fa-download" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+        
+                                                
+                                                
+                                            
+                                        </div>
+                                   {% endfor %}
+                                    
+                                </div>
+                                        
+                            </div>
+                        </div>
+                    </div>
+                </div> {% endcomment %}
+            </div>
+
+        </div>
+        
+        {% comment %} <div class="row">
+            {{zona.codigo_zona}}
+
+
+            
+            {% for plan in zona.plan_set.all  %}
+                {% for mapa in plan.planmapa_set.all %}
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                
+                                {% if mapa.plan_etapa.nombre == 'Propuesta' %}
+                                    <li>{{mapa.nombre}}</li>
+
+                                    {% if mapa.componente.nombre == 'Ambiental' %}
+                                        
+                                        <div class="card mt-5" >
+                                            <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/PROPUESTA/AMB/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                            <h5 class="card-title">{{mapa.nombre}}</h5>
+                                            <p class="card-text">{{mapa.codigo}}</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">An item</li>
+                                            <li class="list-group-item">A second item</li>
+                                            <li class="list-group-item">A third item</li>
+                                            </ul>
+                                            <div class="card-body">
+                                            <a href="#" class="card-link">Card link</a>
+                                            
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if mapa.componente.nombre == 'Físico Construido' %}
+                                        
+                                        <div class="card mt-5" >
+                                            <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/PROPUESTA/FC/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                            <h5 class="card-title">{{mapa.nombre}}</h5>
+                                            <p class="card-text">{{mapa.codigo}}</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">An item</li>
+                                            <li class="list-group-item">A second item</li>
+                                            <li class="list-group-item">A third item</li>
+                                            </ul>
+                                            <div class="card-body">
+                                            <a href="#" class="card-link">Card link</a>
+                                            
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if mapa.componente.nombre == 'Gestión de Riesgos' %}
+                                        
+                                        <div class="card mt-5" >
+                                            <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/PROPUESTA/GRD/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                            <h5 class="card-title">{{mapa.nombre}}</h5>
+                                            <p class="card-text">{{mapa.codigo}}</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">An item</li>
+                                            <li class="list-group-item">A second item</li>
+                                            <li class="list-group-item">A third item</li>
+                                            </ul>
+                                            <div class="card-body">
+                                            <a href="#" class="card-link">Card link</a>
+                                            
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                        
+
+
+                                    
+                                {% endif %}
+
+                                {% if mapa.plan_etapa.nombre == 'Caracterización' %}
+                                    <li>{{mapa.nombre}}</li>
+                                    {% if mapa.componente.nombre == 'Ambiental' %}
+                                        
+                                        <div class="card mt-5" >
+                                            <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/CARACTERIZACION/AMB/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                            <h5 class="card-title">{{mapa.nombre}}</h5>
+                                            <p class="card-text">{{mapa.codigo}}</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">An item</li>
+                                            <li class="list-group-item">A second item</li>
+                                            <li class="list-group-item">A third item</li>
+                                            </ul>
+                                            <div class="card-body">
+                                            <a href="#" class="card-link">Card link</a>
+                                            
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if mapa.componente.nombre == 'Físico Construido' %}
+                                        
+                                        <div class="card mt-5" >
+                                            <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/CARACTERIZACION/FC/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                            <h5 class="card-title">{{mapa.nombre}}</h5>
+                                            <p class="card-text">{{mapa.codigo}}</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">An item</li>
+                                            <li class="list-group-item">A second item</li>
+                                            <li class="list-group-item">A third item</li>
+                                            </ul>
+                                            <div class="card-body">
+                                            <a href="#" class="card-link">Card link</a>
+                                            
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if mapa.componente.nombre == 'Gestión de Riesgos' %}
+                                        
+                                        <div class="card mt-5" >
+                                            <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{zona.codigo_zona}}/CARACTERIZACION/GRD/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                            <h5 class="card-title">{{mapa.nombre}}</h5>
+                                            <p class="card-text">{{mapa.codigo}}</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">An item</li>
+                                            <li class="list-group-item">A second item</li>
+                                            <li class="list-group-item">A third item</li>
+                                            </ul>
+                                            <div class="card-body">
+                                            <a href="#" class="card-link">Card link</a>
+                                            
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    
+                                {% endif %}
+                                
+                                
+                    </div>
+                {% endfor %}
+                        
+            {% endfor %}
+                
+        </div> {% endcomment %}
+    </div>
+
+
+    <!-- ======= Call To Action Section ======= -->
+
+    <!--
+    <section id="call-to-action" class="call-to-action">
+        <div class="container" data-aos="fade-up">
+            <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+                <h3>Caracterización Socioeconómica</h3>
+   
+            </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+
+
+    
+    {% comment %} <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Demografía</h3>
+            </div>
+        </div>    
+
+        <div class="row mt-5">
+            <div class="col-3">
+                <div class="sticky-top-home-zona">
+                    <div class="accordion accordion-flush" id="accordionIndiceTablaContenidos">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                            <button type="button" class="accordion-button shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                CAPÍTULO I: CONSIDERACIONES GENERALES 
+                                
+                            </button>
+                          </h2>
+                          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                            <div class="accordion-body">
+                                <ul class="list-group list-group-flush">
+                                    <a  class="list-group-item list-group-item-action" href="consideraciones-generales">1.	Consideraciones Generales</a>
+                                    <button type="button" class="list-group-item list-group-item-action">2.	Objetivos</button>
+                                    <button type="button" class="list-group-item list-group-item-action">3.	Justificación</button>
+                                    <button type="button" class="list-group-item list-group-item-action">4.	Metodología</button>
+                                    <button type="button" class="list-group-item list-group-item-action">5.	Delimitación del ámbito de estudio</button>
+                                    <button type="button" class="list-group-item list-group-item-action">6.	Planeamiento para la ZRECU01</button>
+                                  </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                            <button class="accordion-button collapsed shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                CAPÍTULO II: CARACTERIZACIÓN
+                                
+                            </button>
+                          </h2>
+                          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                            <div class="accordion-body">
+                                <ul class="list-group list-group-flush">
+                                    <button type="button" class="list-group-item list-group-item-action">7.	Caracterización Socio Económica</button>
+                                    <button type="button" class="list-group-item list-group-item-action">8.	Caracterización Legal</button>
+                                    <button type="button" class="list-group-item list-group-item-action">9.	Caracterización de la Gestión del Riesgo de Desastres</button>
+                                    <button type="button" class="list-group-item list-group-item-action">10. Caracterización Ambiental</button>
+                                    <button type="button" class="list-group-item list-group-item-action">11. Caracterización Físico-construido</button>
+                                    <button type="button" class="list-group-item list-group-item-action">12. Síntesis del Diagnóstico</button>
+                                  </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                            <button class="accordion-button collapsed shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                              CAPITULO III: PROPUESTA
+                            </button>
+                          </h2>
+                          <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                            <div class="accordion-body">
+                                <ul class="list-group list-group-flush">
+                                    <button type="button" class="list-group-item list-group-item-action">13. Propuesta General</button>
+                                    <button type="button" class="list-group-item list-group-item-action">14. Propuestas Específicas</button>
+                                    
+                                  </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                            <button class="accordion-button collapsed shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                CAPÍTULO IV: GESTIÓN DEL PLAN ESPECÍFICO                                
+                            </button>
+                          </h2>
+                          <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                            <div class="accordion-body">
+                                <ul class="list-group list-group-flush">
+                                    <button type="button" class="list-group-item list-group-item-action">13. Propuesta General</button>
+                                    <button type="button" class="list-group-item list-group-item-action">14. Propuestas Específicas</button>
+                                    
+                                  </ul>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+            
+            </div>
+
+
+            <div class="col-9">
+                <div class="accordion" id="accordionTablasDemografia">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingPoblacion">
+                            <button class="accordion-button shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePoblacion" aria-expanded="true" aria-controls="collapsePoblacion">
+                                <img src="{% static '/svgs/noun-people-4970540.svg' %}" height=30 style="clip-path: inset(0% 10% 25% 10%);"> Poblaci&oacute;n
+                            </button>
+                        </h2>
+                        <div id="collapsePoblacion" class="accordion-collapse collapse show" aria-labelledby="headingPoblacion" >
+                            <div class="accordion-body">
+                                
+                                {% include 'zonas/graphPoblacionZona.html' with codigo_zona=zona.codigo_zona mapas_list=mapaslist poblacion=poblacion poblacion_tabla=poblacion_tabla total_poblacion=poblacion_tabla_total %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingDensidadPoblacional">
+                        <button class="accordion-button shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDensidadPoblacional" aria-expanded="false" aria-controls="collapseDensidadPoblacional">
+                            <img src="{% static '/svgs/noun-land-4946885.svg' %}" height=30 style="clip-path: inset(0% 10% 25% 10%);">Densidad Poblacional
+                        </button>
+                      </h2>
+                      <div id="collapseDensidadPoblacional" class="accordion-collapse collapse" aria-labelledby="headingDensidadPoblacional" >
+                        <div class="accordion-body">
+                            {% include 'zonas/graphDensidadPoblacionalZona.html' with codigo_zona=zona.codigo_zona mapas_list=mapaslist  densidad_poblacional_tabla=densidad_poblacional_tabla %}
+                          
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <h3>Desarrollo Social</h3>
+            </div>
+        </div> 
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="accordion" id="accordionTablasDesarrolloSocial">
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingGradoInstruccion">
+                            <button class="accordion-button shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGradoInstruccion" aria-expanded="false" aria-controls="collapseGradoInstruccion">
+                                <img src="{% static '/svgs/noun-education-1814726.svg' %}" height=30 style="clip-path: inset(0% 10% 25% 10%);"> Grado de Instrucci&oacute;n
+                            </button>
+                        </h2>
+                        <div id="collapseGradoInstruccion" class="accordion-collapse collapse" aria-labelledby="headingGradoInstruccion" >
+                            <div class="accordion-body">
+                            {% include 'zonas/graphNivelInstruccionZona.html' with codigo_zona=zona.codigo_zona mapas_list=mapaslist  nivel_instruccion_tabla=nivel_instruccion_tabla %}
+                          
+                        </div>
+                      </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>  
+    </div> {% endcomment %}
+
+
+
+    <main id="main">
+
+        <!-- ======= Why Choose Us Section ======= -->
+        <!--
+        <section id="why-us" class="why-us">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+            <h2>Why Choose Us</h2>
+
+            </div>
+
+            <div class="row g-0" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="col-xl-5 img-bg" style="background-image: url('http://{{WebsiteName.ip_production}:90/zre41media/slides/home/banner_planes_1.jpg')"></div>
+            <div class="col-xl-7 slides  position-relative">
+
+                <div class="slides-1 swiper">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                    <div class="item">
+                        <h3 class="mb-3">Let's grow your business together</h3>
+                        <h4 class="mb-3">Optio reiciendis accusantium iusto architecto at quia minima maiores quidem, dolorum.</h4>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, ipsam perferendis asperiores explicabo vel tempore velit totam, natus nesciunt accusantium dicta quod quibusdam ipsum maiores nobis non, eum. Ullam reiciendis dignissimos laborum aut, magni voluptatem velit doloribus quas sapiente optio.</p>
+                    </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                    <div class="item">
+                        <h3 class="mb-3">Unde perspiciatis ut repellat dolorem</h3>
+                        <h4 class="mb-3">Amet cumque nam sed voluptas doloribus iusto. Dolorem eos aliquam quis.</h4>
+                        <p>Dolorem quia fuga consectetur voluptatem. Earum consequatur nulla maxime necessitatibus cum accusamus. Voluptatem dolorem ut numquam dolorum delectus autem veritatis facilis. Et ea ut repellat ea. Facere est dolores fugiat dolor.</p>
+                    </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                    <div class="item">
+                        <h3 class="mb-3">Aliquid non alias minus</h3>
+                        <h4 class="mb-3">Necessitatibus voluptatibus explicabo dolores a vitae voluptatum.</h4>
+                        <p>Neque voluptates aut. Soluta aut perspiciatis porro deserunt. Voluptate ut itaque velit. Aut consectetur voluptatem aspernatur sequi sit laborum. Voluptas enim dolorum fugiat aut.</p>
+                    </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                    <div class="item">
+                        <h3 class="mb-3">Necessitatibus suscipit non voluptatem quibusdam</h3>
+                        <h4 class="mb-3">Tempora quos est ut quia adipisci ut voluptas. Deleniti laborum soluta nihil est. Eum similique neque autem ut.</h4>
+                        <p>Ut rerum et autem vel. Et rerum molestiae aut sit vel incidunt sit at voluptatem. Saepe dolorem et sed voluptate impedit. Ad et qui sint at qui animi animi rerum.</p>
+                    </div>
+                    </div>
+
+                </div>
+                <div class="swiper-pagination"></div>
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+
+            </div>
+
+        </div>
+        </section>
+
+
+        
+
+        <section id="services-list" class="services-list">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+            <h2>Our Services</h2>
+
+            </div>
+
+            <div class="row gy-5">
+
+            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
+                <div class="icon flex-shrink-0"><i class="bi bi-briefcase" style="color: #f57813;"></i></div>
+                <div>
+                <h4 class="title"><a href="#" class="stretched-link">Lorem Ipsum</a></h4>
+                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                </div>
+            </div>
+            
+
+            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon flex-shrink-0"><i class="bi bi-card-checklist" style="color: #15a04a;"></i></div>
+                <div>
+                <h4 class="title"><a href="#" class="stretched-link">Dolor Sitema</a></h4>
+                <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon flex-shrink-0"><i class="bi bi-bar-chart" style="color: #d90769;"></i></div>
+                <div>
+                <h4 class="title"><a href="#" class="stretched-link">Sed ut perspiciatis</a></h4>
+                <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon flex-shrink-0"><i class="bi bi-binoculars" style="color: #15bfbc;"></i></div>
+                <div>
+                <h4 class="title"><a href="#" class="stretched-link">Magni Dolores</a></h4>
+                <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="500">
+                <div class="icon flex-shrink-0"><i class="bi bi-brightness-high" style="color: #f5cf13;"></i></div>
+                <div>
+                <h4 class="title"><a href="#" class="stretched-link">Nemo Enim</a></h4>
+                <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
+                <div class="icon flex-shrink-0"><i class="bi bi-calendar4-week" style="color: #1335f5;"></i></div>
+                <div>
+                <h4 class="title"><a href="#" class="stretched-link">Eiusmod Tempor</a></h4>
+                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+        </section>
+        -->
+
+        <!-- ======= Call To Action Section ======= -->
+
+        <!--<section id="call-to-action" class="call-to-action mb-5">
+        <div class="container" data-aos="fade-up">
+            <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+                <h3>Ut fugiat aliquam aut non</h3>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                <a class="cta-btn" href="#">Call To Action</a>
+            </div>
+            </div>
+
+        </div>
+        </section>-->
+        
+        <!-- End Call To Action Section -->
+
+        
+
+        
+
+        
+
+    </main><!-- End #main -->
+
+    <div class="container">
+        
+        {% include 'includes/carouselZonas.html' %}
+
+    </div>
+
+
+    
+    
+    
+    {% endblock  %}
+  
+  
+    {% comment %} {% block footer %}
+    
+        {% include 'includes/footer2.html' %}
+    
+    {% endblock  %} {% endcomment %}
+
+
+
+{% block javascript_extra_footer %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+    <script>
+        var owl = $('#owl-zonas-mini');
+            owl.owlCarousel({
+                //items:3,
+                responsive:{
+                0:{
+                    items:1
+                },
+                300:{
+                    items:2
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:5
+                }
+                },
+                loop:true,
+                margin:10,
+                lazyLoad:true,
+                navigation : false,
+                stagePadding: 50,
+                dots:false,
+                autoplay:true,
+                autoplayTimeout:2000,
+                autoplayHoverPause:true,
+                nav: true,
+                navText: ['<span class="ri-arrow-left-s-line ri-2x"></span>','<span class="ri-arrow-right-s-line ri-2x"></span>'],
+            });
+    </script>
+    
+{% endblock  %}
+    
+
+ 
+</body>
+
+
+</html>

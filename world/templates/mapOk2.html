@@ -1,0 +1,311 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>WMS GetFeatureInfo (Image Layer)</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Pointer events polyfill for old browsers, see https://caniuse.com/#feat=pointer -->
+    <script src="https://unpkg.com/elm-pep@1.0.6/dist/elm-pep.js"></script>
+    <!-- The lines below are only needed for old environments like Internet Explorer and Android 4.x -->
+    <script src="https://cdn.polyfill.io/v3/polyfill.min.js?features=fetch,requestAnimationFrame,Element.prototype.classList,TextDecoder"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/3.18.3/minified.js"></script>
+    <!-- Ol.CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css"
+      type="text/css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <style>
+      .map {
+        width: 100%;
+        height: 500px;
+      }
+      #mensaje {
+        padding: 10px;
+        background-color: red;
+      }
+      /**/
+      #marker {
+        width: 20px;
+        height: 20px;
+        border: 1px solid #088;
+        border-radius: 10px;
+        background-color: #0ff;
+        opacity: 0.5;
+      }
+      #vienna {
+        text-decoration: none;
+        color: white;
+        font-size: 11pt;
+        font-weight: bold;
+        text-shadow: black 0.1em 0.1em 0.2em;
+      }
+      .ol-popup {
+        position: absolute;
+        background-color: white;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #cccccc;
+        bottom: 12px;
+        left: -50px;
+        min-width: 280px;
+        font-size: 10px;
+      }
+      .ol-popup:after,
+      .ol-popup:before {
+        top: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+      .ol-popup:after {
+        border-top-color: white;
+        border-width: 10px;
+        left: 48px;
+        margin-left: -10px;
+      }
+      .ol-popup:before {
+        border-top-color: #cccccc;
+        border-width: 11px;
+        left: 48px;
+        margin-left: -11px;
+      }
+      .ol-popup-closer {
+        text-decoration: none;
+        position: absolute;
+        top: 2px;
+        right: 8px;
+      }
+      .ol-popup-closer:after {
+        content: "✖";
+      }
+      /**/
+      .ol-popup  h3{
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map" class="map"></div>
+    <div id="popup" class="ol-popup">
+      <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+      <div id="popup-content"></div>
+    </div>
+    
+
+    <div id="info">&nbsp;</div>
+    <div class="mes" id="mensaje"></div>
+    <!--<script src="main.js"></script>-->
+
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
+
+    <script src="{% static '/js/ol-ext.js'%}"></script>
+    <script src="{% static '/js/ol3-sidebar.js' %}"></script>
+
+    <script>
+      var WMSSources = [];
+      const infoGeneral = [];
+
+      const urlGeoserver =
+        //"http://sistemas41zre:8080/geoserver/sgotp-41zre/wms";
+        "http://144.91.84.249/geoserver/sgotp-41zre/wms";
+      //"http://144.91.84.249/geoserver/sgotp-41zre/wms";
+
+      const container = document.getElementById("popup");
+      const content = document.getElementById("popup-content");
+      const closer = document.getElementById("popup-closer");
+
+      
+    </script>
+
+    <script
+      type="text/javascript"
+      src="{% static '/js/baseLayers.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static '/js/baseLayersSources.js' %}"
+    ></script>
+
+    <script>
+      //import "ol/ol.css";
+      //import ImageLayer from "ol/layer/Image";
+      //import ImageWMS from "ol/source/ImageWMS";
+      //import Map from "ol/Map";
+      //import View from "ol/View";
+
+      const overlay = new ol.Overlay({
+        element: container,
+        autoPan: {
+          animation: {
+            duration: 250,
+          },
+        },
+      });
+
+      closer.onclick = function () {
+        overlay.setPosition(undefined);
+        closer.blur();
+        return false;
+      };
+
+      const wmsSource = new ol.source.ImageWMS({
+        //url: "https://ahocevar.com/geoserver/wms",
+        url: "http://144.91.84.249/geoserver/sgotp-41zre/wms",
+        params: { LAYERS: "sgotp-41zre:gis_gene_pdu_2013_zonificacion_full" },
+        serverType: "geoserver",
+        crossOrigin: "anonymous",
+      });
+
+      const wmsLayer = new ol.layer.Image({
+        source: wmsSource,
+      });
+
+      const view = new ol.View({
+        center: ol.proj.fromLonLat([-71.9774868, -13.5169427]),
+        zoom: 13,
+        // rotation: 1,
+      });
+
+      const map = new ol.Map({
+        //layers: [wmsLayer],
+        layers: [
+          baseLayers,
+          baseLayerPDU2013,
+          baseLayer41ZRECarac,
+          baseLayer41ZREProp,
+          baseLayer41ZREBase,
+        ],
+        target: "map",
+        view: view,
+        overlays: [overlay],
+      });
+
+      map.on("singleclick", function (evt) {
+        //-------------------------------------------------------------------------------
+
+        const coordinate = evt.coordinate;
+        const hdms = ol.coordinate.toStringHDMS(ol.proj.toLonLat(coordinate));
+
+        //-------------------------------------------------------------------------------
+        document.getElementById("info").innerHTML = "";
+        const viewResolution = /** @type {number} */ (view.getResolution());
+
+        WMSSources.map((wms) => {
+
+          if(wms) {
+            var url = wms.getFeatureInfoUrl(
+              evt.coordinate,
+              viewResolution,
+              "EPSG:3857",
+
+              { INFO_FORMAT: "application/json" }
+            );
+
+
+            if (url){
+              fetch(url)
+              .then((response)=>{
+                return response.json()
+              })
+              .then((html)=>{
+                console.log(html.features)
+                if (html.features[0].id.includes('manzanas')){
+                  content.innerHTML = content.innerHTML + `<h3>MANZANAS</h3>` 
+                  content.innerHTML = content.innerHTML + `<p>${html.features[0].id}</p>`                   
+                }
+                if (html.features[0].id.includes('zonas')){
+                  content.innerHTML = content.innerHTML + `<h3>ZONAS</h3>` 
+                  content.innerHTML = content.innerHTML + `<p>${html.features[0].id}</p>` 
+                }
+                if (html.features[0].id.includes('habilitaciones')){
+                  content.innerHTML = content.innerHTML + `<h3>HABILITACIONES</h3>` 
+                  content.innerHTML = content.innerHTML + `<p>${html.features[0].id}</p>` 
+                }
+                if (html.features[0].id.includes('lotes')){
+                  content.innerHTML = content.innerHTML + `<h3>LOTES</h3>` 
+                  content.innerHTML = content.innerHTML + `<p>${html.features[0].id}</p>` 
+                }
+                if (html.features[0].id.includes('ambiental')){
+                  content.innerHTML = content.innerHTML + `<h3>AMBIENTAL</h3>` 
+                  content.innerHTML = content.innerHTML + `<p>${html.features[0].id}</p>` 
+                }
+                
+                //content.innerHTML = content.innerHTML + `<p>${html.features[0].id}</p>` 
+              })
+            }
+          }
+
+        });
+
+        
+
+        const url = wmsSource.getFeatureInfoUrl(
+          evt.coordinate,
+          viewResolution,
+          "EPSG:3857",
+          { INFO_FORMAT: "application/json" }
+        );
+
+        
+        if (url) {
+          fetch(url)
+            .then((response) => {
+              //response.text()
+              return response.json();
+            })
+
+            .then((html) => {
+              console.log(html.features);
+
+              content.innerHTML = `<p> click on: ${html.features[0].properties.zona}</p>`;
+              overlay.setPosition(coordinate);
+
+              /* 
+                $(element).popover("dispose");
+                popup.setPosition(coordinate);
+                $(element).popover({
+                container: element,
+                placement: "top",
+                animation: true,
+                html: true,
+                content: `<p> click on: ${html.features[0].properties.zona}</p>`,
+              });
+              $(element).popover("show");
+
+              */
+              //------------------------------------------
+              document.getElementById("info").innerHTML = html;
+              $("#mensaje").append(`
+                <p>${html}</p>
+              `);
+              //------------------------------------
+            });
+        }
+
+
+
+      });
+
+      map.on("pointermove", function (evt) {
+        if (evt.dragging) {
+          return;
+        }
+        const data = wmsLayer.getData(evt.pixel);
+        const hit = data && data[3] > 0; // transparent pixels have zero for data[3]
+        map.getTargetElement().style.cursor = hit ? "pointer" : "";
+      });
+    </script>
+  </body>
+</html>

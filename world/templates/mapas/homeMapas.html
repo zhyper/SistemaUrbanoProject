@@ -1,0 +1,207 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% load mathfilters %}
+
+{% block title %}{{title}}{% endblock  %}
+
+{% block style_header %}
+
+        
+    <style>
+        .card-mapas-41zre{
+
+            border: 1px solid  rgba(0, 0, 0, 5%);
+        }
+        .card-mapas-41zre:hover{
+
+            box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.2);
+
+        }
+        .ri-lg {
+            font-size: 1.3333em;
+            line-height: 0.75em;
+            vertical-align: -5px;
+        }
+        /* Background Styles*/
+
+        .bg-map-img{
+            object-fit: cover;
+            width: 100%;
+            height: 150px;
+            filter: brightness(0.5);
+        }
+        .icon-list span{
+            color: #fff !important;
+        }
+    </style>
+    <link rel="stylesheet" href="{% static '/css/jquery.flipster.min.css' %}" />
+
+{% endblock  %}
+
+{% block navbar %}
+    {% include 'includes/navbar2.html' %}
+{% endblock  %}
+
+{% block content %}
+
+  
+
+    <!-- ======= Features Section ======= -->
+    <section id="features" class="features call-to-action" style="background-image: url('{% static "/images/misc/BACK--00.png" %}')">
+
+        <div class="container mt-5 pt-5" data-aos="fade-up">
+          <div class="row">
+            <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
+              <h1 class="text-white">Mapas Territoriales <br><strong>del Cusco</strong></h1>
+  
+              <div class="row gy-4 mt-3">
+  
+                <!--<div class="col-md-6">
+                  <div class="icon-list d-flex">
+                    <i class="ri-store-line" style="color: #ffbb2c;"></i>
+                    <span class="text-warning">Easy Cart Features</span>
+                  </div>
+                </div>
+  
+                <div class="col-md-6">
+                  <div class="icon-list d-flex">
+                    <i class="ri-bar-chart-box-line" style="color: #5578ff;"></i>
+                    <span>Sit amet consectetur adipisicing</span>
+                  </div>
+                </div>
+  
+                <div class="col-md-6">
+                  <div class="icon-list d-flex">
+                    <i class="ri-calendar-todo-line" style="color: #e80368;"></i>
+                    <span>Ipsum Rerum Explicabo</span>
+                  </div>
+                </div>
+  
+                <div class="col-md-6">
+                  <div class="icon-list d-flex">
+                    <i class="ri-paint-brush-line" style="color: #e361ff;"></i>
+                    <span>Easy Cart Features</span>
+                  </div>
+                </div>
+  
+                <div class="col-md-6">
+                  <div class="icon-list d-flex">
+                    <i class="ri-database-2-line" style="color: #47aeff;"></i>
+                    <span>Easy Cart Features</span>
+                  </div>
+                </div>
+  
+                <div class="col-md-6">
+                  <div class="icon-list d-flex">
+                    <i class="ri-gradienter-line" style="color: #ffa76e;"></i>
+                    <span>Sit amet consectetur adipisicing</span>
+                  </div>
+                </div>
+  
+                <div class="col-md-6">
+                  <div class="icon-list d-flex">
+                    <i class="ri-file-list-3-line" style="color: #11dbcf;"></i>
+                    <span>Ipsum Rerum Explicabo</span>
+                  </div>
+                </div>-->
+  
+                <div class="col-md-6">
+                  <div class="icon-list d-flex">
+                    <i class="ri-base-station-line" style="color: #ff5828;"></i>
+                    <span>Easy Cart Features</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-5 position-relative" data-aos="fade-left" data-aos-delay="200">
+              <div class="phone-wrap">
+                <img src=" {% static '/images/misc/hand-smartphone-map-resized.png' %}" alt="Image" class="img-fluid">
+                
+              </div>
+            </div>
+          </div>
+  
+        </div>
+  
+        
+
+        <div class="container mt-5 pt-5">
+          <div class="row">
+            <div class="col-12">
+
+              <div id="coverflow">
+                <ul class="flip-items">
+                  
+
+                  {% for mapaweb in  mapasweb%}
+                  
+                    <li data-flip-title="Cyan" data-flip-category="Blues">
+
+                      <a href="{{WebsiteName.ip_production}}/{{mapaweb.url}}">
+                      
+                        <img src="{% static '/images/mapasweb/'|add:mapaweb.image %}" alt="" class="img-fluid">
+                        <p>
+                          {{mapaweb.descripcion}}
+                        </p>
+                      
+                      </a>                   
+                        
+                    </li>
+
+                  {% endfor %}
+                    
+                    
+                </ul>
+            </div>
+            
+            
+            </div>
+          </div>
+        </div>
+
+  
+    </section>
+      <!-- End Features Section -->
+
+
+    
+
+
+      
+
+
+
+
+
+{% endblock  %}
+
+
+{% block javascript_extra_footer %}
+
+  
+
+  <script src="{% static '/js/jquery.flipster.min.js' %}"></script>
+  <script>
+    var coverflow = $("#coverflow").flipster({
+      
+      loop: true,
+    });
+
+    /*
+    var swiper = new Swiper(".slides-3", {
+        speed: 600,
+        parallax: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+    });
+    */
+
+
+  </script>
+{% endblock  %}
