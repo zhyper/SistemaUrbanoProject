@@ -5,6 +5,16 @@
 
   {% block title %}{{title}}{% endblock  %}
 
+    {% block meta %}
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <meta name="description" content="..">
+    
+    <meta property="og:title" content="{{og_title}}">
+    <meta name="description" property="og:description" content="{{og_description}}">
+    <meta property="og:image" content="{{og_image}}">
+  {% endblock  %}
+
 
   {% block style_header %}
     

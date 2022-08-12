@@ -317,6 +317,11 @@ def HomeZonaMapas(request,codigozona,etapaplan=None):
 
     #DENSIDAD POBLACIONAL-----------------------------------------------------------------------------
     densidad_poblacional_tabla = ZonaDensidadPoblacionalTabla.objects.all().filter(codigo_zona=codigozona)
+
+    # Metadata OpenGraph----------------------------------------------------------------------------------
+    og_title = "Zona de Reglamentacion Especial - " + zona.codigo_zona
+    og_description = "Proyecto 41ZRE | Sub Gerencia de Ordenamiento Territorial Provincial | Municipalidad Provincial del Cusco"
+    og_image = "http://sgot.cusco.gob.pe:90/zre41media/documents/"+zona.codigo_zona+"/"+zona.codigo_zona+"_ZONIFICACION.jpg"
     
     context = {
         "title": "Zona: "+codigozona,
@@ -344,6 +349,11 @@ def HomeZonaMapas(request,codigozona,etapaplan=None):
 
         #densidad_poblacional
         "densidad_poblacional_tabla": densidad_poblacional_tabla,
+
+        #og
+        "og_title": og_title,
+        "og_description": og_description,
+        "og_image": og_image,
 
     }
     return render(request, 'zonas/homeZona_Mapas.html', context)
