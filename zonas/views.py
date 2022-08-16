@@ -20,7 +20,8 @@ from django.db.models import Count
 from django.core.serializers.json import DjangoJSONEncoder
 
 from .forms import ConsultaForm, DocumentForm
-from .models import Document, Consulta, Editors, Plan, ZonaCaracterizacionGRDAnalisisVulnerabilidad, ZonaCaracterizacionGRDDeterminacionPeligro, ZonaCaracterizacionLegal, ZonaCaracterizacionSocioeconomica, ZonaConsideracionesGenerales, ZonaDelimitacion, ZonaDensidadPoblacionalTabla, ZonaJustificacion, ZonaMetodologia, ZonaNivelInstruccionTabla, ZonaObjetivos, ZonaPlaneamiento, ZonaPoblacion, PlanMapa, ZonaPoblacionTabla, ZonaPresentacion
+from .models import Document, Consulta, Editors, Plan, GisBaseZonasZreV2,ZonaCaracterizacionGRDAnalisisVulnerabilidad, ZonaCaracterizacionGRDDeterminacionPeligro, ZonaCaracterizacionLegal, ZonaCaracterizacionSocioeconomica, ZonaConsideracionesGenerales, ZonaDelimitacion, ZonaDensidadPoblacionalTabla, ZonaJustificacion, ZonaMetodologia, ZonaNivelInstruccionTabla, ZonaObjetivos, ZonaPlaneamiento, ZonaPoblacion, PlanMapa, ZonaPoblacionTabla, ZonaPresentacion, GisBaseZonasZreVertices, GisBaseZonasAmbitosVertices
+
 from .models import ViewGraph
 
 from world.models import TZona
@@ -206,6 +207,10 @@ def HomeZonaMain(request,codigozona,etapaplan=None):
     zona = TZona.objects.get(codigo_zona=codigozona)
     #zona_presentacion = ZonaPresentacion.objects.get(codigo_zona=codigozona)
 
+    zona_gis = GisBaseZonasZreV2.objects.get(codigo_zre=codigozona)
+    zona_vertices_gis = GisBaseZonasZreVertices.objects.all().filter(codigo_zre=codigozona).order_by('etiqueta')
+    zona_ambito_vertices_gis = GisBaseZonasAmbitosVertices.objects.all().filter(codigo_zre=codigozona).order_by('etiqueta')
+
     try:
         zona_presentacion = ZonaPresentacion.objects.get(codigo_zona=codigozona)
         print(zona_presentacion)
@@ -223,6 +228,9 @@ def HomeZonaMain(request,codigozona,etapaplan=None):
     context = {
         "title": "Zona: CUSCO",
         "zona": zona,
+        "zona_gis": zona_gis,
+        "zona_vertices_gis": zona_vertices_gis,
+        "zona_ambito_vertices_gis": zona_ambito_vertices_gis,
         "zona_presentacion": zona_presentacion,
         "plan": plan,
         #og

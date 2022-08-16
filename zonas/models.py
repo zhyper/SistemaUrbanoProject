@@ -2,7 +2,8 @@ import datetime
 from tabnanny import verbose
 from wsgiref.validate import validator
 from django.utils import timezone
-from django.db import models
+#from django.db import models
+from django.contrib.gis.db import models
 from world.models import TZona
 #from tinymce.models import HTMLField
 
@@ -392,3 +393,56 @@ class Editors(models.Model):
 
     def __str__(self):
         return "{}-{}".format(self.editor_name, self.num_users) 
+
+
+
+
+"""GIS"""        
+
+class GisBaseZonasZreV2(models.Model):
+    geom = models.MultiPolygonField(srid=32719, dim=3, blank=True, null=True)
+    codigo_zre = models.CharField(max_length=50, blank=True, null=True)
+    shape_leng = models.FloatField(blank=True, null=True)
+    shape_area = models.FloatField(blank=True, null=True)
+    tipo = models.CharField(max_length=200, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = u'\"zre41\".\"gis_base_zonas_zre_v2"'
+
+
+class GisBaseZonasZreVertices(models.Model):
+    geom = models.PointField(srid=32719, dim=3, blank=True, null=True)
+    etiqueta = models.CharField(max_length=5, blank=True, null=True)
+    codigo_zre = models.CharField(max_length=15, blank=True, null=True)
+    utm_este = models.FloatField(blank=True, null=True)
+    utm_norte = models.FloatField(blank=True, null=True)
+    vertice = models.CharField(max_length=10, blank=True, null=True)
+    lado = models.CharField(max_length=15, blank=True, null=True)
+    angulo = models.CharField(max_length=15, blank=True, null=True)
+    este = models.FloatField(blank=True, null=True)
+    norte = models.FloatField(blank=True, null=True)
+    distancia = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = u'\"zre41\".\"gis_base_zonas_zre_vertices"'        
+
+
+class GisBaseZonasAmbitosVertices(models.Model):
+    geom = models.PointField(srid=32719, dim=3, blank=True, null=True)
+    etiqueta = models.CharField(max_length=5, blank=True, null=True)
+    codigo_zre = models.CharField(max_length=15, blank=True, null=True)
+    utm_este = models.FloatField(blank=True, null=True)
+    utm_norte = models.FloatField(blank=True, null=True)
+    vertice = models.CharField(max_length=10, blank=True, null=True)
+    lado = models.CharField(max_length=15, blank=True, null=True)
+    angulo = models.CharField(max_length=15, blank=True, null=True)
+    este = models.FloatField(blank=True, null=True)
+    norte = models.FloatField(blank=True, null=True)
+    distancia = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = u'\"zre41\".\"gis_base_zonas_ambitos_vertices"'        
+

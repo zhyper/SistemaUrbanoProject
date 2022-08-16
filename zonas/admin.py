@@ -1,6 +1,6 @@
 from unittest import mock
 from django.contrib import admin
-from .models import Editors, Plan,PlanMapa, ZonaCaracterizacionLegal, ZonaCaracterizacionSocioeconomica,  ZonaConsideracionesGenerales, ZonaDelimitacion, ZonaDensidadPoblacionalTabla, ZonaJustificacion, ZonaMetodologia, ZonaNivelInstruccionTabla, ZonaObjetivos, ZonaPlaneamiento, ZonaPoblacion, ZonaPoblacionTabla, ZonaPresentacion, Zony2
+from .models import Editors, Plan,PlanMapa, ZonaCaracterizacionLegal, ZonaCaracterizacionSocioeconomica,  ZonaConsideracionesGenerales, ZonaDelimitacion, ZonaDensidadPoblacionalTabla, ZonaJustificacion, ZonaMetodologia, ZonaNivelInstruccionTabla, ZonaObjetivos, ZonaPlaneamiento, ZonaPoblacion, ZonaPoblacionTabla, ZonaPresentacion, Zony2, GisBaseZonasZreV2
 
 from django_summernote.admin import SummernoteModelAdmin
 
@@ -97,3 +97,6 @@ class ZonaCaracterizacionLegalAdmin(SummernoteModelAdmin):
 
 admin.site.register(ZonaCaracterizacionSocioeconomica, ZonaCaracterizacionSocioeconomicaAdmin)    
 admin.site.register(ZonaCaracterizacionLegal, ZonaCaracterizacionLegalAdmin)
+
+
+admin.site.register(GisBaseZonasZreV2, admin.ModelAdmin)

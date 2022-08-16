@@ -102,9 +102,10 @@ WSGI_APPLICATION = 'sistema_urbano.wsgi.application'
 DATABASES = {
 
     'default': {
-        #'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pgt41zre_junio_2022',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        #'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        #'NAME': 'pgt41zre_junio_2022',
+        'NAME': 'pg41zre_junio_2021',
         'USER': 'postgres',
         #"PASSWORD":"Catalogacion2020",
         "PASSWORD":"Zhyper*332011",
