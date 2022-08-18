@@ -294,6 +294,27 @@
                                             </div>
                                         </div>
                                     {% endif %}
+                                    
+                                    {% if mapa.componente.nombre == 'General' %}
+                                        
+                                        <div class="card card-mapas-41zre mb-5" >
+                                        <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{plan.codigo_plan}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/GRL/{{mapa.url}}.jpg" class="glightbox" data-glightbox="title: {{mapa.nombre}}">
+                                            <img src="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{plan.codigo_plan}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/GRL/thumbnails/{{mapa.url}}.jpg" class="card-img-top" alt="...">
+                                        </a>
+                                            <div class="card-body">
+                                            <h5 class="card-title">{{mapa.nombre}}</h5>
+                                            <p class="card-text fw-light fs-6-custom"><i class="ri-road-map-line ri-xl"></i> &nbsp; {{mapa.codigo}}</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush fs-6-custom-2">
+                                            <li class="list-group-item">{{mapa.componente.nombre}} | {{mapa.plan_etapa}}</li>
+                                            
+                                            </ul>
+                                            <div class="card-body d-grid gap-2">
+                                                <a href="{{WebsiteName.ip_production}}:90/zre41media/images/mapas/{{plan.codigo_plan}}/{% filter upper %}{{mapa.plan_etapa.slug}}{% endfilter %}/GRL/{{mapa.url}}.pdf" target="_blank" class="btn btn-warning btn-sm btn-block">Descargar &nbsp;<i class="ri-download-cloud-2-line ri-lg"></i></a>
+                                            
+                                            </div>
+                                        </div>
+                                    {% endif %}
 
                                     {% if mapa.componente.nombre == 'Físico Construido' %}
                                         

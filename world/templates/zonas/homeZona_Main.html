@@ -825,15 +825,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for vertice in zona_vertices_gis %}
-                                    <tr>
-                                        <td>{{vertice.vertice}}</td>
-                                        <td>{{vertice.lado}}</td>
-                                        <td>{{vertice.angulo}}</td>
-                                        <td>{{vertice.este}}</td>
-                                        <td>{{vertice.norte}}</td>
-                                    </tr>
-                                {% endfor %}
+                                {% if zona_vertices_gis %}
+                                
+                                    {% for vertice in zona_vertices_gis %}
+                                        <tr>
+                                            <td>{{vertice.vertice}}</td>
+                                            <td>{{vertice.lado}}</td>
+                                            <td>{{vertice.angulo}}</td>
+                                            <td>{{vertice.este}}</td>
+                                            <td>{{vertice.norte}}</td>
+                                        </tr>
+                                    {% endfor %}
+                                
+                                {% endif %}
+
                             </tbody>
                         </table>
                     </div>
@@ -854,15 +859,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for vertice in zona_ambito_vertices_gis %}
-                                        <tr>
-                                            <td>{{vertice.vertice}}</td>
-                                            <td>{{vertice.lado}}</td>
-                                            <td>{{vertice.angulo}}</td>
-                                            <td>{{vertice.este}}</td>
-                                            <td>{{vertice.norte}}</td>
-                                        </tr>
-                                    {% endfor %}
+
+                                    {% if zona_ambito_vertices_gis %}
+                                    
+                                        {% for vertice in zona_ambito_vertices_gis %}
+                                            <tr>
+                                                <td>{{vertice.vertice}}</td>
+                                                <td>{{vertice.lado}}</td>
+                                                <td>{{vertice.angulo}}</td>
+                                                <td>{{vertice.este}}</td>
+                                                <td>{{vertice.norte}}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    
+                                    {% endif %}
+
                                 </tbody>
                             </table>
                         
@@ -1045,7 +1056,8 @@
         const destino = [zona_lng, zona_lat, zona_zoom];
         
 
-        console.log(codigo_zona);
+        console.log('codigo Zona: ', codigo_zona);
+        console.log('zoom Zona: ', zona_zoom)
 
 
         const urlGeoserver =
@@ -1095,6 +1107,7 @@
 
     <script>
         function updateView(coord) {
+            console.log('zoom to view: ',coord[2]);
             view.animate({
               center: ol.proj.fromLonLat([coord[0], coord[1]]),
               duration: 2000,

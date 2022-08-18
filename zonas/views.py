@@ -207,7 +207,7 @@ def HomeZonaMain(request,codigozona,etapaplan=None):
     zona = TZona.objects.get(codigo_zona=codigozona)
     #zona_presentacion = ZonaPresentacion.objects.get(codigo_zona=codigozona)
 
-    zona_gis = GisBaseZonasZreV2.objects.get(codigo_zre=codigozona)
+    zona_gis = GisBaseZonasZreV2.objects.all().filter(codigo_zre=codigozona)
     zona_vertices_gis = GisBaseZonasZreVertices.objects.all().filter(codigo_zre=codigozona).order_by('etiqueta')
     zona_ambito_vertices_gis = GisBaseZonasAmbitosVertices.objects.all().filter(codigo_zre=codigozona).order_by('etiqueta')
 
