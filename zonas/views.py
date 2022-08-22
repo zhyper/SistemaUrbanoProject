@@ -226,7 +226,7 @@ def HomeZonaMain(request,codigozona,etapaplan=None):
     og_image = "http://sgot.cusco.gob.pe:90/zre41media/documents/"+zona.codigo_zona+"/"+zona.codigo_zona+"_ZONIFICACION.jpg"
     
     context = {
-        "title": "Zona: CUSCO",
+        "title": "Zona de Reglamentación Especial : "+zona.codigo_zona,
         "zona": zona,
         "zona_gis": zona_gis,
         "zona_vertices_gis": zona_vertices_gis,

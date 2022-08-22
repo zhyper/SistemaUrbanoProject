@@ -51,7 +51,7 @@ def Home(request):
 
 
     context = {
-        "title": "Home PGT v2.0",
+        "title": "Plataforma de Gestión Territorial Provincial Cusco | 2022 | v3.0",
         "zonasjson": zonasdata,
         "zonas": zonas,
         "slide": slide,

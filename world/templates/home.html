@@ -32,6 +32,28 @@
         }
     </style>
 
+    <style>
+        .counter-flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /*min-height: 400px;*/
+        }
+        .counter-box {
+        /*min-width: 350px;*/
+        }
+        .counter-box h2 {
+        font-size: 65px;
+        text-align: center;
+        /*font-family: 'Inter';*/
+        margin: 0;
+        }
+        .counter-box p{
+            text-align: center;
+        font-family: arial;
+        }
+    </style>
+
 {% endblock  %}
 
 <body class="page-index">
@@ -66,10 +88,11 @@
     <div class="headerx">
             
         <!--Content before waves-->
-        <div class="inner-header flex">
+        <!--<div class="inner-header flex">
             
             <h1>Plataforma de Gestión Terrirorial Cusco</h1>
-        </div>
+        </div>-->
+        <br><br>
         
         <!--Waves Container-->
         <div>
@@ -113,7 +136,7 @@
                 
         </ul>
     </div> {% endcomment %}
-    <br>
+    
     {% comment %} <div class="container">
         <ul>
             {% for plan in planes %}
@@ -122,6 +145,52 @@
         </ul>
     </div> {% endcomment %}
     <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="counter-flex">
+                    <div class="counter-box">
+                        <img src="{{WebsiteName.ip_production}}:90/zre41media/images/home/planes-tapas-index.jpg" alt="" srcset="" class="img-fluid">
+                        <h2><span class="count">7</span></h2>
+                        <p>Planes Territoriales</p>
+                    </div>
+                </div>
+            
+            </div>
+            <div class="col-12  col-sm-6 col-md-3">
+                <div class="counter-flex">
+                    <div class="counter-box">
+                        <img src="{{WebsiteName.ip_production}}:90/zre41media/images/home/mapas-index-2.jpg" alt="" srcset="" class="img-fluid">
+                        <h2><span class="count">1976</span></h2>
+                        <p>Mapas Temáticos</p>
+                    </div>
+                </div>
+            
+            </div>
+            <div class="col-12  col-sm-6 col-md-3">
+                <div class="counter-flex">
+                     <div class="counter-box">
+                        <img src="{{WebsiteName.ip_production}}:90/zre41media/images/home/cartografia-ha-index.jpg" alt="" srcset="" class="img-fluid">
+                        <h2><span class="count">72123</span></h2>
+                        <p>Hectareas (Ha.) Cartografiadas</p>
+                    </div>
+                </div>
+            
+            </div>
+            <div class="col-12  col-sm-6 col-md-3">
+                <div class="counter-flex">
+                     <div class="counter-box">
+                        <img src="{{WebsiteName.ip_production}}:90/zre41media/images/home/geo-server-index-2.jpg" alt="" srcset="" class="img-fluid">
+                        <h2><span class="count">86</span></h2>
+                        <p>Servicios WMS</p>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    
+    </div>
+        
     <br>
     {% comment %} <div class="container">
         <ul>
@@ -136,8 +205,7 @@
             {% endfor %}
         </ul>
     </div> {% endcomment %}
-    <br>
-    <br>
+    
     {% comment %} <select
         name="lista-zonas"
         id="lista-zonas"
@@ -159,6 +227,7 @@
         {% endfor %}</P> {% endcomment %}
     <br>
     <br>
+
     <br>
     <div class="container">
 
@@ -319,6 +388,27 @@
 
 
         
+    </script>
+
+    <script>
+        //COUNTERS---------------------------
+              $(".count").each(function () {
+                    $(this)
+                    .prop("Counter", 0)
+                    .animate(
+                        {
+                        Counter: $(this).text(),
+                        },
+                        {
+                        duration: 4000,
+                        easing: "swing",
+                        step: function (now) {
+                            now = Number(Math.ceil(now)).toLocaleString('en');
+                                                $(this).text(now);
+                        },
+                        }
+                    );
+                });
     </script>
 
     

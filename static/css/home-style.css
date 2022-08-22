@@ -9,7 +9,7 @@
 .headerx {
   position: relative;
   text-align: center;
-  background: linear-gradient(60deg, rgb(253 253 255) 0%, rgb(255 188 0) 100%);
+  background: linear-gradient(0deg, rgb(253 253 255) 0%, rgb(199,199,199) 100%);
   color: white;
 }
 

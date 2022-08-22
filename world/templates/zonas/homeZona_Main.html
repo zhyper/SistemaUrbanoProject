@@ -23,6 +23,9 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/3.18.3/minified.js"></script>-->
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.6.1/jszip.min.js"></script>
+      
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
     
     {% endblock  %}
 
@@ -266,7 +269,7 @@
     <!-- Ol.CSS -->
     <link
         rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/css/ol.css"
+        href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/css/ol.css"
         type="text/css"
       />
       
@@ -526,7 +529,7 @@
 
                             <div class="row mb-5">
                                 <div class="col-12">
-                                    <h2>Proceso de Elaboración del Plan Específico del la {{zona.codigo_zona}}</h2>
+                                    <h2><strong>Proceso de Elaboración</strong> <br> del Plan Específico del la <strong>{{zona.codigo_zona}}</strong></h2>
                                 </div>
                             
                             </div>
@@ -808,12 +811,19 @@
         </div>
 
         <div class="container mt-5">
+
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h2><strong>Delimitación</strong> del <strong>Ámbito de Estudio</strong><br> de la Zona de Reglamentación Especial <strong>{{zona.codigo_zona}}</strong></h2>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col col-md-6">
-                    <p class="h6">Vértices del Área de la {{zona.codigo_zona}} (WGS86 | 19S)</p>
-                    <div class="table-responsive">
+                    <p class="h3">Vértices del Área de la {{zona.codigo_zona}} <br> (WGS86 | 19S)</p>
+                    <div class="table-responsive mt-3">
                     
-                        <table class="table table-sm table-bordered table-striped table-hover table-warning " style='font-size:10px;'>
+                        <table id="datatable-vertices-zre" class="table table-sm table-bordered table-striped table-hover table-warning display compact" style='font-size:10px;'>
                             <caption>Vértices del Área de la ZRE</caption>
                             <thead>
                                 <tr>
@@ -840,14 +850,23 @@
                                 {% endif %}
 
                             </tbody>
+                            <!--<tfood>
+                                <tr>
+                                    <th>Vértice</th>
+                                    <th>Lado</th>
+                                    <th>Ángulo</th>
+                                    <th>Coord. Este</th>
+                                    <th>Coord. Norte</th>
+                                </tr>
+                            </tfood>-->
                         </table>
                     </div>
 
                 </div>
                 <div class="col col-md-6">
-                    <p class="h6">Vértices del Ámbito de Estudio de la {{zona.codigo_zona}} (WGS86 | 19S)</p>
-                        <div class="table-responsive">
-                            <table class="table table-sm table-bordered table-striped table-hover table-light " style='font-size:10px;'>
+                    <p class="h3">Vértices del Ámbito de Estudio de la {{zona.codigo_zona}} <br> (WGS86 | 19S)</p>
+                        <div class="table-responsive mt-3">
+                            <table id="datatable-vertices-ambito-zre" class="table table-sm table-bordered table-striped table-hover table-light  display compact " style='font-size:10px;'>
                                 <caption>Vértices del Ámbito de Estudio de la ZRE</caption>
                                 <thead>
                                     <tr>
@@ -875,11 +894,21 @@
                                     {% endif %}
 
                                 </tbody>
+                                <!--<tfood>
+                                    <tr>
+                                        <th>Vértice</th>
+                                        <th>Lado</th>
+                                        <th>Ángulo</th>
+                                        <th>Coord. Este</th>
+                                        <th>Coord. Norte</th>
+                                    </tr>
+                                </tfood>-->
                             </table>
                         
                         </div>
+                </div>
             </div>
-            </div>
+
         </div>
 
     
@@ -1087,7 +1116,7 @@
     </script>
 
     <!-- Ol.Js -->
-      <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.14.1/build/ol.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/build/ol.js"></script>
       <script src="{% static '/js/ol-ext.js'%}"></script>
       <script src="{% static '/js/ol3-sidebar.js' %}"></script>
       <script
@@ -1118,6 +1147,51 @@
     </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+
+
+
+
+    <script>
+        
+            $('#datatable-vertices-zre').DataTable({
+                language: {
+                        url: 'http://sgot.cusco.gob.pe:90/zre41media/misc/js/datatable-i18n-es-ES.json',
+                },
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
+                scrollY: '30vh',
+                scrollCollapse: true,
+                paging: false,
+                /*columnDefs: [
+                    
+                    { targets: 3,  render: $.fn.dataTable.render.number( '', '.', 2, '','' )},
+                    { targets: 4,  render: $.fn.dataTable.render.number( '', '.', 2, '', '' )},
+                ],*/
+            });
+            $('#datatable-vertices-ambito-zre').DataTable({
+                language: {
+                        url: 'http://sgot.cusco.gob.pe:90/zre41media/misc/js/datatable-i18n-es-ES.json',
+                },
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
+                scrollY: '30vh',
+                scrollCollapse: true,
+                paging: false,
+            });
+        
+            
+    </script>
     <script>
         var owl = $('#owl-zonas-mini');
             owl.owlCarousel({
