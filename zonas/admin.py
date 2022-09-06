@@ -1,6 +1,8 @@
 from unittest import mock
 from django.contrib import admin
-from .models import Editors, Plan,PlanMapa, ZonaCaracterizacionLegal, ZonaCaracterizacionSocioeconomica,  ZonaConsideracionesGenerales, ZonaDelimitacion, ZonaDensidadPoblacionalTabla, ZonaJustificacion, ZonaMetodologia, ZonaNivelInstruccionTabla, ZonaObjetivos, ZonaPlaneamiento, ZonaPoblacion, ZonaPoblacionTabla, ZonaPresentacion, Zony2, GisBaseZonasZreV2
+from django.contrib.gis import admin as admin_gis
+from .models import Editors, Plan,PlanMapa, ZonaCaracterizacionLegal, ZonaCaracterizacionSocioeconomica,  ZonaConsideracionesGenerales, ZonaDelimitacion, ZonaDensidadPoblacionalTabla, ZonaJustificacion, ZonaMetodologia, ZonaNivelInstruccionTabla, ZonaObjetivos, ZonaPlaneamiento, ZonaPoblacion, ZonaPoblacionTabla, ZonaPresentacion, Zony2, GisBaseZonasZreV2,GeodataZonasPorPeligroMuyAltoItem
+from .models import GeodataItem
 
 from django_summernote.admin import SummernoteModelAdmin
 
@@ -99,4 +101,12 @@ admin.site.register(ZonaCaracterizacionSocioeconomica, ZonaCaracterizacionSocioe
 admin.site.register(ZonaCaracterizacionLegal, ZonaCaracterizacionLegalAdmin)
 
 
-admin.site.register(GisBaseZonasZreV2, admin.ModelAdmin)
+admin.site.register(GisBaseZonasZreV2, admin_gis.GeoModelAdmin)
+
+class GeodataItemAdmin(admin.ModelAdmin):
+    list_display = ('id','codigo','name','tipo_zona','componente','etapa')
+    list_display_links = ('codigo',)
+    search_fields = ['codigo']
+
+admin.site.register(GeodataItem, GeodataItemAdmin)
+

@@ -9,6 +9,8 @@ colorama==0.4.4
 dill==0.3.4
 distlib==0.3.4
 Django==3.2.12
+django-appconf==1.0.5
+django-compressor==4.1
 django-cors-headers==3.13.0
 django-froala-editor==4.0.12
 django-mathfilters==1.0.0
@@ -28,7 +30,9 @@ psycopg2-binary==2.9.3
 pycodestyle==2.8.0
 pylint==2.13.8
 pytz==2022.1
+rcssmin==1.1.0
 requests==2.27.1
+rjsmin==1.2.0
 six==1.16.0
 sqlparse==0.4.2
 toml==0.10.2

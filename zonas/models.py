@@ -446,3 +446,75 @@ class GisBaseZonasAmbitosVertices(models.Model):
         managed = False
         db_table = u'\"zre41\".\"gis_base_zonas_ambitos_vertices"'        
 
+
+
+class GeodataZonasPorPeligroMuyAltoItem(models.Model):
+    codigo = models.CharField(max_length=200, blank=True, null=True)
+    name = models.CharField(max_length=200, blank=True, null=True)
+    wms = models.CharField(max_length=200, blank=True, null=True)
+    style = models.CharField(max_length=200, blank=True, null=True)
+    visible = models.BooleanField(default=True)
+    zona_type = models.CharField(max_length=200, blank=True, null=True)
+    geometry_type = models.CharField(max_length=200, blank=True, null=True)
+    componente = models.CharField(max_length=200, blank=True, null=True)
+    
+    thumbnails = models.CharField(max_length=200, blank=True, null=True)
+    kml_link = models.CharField(max_length=250, blank=True, null=True)
+    shp_link = models.CharField(max_length=250, blank=True, null=True)
+    geojson_link = models.CharField(max_length=250, blank=True, null=True)
+    wms_link = models.CharField(max_length=250, blank=True, null=True)
+    enabled = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        managed = True
+        db_table = 't_geodata_zonas_x_peligro_muy_alto'    
+
+
+
+TIPO_ZONA_CHOICES = [
+    ('apma', 'Area de Peligro Muy Alto'),
+    ('acpa', 'Area de Conservación y Protección Ambiental'),
+]
+
+TIPO_GEOMETRY = [
+    ('point', 'Punto'),
+    ('polyline', 'Polilínea'),
+    ('polygon', 'Polígono'),
+    ('raster', 'Ráster'),
+]
+    
+
+class GeodataItem(models.Model):
+    codigo = models.CharField(max_length=200, blank=True, null=True)
+    name = models.CharField(max_length=200, blank=True, null=True)
+    # componente = models.CharField(max_length=200, blank=True, null=True)
+    componente = models.ForeignKey(Componente,on_delete=models.CASCADE, null=True)
+    etapa  = models.CharField(max_length=20, blank=True, null=True)
+    etapa = models.ForeignKey(PlanEtapa,on_delete=models.CASCADE, null=True)
+    tipo_zona = models.CharField(max_length=4, choices=TIPO_ZONA_CHOICES)
+    style = models.CharField(max_length=200, blank=True, null=True)
+    visible = models.BooleanField(default=True)
+    geometry_type = models.CharField(max_length=15, choices=TIPO_GEOMETRY)
+    thumbnails = models.CharField(max_length=200, blank=True, null=True)
+    kml_link = models.CharField(max_length=250, blank=True, null=True)
+    shp_link = models.CharField(max_length=250, blank=True, null=True)
+    geojson_link = models.CharField(max_length=250, blank=True, null=True)
+    wms = models.CharField(max_length=200, blank=True, null=True)
+    wms_link = models.CharField(max_length=250, blank=True, null=True)
+    enabled = models.BooleanField(default=True)
+    sistema_geodesico = models.CharField(max_length=50, blank=True, null=True, default='WGS84')
+    sistema_geodesico_zona = models.CharField(max_length=50, blank=True, null=True, default='19S')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        managed = True
+        db_table = 't_geodata_item'    
+
+    
+    
+

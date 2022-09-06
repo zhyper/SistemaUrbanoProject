@@ -1,5 +1,7 @@
 import json
 
+from django.core.serializers import serialize
+
 from django.db.models import Count,Sum
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -21,6 +23,7 @@ from django.core.serializers.json import DjangoJSONEncoder
 
 from .forms import ConsultaForm, DocumentForm
 from .models import Document, Consulta, Editors, Plan, GisBaseZonasZreV2,ZonaCaracterizacionGRDAnalisisVulnerabilidad, ZonaCaracterizacionGRDDeterminacionPeligro, ZonaCaracterizacionLegal, ZonaCaracterizacionSocioeconomica, ZonaConsideracionesGenerales, ZonaDelimitacion, ZonaDensidadPoblacionalTabla, ZonaJustificacion, ZonaMetodologia, ZonaNivelInstruccionTabla, ZonaObjetivos, ZonaPlaneamiento, ZonaPoblacion, PlanMapa, ZonaPoblacionTabla, ZonaPresentacion, GisBaseZonasZreVertices, GisBaseZonasAmbitosVertices
+from .models import GeodataZonasPorPeligroMuyAltoItem
 
 from .models import ViewGraph
 
@@ -494,3 +497,38 @@ def HomeZonaCaracterizacionGRDAnalisisVulnerabilidad(request,codigozona,etapapla
         "caracterizacion_grd_analisis_vulnerabilidad": caracterizacion_grd_analisis_vulnerabilidad
     }
     return render(request,'zonas/homeZona_c2_CaracterizacionGRDAnalisisVulnerabilidad.html', context)
+
+
+
+"""GEODATA"""    
+
+def HomeGeodataAreasPeligroMuyAlto(request):
+
+    geodata_items = GeodataZonasPorPeligroMuyAltoItem.objects.all()
+
+    context = {
+        "title": "Geodata Base Areas Peligro Muy Alto | 41ZRE",
+        "geodata_items": geodata_items,
+    }
+    return render(request, 'zonas/geodata/apma.html', context)
+
+def HomeGeodataAreasConservacionProteccionAmbiental(request):
+
+    geodata_items = GeodataZonasPorPeligroMuyAltoItem.objects.all()
+
+    context = {
+        "title": "Geodata Base Areas Conservación y Protección Ambiental | 41ZRE",
+        "geodata_items": geodata_items,
+    }
+    return render(request, 'zonas/geodata/acpa.html', context)
+
+
+
+
+# class ZonasGeoApiView(APIView):
+#     def get(self,request):
+#         zonas = GisBaseZonasZreV2.objects.all()
+#         serializer = serialize('geojson', GisBaseZonasZreV2.objects.all(),
+#           geometry_field='multipolygon',
+#           fields=('codigo_zre',))
+#         return Response(serializer)

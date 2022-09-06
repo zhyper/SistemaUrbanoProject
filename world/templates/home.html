@@ -65,6 +65,21 @@
 
 {% block content %}
 
+    {% if messages %}
+    {% for message in messages %}
+
+        <div class="alert {% if message.tags == 'success' %}alert-success{%else%}alert-danger{%endif%}" style="position: absolute; z-index: 9999; margin: 100px 100px;">
+
+            <small>{{ message }}</small>
+
+            <button type="button" class="btn btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
+
+        </div>
+
+                            
+    {% endfor %}
+    {% endif %}
+
     <!-- corousel-->
     
 
@@ -145,7 +160,7 @@
         </ul>
     </div> {% endcomment %}
     <br>
-    <div class="container">
+    <div class="container" data-aos="fade-up">
         <div class="row">
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="counter-flex">
@@ -232,7 +247,7 @@
     <div class="container">
 
         <!-- corousel-->
-        <div class="owl-carousel owl-theme" id="carousel-zonas-all" data-aos="fade-up" data-aos-once="false">
+        <div class="owl-carousel owl-theme" id="carousel-zonas-all" data-aos="fade-up" data-aos-once="true">
             {% for zona  in zonas %}
                 <div class="item container-owl-item text-light"> 
                     <img src="{{WebsiteName.ip_production}}:90/zre41media/images/cards/{{zona.image}}" alt="">

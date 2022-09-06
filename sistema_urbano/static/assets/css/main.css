@@ -657,7 +657,7 @@ section {
 }
 
 .why-us .swiper {
-  margin: 140px 140px 120px 140px;
+  margin: 100px 100px 100px 100px;
   overflow: hidden;
 }
 
@@ -668,11 +668,11 @@ section {
 }
 
 .why-us .swiper-button-prev {
-  left: 80px;
+  left: 50px;
 }
 
 .why-us .swiper-button-next {
-  right: 80px;
+  right: 50px;
 }
 
 .why-us .swiper-pagination {
@@ -884,7 +884,15 @@ section {
 }
 
 
-
+/*--------------------------------------------------------------
+# Home 41ZRE Section
+--------------------------------------------------------------*/
+.home-situacion-actual {
+  background: linear-gradient(rgba(27, 47, 69, 0.8), rgba(27, 47, 69, 0.8)), url("../img/cta-bg.jpg") center center;
+  background-size: cover;
+  padding: 100px 0;
+  background-attachment: fixed;
+}
 
 
 /*--------------------------------------------------------------
@@ -992,7 +1000,7 @@ section {
 
 .features .details {
   margin-top: 172px;
-  padding: 120px 0;
+  /*padding: 120px 0;*/
   background-color: #f7f9fc;
 }
 

@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
+from django.contrib.gis import admin
 from django.urls import path, include
 
 from django.conf import settings
@@ -21,14 +21,16 @@ from django.conf.urls.static import static
 
 from api import urls as api_urls
 
+
 admin.site.site_header = 'Sistema Urbano PM41ZRE Administración'
 admin.site.site_title = 'Sistema Urbano PM41ZRE Administración'
 
 #from world import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('',include('world.urls')),
+    path('auth/', include('auth_sys_urbano.urls')),
+    path('admin/', admin.site.urls),
     #path('tinymce/', include('tinymce.urls')),
     #path('froala_editor/',include('froala_editor.urls'))
     path('summernote/', include('django_summernote.urls')),

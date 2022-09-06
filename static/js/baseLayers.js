@@ -149,6 +149,30 @@ var baseLayerPDU2013 = new ol.layer.Group({
       }),
     }),
 
+    /**  PROPUESTA JERARQUIA VIAS Y SECCIONES PDU 2013-2023 */
+    new ol.layer.Image({
+      //properties: {
+      title: "Jerarquía Vial",
+      //openInLayerSwitcher: false,
+      //},
+      //title: 'Inmebles Relig. Bloques 1er Nivel',
+      visible: false,
+      source: new ol.source.ImageWMS({
+        url: urlGeoserver,
+        //params: {'LAYERS': URL_WS_V2+'sectores','STYLES': 'cat_sectores_only_label_sld', 'TILED': true},
+        params: {
+          LAYERS: "sgotp-41zre:gis_gene_pdu_2013_seccion_jerarquia_vias",
+          TILED: true,
+          STYLES: "gis_gene_pdu_2013_seccion_jerarquia_vias_style",
+          //'cql_filter': "codigo_zre ='" + this.codigo+ "'"
+          FORMAT_OPTIONS: "antialias:text",
+        },
+        serverType: "geoserver",
+        // Countries have transparency, so do not fade tiles:
+        //transition: 0,
+      }),
+    }),
+
     /**  FAJA DE DERVIDUMBRE EGEMSA PDU 2013-2023 */
     new ol.layer.Image({
       //properties: {

@@ -1,6 +1,7 @@
 from django.urls import path, include
 
 from .views import Home41ZRE, HomeZonaCaracterizacionGRDAnalisisVulnerabilidad, HomeZonaCaracterizacionGRDDeterminacionPeligro, HomeZonaCaracterizacionLegal, HomeZonaCaracterizacionSocioeconomica, HomeZonaDelimitacion, HomeZonaJustificacion, HomeZonaMapas, HomeZonaConsideraGenerales, HomeZonaMain, HomeZonaMetodogia, HomeZonaObjetivos, HomeZonaPlaneamiento
+from .views import HomeGeodataAreasPeligroMuyAlto, HomeGeodataAreasConservacionProteccionAmbiental
 from .views import ConsultaWebPlan, EditorChartView,EnviarEmail,my_view, ZonaByCodigoApiView
 from .views import stats, HomeZonaLocal
 
@@ -16,6 +17,10 @@ urlpatterns = [
     path('formularioconsulta/', ConsultaWebPlan, name='consulta_form'),
     path('formularioenviaremail/', EnviarEmail , name='enviar_email'),
     path('zonas/', HomeZonaLocal, name='home_zona_local'),
+    #geodata
+    path('geodata/apma',HomeGeodataAreasPeligroMuyAlto, name="home_geodata_areas_peligro_muy_alto"),
+    path('geodata/acpa',HomeGeodataAreasConservacionProteccionAmbiental, name="home_geodata_areas_conservacion_proteccion_ambiental"),
+    
     path('codzona/<str:codigozona>', ZonaByCodigoApiView.as_view(), name='zonas_list_by_codzona'),   
     
     path('<str:codigozona>/', HomeZonaMain, name='zona_by_codigo' ),

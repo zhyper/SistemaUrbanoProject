@@ -1,10 +1,17 @@
 {% extends 'base2.html' %}
+{% comment %} {% load compress %} {% endcomment %}
+
 {% load static %}
+
 {% load mathfilters %}
 
 {% block title %}{{title}}{% endblock  %}
 
 {% block style_header %}
+
+  
+      <link  href="{% static '/css/mapas-index-style.css' %}" rel="stylesheet" type="text/css" >
+  
 
         
     <style>
@@ -34,7 +41,8 @@
             color: #fff !important;
         }
     </style>
-    <link rel="stylesheet" href="{% static '/css/jquery.flipster.min.css' %}" />
+    
+    
 
 {% endblock  %}
 
@@ -107,10 +115,17 @@
   
                 <div class="col-md-6">
                   <div class="icon-list d-flex">
-                    <i class="ri-base-station-line" style="color: #ff5828;"></i>
-                    <span>Easy Cart Features</span>
+                    <i class="ri-store-line" style="color: #ffbb2c;"></i>
+                    <span class="text-warning">Opendata :: Datos Abiertos</span>
                   </div>
-                </div>
+                </div><!-- End Icon List Item-->
+  
+                <div class="col-md-6">
+                  <div class="icon-list d-flex">
+                    <i class="ri-bar-chart-box-line" style="color: #5578ff;"></i>
+                    <span>Opensource :: Software Libre</span>
+                  </div>
+                </div><!-- End Icon List Item-->
               </div>
             </div>
             <div class="col-lg-5 position-relative" data-aos="fade-left" data-aos-delay="200">
@@ -120,57 +135,42 @@
               </div>
             </div>
           </div>
-  
+          
         </div>
-  
-        
-
-        <div class="container mt-5 pt-5">
-          <div class="row">
-            <div class="col-6">
-
-              <div id="coverflow">
-                <ul class="flip-items">
-                  
-
-                  {% for mapaweb in  mapasweb%}
-                  
-                    <li data-flip-title="Cyan" data-flip-category="Blues">
-
-                      <a href="{{WebsiteName.ip_production}}/{{mapaweb.url}}">
-                      
-                        <img src="{% static '/images/mapasweb/'|add:mapaweb.image %}" alt="" class="img-fluid">
-                        <p>
-                          {{mapaweb.descripcion}}
-                        </p>
-                      
-                      </a>                   
-                        
-                    </li>
-
-                  {% endfor %}
-                    
-                    
-                </ul>
-            </div>
-            
-            
+        <div class="details wrapper">
+          <div class="container">
+            <div class="row">
+              {% for mapalink in mapasweb %}
+          
+                  <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                    <div class="card text-white card-has-bg click-col" style="background-image:url('{% static '/images/mapasweb/'|add:mapalink.image %}');">
+                      <img class="card-img d-none" src="{% static '/images/mapasweb/'|add:mapalink.image %}" alt="">
+                        <div class="card-img-overlay d-flex flex-column">
+                        <div class="card-body">
+                            <small class="card-meta mb-2">{{mapalink.descripcion}}</small>
+                            <h4 class="card-title mt-0 "><a class="text-white" href="{{WebsiteName.ip_production}}/{{mapalink.url}}">{{mapalink.nombre}}</a></h4>
+                          <small><i class="far fa-clock"></i> Octubre 19, 2022</small>
+                          </div>
+                          <div class="card-footer">
+                          <div class="media">
+                            <img class="mr-3 rounded-circle" src="{% static '/images/icon_play_store.png' %}" alt="Generic placeholder image" height=50px width=50px style="max-width:50px">
+                            
+                            <div class="media-body">
+                              <h6 class="my-0 text-white d-block">SGOTP</h6>
+                              <small>Proyecto 41ZRE</small>
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+      
+                {% endfor %}
             </div>
           </div>
         </div>
-
   
     </section>
-      <!-- End Features Section -->
-
-
-    
-
-
-      
-
-
-
 
 
 {% endblock  %}
@@ -180,28 +180,5 @@
 
   
 
-  <script src="{% static '/js/jquery.flipster.min.js' %}"></script>
-  <script>
-    var coverflow = $("#coverflow").flipster({
-      
-      loop: true,
-    });
 
-    /*
-    var swiper = new Swiper(".slides-3", {
-        speed: 600,
-        parallax: true,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-    });
-    */
-
-
-  </script>
 {% endblock  %}

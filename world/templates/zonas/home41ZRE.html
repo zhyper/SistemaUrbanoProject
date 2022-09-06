@@ -2,6 +2,218 @@
 {% load static %}
 {% block title %}{{title}}{% endblock  %}
 
+
+{% block style_header %}
+
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://openlayers.org/en/v6.5.0/css/ol.css" type="text/css"> 
+
+  <style>
+    #more {display: none;}
+    </style>
+
+  <style>
+   
+    #map-mapbox { 
+
+      width: 100%; 
+      height: 700px;
+    }
+    #map-ol { 
+
+      width: 100%; 
+      height: 700px;
+    }
+  </style>
+  <!-- Cards ZONAS-->
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
+    /* This pen */
+    body {
+      font-family: "Baloo 2", cursive;
+      font-size: 16px;
+      /*color: #ffffff;*/
+      text-rendering: optimizeLegibility;
+      font-weight: initial;
+    }
+
+    .dark {
+      background: #110f16;
+    }
+
+    .light {
+      background: #f3f5f7;
+    }
+
+    a, a:hover {
+      text-decoration: none;
+      transition: color 0.3s ease-in-out;
+    }
+
+    #pageHeaderTitle {
+      margin: 2rem 0;
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 2.5rem;
+    }
+
+
+  </style>
+  <!-- Icons ZREs-->
+  <style>
+
+    .profile-card-2 {
+      max-width: 300px;
+      background-color: #FFF;
+      box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+      background-position: center;
+      overflow: hidden;
+      position: relative;
+      margin: 10px auto;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+    
+    .profile-card-2 img {
+        transition: all linear 0.25s;
+    }
+    
+    .profile-card-2 .profile-name {
+        line-height: 27px;
+        position: absolute;
+        left: 30px;
+        bottom: 70px;
+        font-size: 30px;
+        color: #FFF;
+        text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+        font-weight: bold;
+        transition: all linear 0.25s;
+    }
+    
+    .profile-card-2 .profile-icons {
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        color: #FFF;
+        transition: all linear 0.25s;
+    }
+    
+    .profile-card-2 .profile-username {
+        position: absolute;
+        bottom: 50px;
+        left: 30px;
+        color: #FFF;
+        font-size: 13px;
+        transition: all linear 0.25s;
+    }
+    
+    .profile-card-2 .profile-icons .fa {
+        margin: 5px;
+    }
+    
+    .profile-card-2:hover img {
+        filter: grayscale(100%);
+    }
+    
+    .profile-card-2:hover .profile-name {
+        bottom: 80px;
+    }
+    
+    .profile-card-2:hover .profile-username {
+        bottom: 60px;
+    }
+    
+    .profile-card-2:hover .profile-icons {
+        right: 40px;
+    }
+    /**4**/
+    .profile-card-4 {
+      max-width: 300px;
+      background-color: #ffca00;
+      border-radius: 5px;
+      box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      position: relative;
+      margin: 10px auto;
+      cursor: pointer;
+  }
+
+ 
+
+  .profile-card-4 img {
+      transition: all 0.25s linear;
+  }
+  
+  .profile-card-4 .profile-content {
+      position: relative;
+      padding: 15px;
+      background-color: #FFF;
+  }
+  
+  .profile-card-4 .profile-name {
+      font-weight: bold;
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      top: -70px;
+      color: #FFF;
+      font-size: 17px;
+      text-shadow: 0px 0px 2px #000;
+  }
+  
+  .profile-card-4 .profile-name p {
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+  }
+  
+  .profile-card-4 .profile-description {
+      color: #777;
+      font-size: 12px;
+      padding: 10px;
+  }
+  
+  .profile-card-4 .profile-overview {
+      padding: 15px 0px;
+  }
+  
+  .profile-card-4 .profile-overview p {
+      font-size: 10px;
+      font-weight: 600;
+      color: #777;
+  }
+  
+  .profile-card-4 .profile-overview h4 {
+      color: #273751;
+      font-weight: bold;
+  }
+  
+  .profile-card-4 .profile-content::before {
+      content: "";
+      position: absolute;
+      height: 20px;
+      top: -10px;
+      left: 0px;
+      right: 0px;
+      background-color: #FFF;
+      z-index: 0;
+      transform: skewY(3deg);
+  }
+  
+  .profile-card-4:hover img {
+      transform: rotate(5deg) scale(1.1, 1.1);
+      filter: brightness(110%);
+  }
+  </style>
+  <style>
+    .green-card {
+      background-color: #79dd09;
+    }
+  </style>
+  <link rel="stylesheet" href="{% static '/css/zona/card-customed.css' %}">
+
+{% endblock %}
+
 {% block navbar %}
     {% include 'includes/navbar2.html' %}
 {% endblock  %}
@@ -20,58 +232,40 @@
                 <div class="col-md-6">
                   <div class="icon-list d-flex">
                     <i class="ri-store-line" style="color: #ffbb2c;"></i>
-                    <span class="text-warning">Easy Cart Features</span>
+                    <span class="text-white">Zonas por Peligro Geológico Muy Alto</span>
                   </div>
                 </div><!-- End Icon List Item-->
   
                 <div class="col-md-6">
                   <div class="icon-list d-flex">
                     <i class="ri-bar-chart-box-line" style="color: #5578ff;"></i>
-                    <span>Sit amet consectetur adipisicing</span>
+                    <span  class="text-white">Zonas por Protección Ambiental</span>
                   </div>
                 </div>
   
                 <div class="col-md-6">
                   <div class="icon-list d-flex">
                     <i class="ri-calendar-todo-line" style="color: #e80368;"></i>
-                    <span>Ipsum Rerum Explicabo</span>
+                    <span  class="text-white">Habiltabilidad Urbana</span>
                   </div>
                 </div>
   
-                <!--<div class="col-md-6">
+                <div class="col-md-6">
                   <div class="icon-list d-flex">
                     <i class="ri-paint-brush-line" style="color: #e361ff;"></i>
-                    <span>Easy Cart Features</span>
+                    <span class="text-white">Propuesta de Zonificación</span>
                   </div>
                 </div>
+                
   
                 <div class="col-md-6">
                   <div class="icon-list d-flex">
                     <i class="ri-database-2-line" style="color: #47aeff;"></i>
-                    <span>Easy Cart Features</span>
+                    <span class="text-white">Gestión de Riesgos de Desastres</span>
                   </div>
                 </div>
   
-                <div class="col-md-6">
-                  <div class="icon-list d-flex">
-                    <i class="ri-gradienter-line" style="color: #ffa76e;"></i>
-                    <span>Sit amet consectetur adipisicing</span>
-                  </div>
-                </div>
-  
-                <div class="col-md-6">
-                  <div class="icon-list d-flex">
-                    <i class="ri-file-list-3-line" style="color: #11dbcf;"></i>
-                    <span>Ipsum Rerum Explicabo</span>
-                  </div>
-                </div>
-  
-                <div class="col-md-6">
-                  <div class="icon-list d-flex">
-                    <i class="ri-base-station-line" style="color: #ff5828;"></i>
-                    <span>Easy Cart Features</span>
-                  </div>
-                </div>--><!-- End Icon List Item-->
+                
               </div>
             </div>
             <div class="col-lg-5 position-relative" data-aos="fade-left" data-aos-delay="200">
@@ -83,44 +277,758 @@
   
         </div>
         <div class="details">
-          <div class="container" data-aos="fade-up" data-aos-delay="300">
-            <div class="row">
-              <div class="col-md-12">
-                  <div class="row mt-5">
-                      {% for plan in planes_aprobados %}
-                          
-                          <div class="col-12 col-md-6 col-lg-4 col-sm-6" data-aos="fade-up" >
-                          
-                              <div class="card  card-mapas-41zre m-2 " >
-                                  <img class="card-img-top" src="{% static '/assets/img/sections/'|add:plan.image2 %}" alt="Card image">
-                                  <div class="card-body">
-                                    <h4 class="card-title fw-light"><i class="ri-file-ppt-2-fill"></i>&nbsp;{{plan.nombre}}</h4>
-                                    <p class="card-text fw-light fs-6-custom">
-                                        <h5 >
-                                          <span class="badge bg-success fw-light">{{plan.estado}}</span>
-                                        </h5>
-                                    </p>
-                                  </div>
-                                  <div class="card-body d-grid gap-2">
-                                      
-                                      <a href="{{WebsiteName.ip_development}}:8000/planes/{{plan.slug}}" class="btn btn-warning btn-sm btn-block">ver más &nbsp; <i class="ri-eye-line ri-lg"></i></a>
-          
-                                  </div>
-                                </div>
-                          </div>
-                      {% endfor %}
-                  </div>
-                
-              </div>
-            </div>
-  
+          <div class="container">
+            
+
+            
+            
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ======= Why Choose Us Section ======= -->
+    <section id="why-us m-0" class="why-us mb-5">
+      <div class="container-fluid m-0" data-aos="fade-up">
+
+        <div class="section-header mt-3 mb-5">
+          
+          <h1 class="display-5">Descripción de la <strong>Situación Actual</strong> </h1>
+
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="col-xl-5 img-bg" style="background: url('{{WebsiteName.ip_production}}:90/zre41media/slides/home_41zre_index/ZRECU03-situacion-actual-01.jpg'); background-size: cover; background-attachment: fixed;"></div>
+          <div class="col-xl-7 slides  position-relative">
+
+            <div class="slides-1 swiper">
+              <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                  <div class="item">
+                    {% comment %} <h3 class="mb-3">Let's grow your business together</h3>
+                    <h4 class="mb-3">Optio reiciendis accusantium iusto architecto at quia minima maiores quidem, dolorum.</h4> {% endcomment %}
+                    <p>Durante los últimos años, la evolución urbana de la provincia de Cusco está directamente relacionada con el acelerado crecimiento demográfico de la ciudad (Año 2000: 337,323 hab. – Año 2016:
+                      453,900 hab.- Fte. INEI),proceso que ha venido ocurriendo espontáneamente y de manera informal, sin la orientación técnica respectiva, en respuesta a una migración constante del área rural a la ciudad. Es consecuencia de este proceso la aparición de asentamientos humanos no planificados en áreas no aptas para la habilitación urbana, con degradación ambiental y mal
+                      uso del suelo urbano, ya sea por sus condiciones físico – geográficas o por sus valores arqueológicos y/o ambientales; y otros como los cambios de zonificación urbana por oficio fomentados por algunas municipalidades, los que en conjunto rebasan la capacidad de su ecosistema, causando impactos negativos sobre éste, así como conflictos ambientales, sociales 
+                      y económicos en la provincia.</p>
+                    <p>Ante ésta problemática, es función de los Gobiernos Locales, como autoridad responsable de su administración, planificar el desarrollo integral de sus circunscripciones, en concordancia con los planes y las políticas nacionales, sectoriales y regionales, promoviendo las inversiones así como la participación de la ciudadanía.</p>
+                  </div>
+                </div><!-- End slide item -->
+
+                
+
+                <div class="swiper-slide">
+                  <div class="item">
+                    {% comment %} <h3 class="mb-3">Aliquid non alias minus</h3>
+                    <h4 class="mb-3">Necessitatibus voluptatibus explicabo dolores a vitae voluptatum.</h4> {% endcomment %}
+                    <p>Es en  atención a esta función que la Municipalidad Provincial de Cusco, a través del Plan de Desarrollo Urbano de la provincia de Cusco 2013-2023, aprobado con O.M. N°32-2013-MPC de fecha 22-10-2013, bajo el marco del D.S. N°004-2011-VIVIENDA (a la fecha derogado y reemplazado por el D.S. N°022-2016-VIVIENDA), ha identificado en el área urbana de la
+                      provincia de Cusco, 54 unidades ambientales denominadas Zonas de Reglamentación Especial (ZRE), las que por diversas condiciones y características particulares, de orden físico, ambiental y social, se encuentran en condiciones de conflicto de uso del suelo y/o de deterioro ambiental, por lo que ameritan y requieren un tratamiento integral de recuperación y/o mejoramiento de
+                      su proceso de desarrollo, mediante estudios técnico - normativos especializados que rehabiliten el espacio ocupado y sus áreas de influencia, complementen la planificación urbana y faciliten la ocupación y actuación urbanística de manera segura, inclusiva y sostenible.</p>
+                  </div>
+                </div><!-- End slide item -->
+
+                <div class="swiper-slide">
+                  <div class="item">
+                    {% comment %} <h3 class="mb-3">Necessitatibus suscipit non voluptatem quibusdam</h3>
+                    <h4 class="mb-3">Tempora quos est ut quia adipisci ut voluptas. Deleniti laborum soluta nihil est. Eum similique neque autem ut.</h4> {% endcomment %}
+                    <p>Estas ZRE identificadas son áreas legal y ambientalmente críticas, con una ocupación territorial de carácter informal y de acelerado proceso de consolidación, liderado por acciones espontáneas, desarrolladas principalmente por las familias de menores recursos. Representan las áreas con la mayor incidencia de habitabilidad negativa del área urbana de la provincia. Se
+                      han calificado como tales porque, homogéneamente, muestran dos condiciones físico – geográficas y sociales predominantes: ocupación de áreas de peligro muy alto y ocupación de áreas de recuperación y valor ambiental. Comprenden 343.36 ha de extensión, representando el 5.96 % del área urbana provincial. En ellas se ubican 183 agrupaciones vecinales, de las
+                      cuales 47% son informales. Cabe indicar que las ZRE ubicadas en áreas arqueológico – patrimoniales no forman parte de este proyecto de inversión, pues su carácter especial determina la elaboración de un proyecto independiente para éstas (13 ZRE). </p>
+                  </div>
+                </div><!-- End slide item -->
+                
+                <div class="swiper-slide">
+                  <div class="item">
+                    {% comment %} <h3 class="mb-3">Necessitatibus suscipit non voluptatem quibusdam</h3>
+                    <h4 class="mb-3">Tempora quos est ut quia adipisci ut voluptas. Deleniti laborum soluta nihil est. Eum similique neque autem ut.</h4> {% endcomment %}
+                    <p> La población de las Zonas de Reglamentación Especial de la provincia de Cusco asciende a  37,080habitantes, que conforman 8,427 hogares (Fte.: Elaboración Equipo Técnico SGOTP, en base a número de predios y 4.4 hab/familia); lo que equivale a 10.52 % de la población urbana. Esta población es de origen provinciano, migrantes o hijos de migrantes. Se caracteriza por presentar bajos niveles de
+                      ingreso, alta incidencia de desempleo o subempleo y condiciones inadecuadas de vida: precariedad física, abandono y fragmentación social, exclusión y alto grado de segregación urbana, con el riesgo de perpetuar esta situación de pobreza. Sus oportunidades son restringidas porque carecen de los instrumentos legales, mecanismos administrativos y recursos financieros y humanos necesarios para ordenar el proceso de crecimiento urbano y
+                      atender las crecientes demandas de infraestructura y servicios que requieren en sus asentamientos.</p>
+                  </div>
+                </div><!-- End slide item -->
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+
+        </div>
+
+      </div>    
+    </section>
+<div class="container-fluid">
+  <div class="row">
+    
+  </div>
+</div>    
+    
+{% comment %} <section class="features home-situacion-actual" style="background:linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url('{{WebsiteName.ip_production}}:90/zre41media/slides/home_41zre_index/ZRECU03-situacion-actual-01.jpg'); background-size: cover; background-attachment: fixed;">
+
+</section> {% endcomment %}
+
+
+  <div class="container-fluid mt-5 mb-5">
+    <div class="section-header">
+
+      <h1 class="display-5 mx-auto"><strong>Ámbito</strong> de Estudio de las 41ZRE</h1>
     </div>
-</section>
+  </div>
 
-<div class="container">
 
+<div class="container-fluid p-0">
+
+      <div id="map-mapbox"></div>
 
 </div>
+
+<div class="container-fluid p-0">
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-6">
+      <div id="map-ol"></div>
+      <form>
+        <label for="type">Action type &nbsp;</label>
+        <select id="type">
+          <option value="click" selected>Click</option>
+          <option value="singleclick">Single-click</option>
+          <option value="pointermove">Hover</option>
+          <option value="altclick">Alt+Click</option>
+          <option value="none">None</option>
+        </select>
+        <span id="status">&nbsp;0 selected features</span>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+  <div class="container-fluid mt-0 mb-0 pt-5 pb-5 bg-light">
+    
+    
+      <div class="section-header">
+
+        {% comment %} <h1 class="display-5 mx-auto">Zonas de <strong>Reglamentación Especial</strong> </h1> {% endcomment %}
+        <br>
+            {% comment %} <h1 class="display-6">Clasificación </h1> {% endcomment %}
+              <article class="postcard dark red">
+                <a class="postcard__img_link" href="#">
+                  <img class="postcard__img" src="{{WebsiteName.ip_production}}:90/zre41media/slides/home_41zre_index/ZRECU03-situacion-actual-01.jpg" alt="Image Title" />
+                </a>
+                <div class="postcard__text">
+                  <h1 class="postcard__title red"><a href="#">39 ZRE por ocupación en <strong>Áreas de Peligro Muy Alto</strong></a></h1>
+                  <div class="postcard__subtitle small">
+                    <time datetime="2020-05-25 12:00:00">
+                      <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
+                    </time>
+                  </div>
+                  <div class="postcard__bar"></div>
+                  <div class="postcard__preview-txt">Se localizan mayoritariamente en las áreas denominadas "Paisajista en Laderas". <br> Comprenden 1’718,427.17 m2 de extensión, y en ellas se ubican 170 agrupaciones de vivienda, 43.95% de ellos informales</div>
+                  <ul class="postcard__tagbox">
+                    <li class="tag__item"><i class="ri-earthquake-line"></i>&nbsp; Peligro Geológico</li>
+                    <li class="tag__item"><i class="ri-map-line"></i> &nbsp; 39 Areas</li>
+                    <li class="tag__item play red">
+                      <a href="#"><i class="ri-eye-line"></i>&nbsp;ver más</a>
+                    </li>
+                  </ul>
+                </div>
+              </article> 
+      </div>
+    
+
+
+    <div class="container mt-0 mb-3">
+      <div class="row">
+        <div class="col-6 col-sm-6 col-md-3">
+          
+          <div class="profile-card-4 text-center"><img src="{{WebsiteName.ip_production}}:90/zre41media/misc/images/plan-especifico.png" class="img-fluid" style="max-height: 200px;">
+            <div class="profile-content">
+                <div class="profile-name">Planes Específicos
+                    <p>@41zre</p>
+                </div>
+                <div class="profile-description">Documentos técnicos de planificación territorial, enmarcados en la normativa vigente.</div>
+                <!--<div class="row">
+                    <div class="col-xs-4">
+                        <div class="profile-overview">
+                            <p>PLANES</p>
+                            <h4>39</h4></div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="profile-overview">
+                            <p>REGLAMENTOS</p>
+                            <h4>39</h4></div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="profile-overview">
+                            <p>PACK de INVERSIONES</p>
+                            <h4>39</h4></div>
+                    </div>
+                </div>-->
+            </div>
+          </div>
+
+
+
+          
+        </div>
+        <div class="col-6 col-sm-6 col-md-3">
+          <div class="profile-card-4 text-center"><img src="{{WebsiteName.ip_production}}:90/zre41media/misc/images/planimetria.png" class="img-fluid" style="max-height: 200px;">
+            <div class="profile-content">
+                <div class="profile-name">Planinetría
+                    <p>@41zre</p>
+                </div>
+                <div class="profile-description">Caracterización y Propuesta</div>
+                <!--<div class="row">
+                    <div class="col-xs-4">
+                        <div class="profile-overview">
+                            <p>PLANES</p>
+                            <h4>39</h4></div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="profile-overview">
+                            <p>REGLAMENTOS</p>
+                            <h4>39</h4></div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="profile-overview">
+                            <p>PACK de INVERSIONES</p>
+                            <h4>39</h4></div>
+                    </div>
+                </div>-->
+            </div>
+          </div>          
+        </div>
+          <div class="col-6 col-sm-6 col-md-3">
+            <div class="profile-card-4 text-center"><img src="{{WebsiteName.ip_production}}:90/zre41media/misc/images/geodatabase.png" class="img-fluid" style="max-height: 200px;">
+              <div class="profile-content">
+                  <div class="profile-name"><a href=" {% url 'home_geodata_areas_peligro_muy_alto' %} " class="text-white">Geo Database</a>
+                      <p>@41zre</p>
+                  </div>
+                  <div class="profile-description">Services WMS y WMS-T</div>
+                  <!--<div class="row">
+                      <div class="col-xs-4">
+                          <div class="profile-overview">
+                              <p>PLANES</p>
+                              <h4>39</h4></div>
+                      </div>
+                      <div class="col-xs-4">
+                          <div class="profile-overview">
+                              <p>REGLAMENTOS</p>
+                              <h4>39</h4></div>
+                      </div>
+                      <div class="col-xs-4">
+                          <div class="profile-overview">
+                              <p>PACK de INVERSIONES</p>
+                              <h4>39</h4></div>
+                      </div>
+                  </div>-->
+              </div>
+            </div>   
+            
+          </div>
+          <div class="col-6 col-sm-6 col-md-3">
+            <div class="profile-card-4 text-center"><img src="{{WebsiteName.ip_production}}:90/zre41media/misc/images/sistema-urbano.png" class="img-fluid" style="max-height: 200px;">
+              <div class="profile-content">
+                  <div class="profile-name">Sistema de Información
+                      <p>@41zre</p>
+                  </div>
+                  <div class="profile-description">Plataforma de Gestión Terrirorial</div>
+                  <!--<div class="row">
+                      <div class="col-xs-4">
+                          <div class="profile-overview">
+                              <p>PLANES</p>
+                              <h4>39</h4></div>
+                      </div>
+                      <div class="col-xs-4">
+                          <div class="profile-overview">
+                              <p>REGLAMENTOS</p>
+                              <h4>39</h4></div>
+                      </div>
+                      <div class="col-xs-4">
+                          <div class="profile-overview">
+                              <p>PACK de INVERSIONES</p>
+                              <h4>39</h4></div>
+                      </div>
+                  </div>-->
+              </div>
+            </div>  
+            
+
+            
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container-fluid mt-0 mb-0 pt-5 pb-5 bg-light">
+    
+      <div class="section-header">
+        <article class="postcard dark green">
+          <a class="postcard__img_link" href="#">
+            <img class="postcard__img" src="{{WebsiteName.ip_production}}:90/zre41media/slides/home_41zre_index/ZRESJ01-situacion-actual-01.jpg" alt="Image Title" />
+          </a>
+          <div class="postcard__text">
+            <h1 class="postcard__title green"><a href="#">02 ZRE por ocupación de <strong>Áreas de Recuperación y Valor Ambiental</strong></a></h1>
+            <div class="postcard__subtitle small">
+              <time datetime="2020-05-25 12:00:00">
+                <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
+              </time>
+            </div>
+            <div class="postcard__bar"></div>
+            <div class="postcard__preview-txt">Se localizan en los sectores denominados "Ladrilleras" y "ex Botadero San Antonio". <br> Comprenden 814,004.08 m2 de extensión, y en ellos se ubican 13 agrupaciones de vivienda.</div>
+            <ul class="postcard__tagbox">
+              <li class="tag__item"><i class="ri-leaf-line"></i>&nbsp; Recuperación y Valor Ambiental</li>
+              <li class="tag__item"><i class="ri-map-line"></i> &nbsp; 02 Areas</li>
+              <li class="tag__item play green">
+                <a href="#"><i class="ri-eye-line"></i>&nbsp;ver más</a>
+              </li>
+            </ul>
+          </div>
+        </article> 
+      </div>
+    
+  </div>
+
+
+
+
+<div class="container-fluid bg-light">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-6 col-sm-6 col-md-3">
+        <div class="profile-card-4 green-card text-center"><img src="{{WebsiteName.ip_production}}:90/zre41media/misc/images/plan-especifico.png" class="img-fluid" style="max-height: 200px;">
+          <div class="profile-content">
+              <div class="profile-name">Planes Específicos
+                  <p>@41zre</p>
+              </div>
+              <div class="profile-description">Documentos técnicos de planificación territorial, enmarcados en la normativa vigente.</div>
+              <!--<div class="row">
+                  <div class="col-xs-4">
+                      <div class="profile-overview">
+                          <p>PLANES</p>
+                          <h4>39</h4></div>
+                  </div>
+                  <div class="col-xs-4">
+                      <div class="profile-overview">
+                          <p>REGLAMENTOS</p>
+                          <h4>39</h4></div>
+                  </div>
+                  <div class="col-xs-4">
+                      <div class="profile-overview">
+                          <p>PACK de INVERSIONES</p>
+                          <h4>39</h4></div>
+                  </div>
+              </div>-->
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-sm-6 col-md-3">
+        <div class="profile-card-4 green-card text-center"><img src="{{WebsiteName.ip_production}}:90/zre41media/misc/images/planimetria.png" class="img-fluid" style="max-height: 200px;">
+          <div class="profile-content">
+              <div class="profile-name">Planinetría
+                  <p>@41zre</p>
+              </div>
+              <div class="profile-description">Caracterización y Propuesta</div>
+              <!--<div class="row">
+                  <div class="col-xs-4">
+                      <div class="profile-overview">
+                          <p>PLANES</p>
+                          <h4>39</h4></div>
+                  </div>
+                  <div class="col-xs-4">
+                      <div class="profile-overview">
+                          <p>REGLAMENTOS</p>
+                          <h4>39</h4></div>
+                  </div>
+                  <div class="col-xs-4">
+                      <div class="profile-overview">
+                          <p>PACK de INVERSIONES</p>
+                          <h4>39</h4></div>
+                  </div>
+              </div>-->
+          </div>
+        </div> 
+        
+      </div>
+        <div class="col-6 col-sm-6 col-md-3">
+          <div class="profile-card-4 green-card text-center"><img src="{{WebsiteName.ip_production}}:90/zre41media/misc/images/geodatabase.png" class="img-fluid" style="max-height: 200px;">
+            <div class="profile-content">
+                <div class="profile-name"><a href=" {% url 'home_geodata_areas_conservacion_proteccion_ambiental' %} " class="text-white">Geo Database</a>
+                    <p>@41zre</p>
+                </div>
+                <div class="profile-description">Services WMS y WMS-T</div>
+                <!--<div class="row">
+                    <div class="col-xs-4">
+                        <div class="profile-overview">
+                            <p>PLANES</p>
+                            <h4>39</h4></div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="profile-overview">
+                            <p>REGLAMENTOS</p>
+                            <h4>39</h4></div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="profile-overview">
+                            <p>PACK de INVERSIONES</p>
+                            <h4>39</h4></div>
+                    </div>
+                </div>-->
+            </div>
+          </div>  
+          
+        </div>
+        <div class="col-6 col-sm-6 col-md-3">
+          <div class="profile-card-4 green-card  text-center"><img src="{{WebsiteName.ip_production}}:90/zre41media/misc/images/sistema-urbano.png" class="img-fluid" style="max-height: 200px;">
+            <div class="profile-content">
+                <div class="profile-name">Sistema de Información
+                    <p>@41zre</p>
+                </div>
+                <div class="profile-description">Plataforma de Gestión Terrirorial</div>
+                <!--<div class="row">
+                    <div class="col-xs-4">
+                        <div class="profile-overview">
+                            <p>PLANES</p>
+                            <h4>39</h4></div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="profile-overview">
+                            <p>REGLAMENTOS</p>
+                            <h4>39</h4></div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="profile-overview">
+                            <p>PACK de INVERSIONES</p>
+                            <h4>39</h4></div>
+                    </div>
+                </div>-->
+            </div>
+          </div>  
+          
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock  %}
+
+{% block javascript_extra_footer %}
+
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
+<script src="https://openlayers.org/en/v6.5.0/build/ol.js" type="text/javascript"></script>
+
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1Ijoiemh5cGVyIiwiYSI6ImNpdGdiM3d1dDAwODQyeG8zZGVkYnc2b24ifQ.cwgujm_x_QPQ668K2hTQFA';
+  const map = new mapboxgl.Map({
+    container: 'map-mapbox',
+    zoom: 12.5,
+    center: [-71.93229, -13.53632],
+    pitch: 80,
+    bearing: 0,
+    // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+    //style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y'
+    style: 'mapbox://styles/zhyper/ckxf3to4l0vvz15qd9z7o9n6b',
+    cooperativeGestures: true
+  });
+  
+  map.on('load', () => {
+  map.addSource('mapbox-dem', {
+  'type': 'raster-dem',
+  'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+  'tileSize': 512,
+  'maxzoom': 14
+  });
+
+
+
+  // add the DEM source as a terrain layer with exaggerated height
+  map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+
+    //ZREs: *******************************************************************************************
+
+    map.addSource('zonas41-source', {
+      type: 'vector',
+      url: 'mapbox://zhyper.07utu87q' 
+    });
+
+    //ZONAS
+    map.addLayer({
+      "id": "zonas41-layer",
+      "minzoom": 11,
+      "paint": {
+        //"fill-color": "hsla(0, 92%, 39%, 0.75)",
+        'fill-outline-color': "hsl(0, 0%, 100%)",
+        'fill-opacity': 1.0,
+        'fill-color':[
+          'match',
+          ['get', 'tipo'],
+          'AREA DE CONSERVACION Y PROTECCION AMBIENTAL', 'rgba(67,136,6, 0.8)',
+          'AREA DE PELIGRO MUY ALTO',"rgba(255,0,0,0.5)",
+          'rgba(255, 255, 255, 0.1)'
+        ]
+      },
+      "type": "fill",
+      'source': 'zonas41-source',
+      'source-layer': '41ZRE-V1-9682nn',
+
+      "layout": {
+        "visibility": "visible"
+      }
+    });
+
+    map.addLayer(
+      {
+      'id': 'zonas41-layer-highlighted',
+      'type': 'fill',
+      'source': 'zonas41-source',
+      'source-layer': '41ZRE-V1-9682nn',
+      'paint': {
+        'fill-outline-color': "#000",
+        
+        'fill-color': 'rgb(255,204,0)',
+        'fill-opacity': 0.5,
+      },
+      'filter': ['in', 'codigo', '']
+      },
+      //'settlement-label'
+      ); // Place polygon under these labels.
+
+    map.addLayer({
+      'id': 'zre-labels',
+      'type': 'symbol',
+      'source': 'zonas41-source',
+      'source-layer': '41ZRE-V1-9682nn',
+      'layout': {
+        'text-field': ['get', 'codigo'],
+        //'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+        'text-radial-offset': 0.5,
+        'text-justify': 'auto',
+
+        //'icon-image': ['get', 'icon'],
+        'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+        "text-size": 10
+      },
+      "paint": {
+        "text-color": "#202",
+        "text-halo-color": "#fff",
+        "text-halo-width": 2,
+      }
+    });
+
+
+    // BORDE URBANO *************************************************************************************
+    map.addSource('border-urbano-pdu-2013-prov-cusco-source', {
+      type: 'vector',
+      url: 'mapbox://zhyper.dsuszr7h'
+    });
+
+    map.addLayer({
+      "id": "border-urbano-pdu-2013-prov-cusco-layer",
+      "minzoom": 11,
+      "paint": {
+        //"fill-color": "hsla(0, 92%, 39%, 0.75)", 
+        'line-color': "hsl(0, 0%, 0%)",
+        'line-width': 3.0,
+        //'line-dasharray': [1, 0.5]
+        
+      },
+      "type": "line",
+      'source': 'border-urbano-pdu-2013-prov-cusco-source',
+      'source-layer': 'borde_urbano__prop_pdu-1ow35f',
+
+      "layout": {
+        "visibility": "visible"
+      }
+    });
+
+
+  
+  // add sky styling with `setFog` that will show when the map is highly pitched
+  map.setFog({
+  'horizon-blend': 0.3,
+  'color': '#f8f0e3',
+  'high-color': '#add8e6',
+  'space-color': '#d8f2ff',
+  'star-intensity': 0.0
+  });
+  });
+
+  map.on('click', (e) => {
+    // Set `bbox` as 5px reactangle area around clicked point.
+    const bbox = [
+    [e.point.x - 5, e.point.y - 5],
+    [e.point.x + 5, e.point.y + 5]
+    ];
+    // Find features intersecting the bounding box.
+    const selectedFeatures = map.queryRenderedFeatures(bbox, {
+    layers: ['zonas41-layer']
+    });
+    const zonas = selectedFeatures.map(
+    (feature) => feature.properties.codigo
+    );
+    // Set a filter matching selected features by FIPS codes
+    // to activate the 'counties-highlighted' layer.
+    map.setFilter('zonas41-layer-highlighted', ['in', 'codigo', ...zonas]);
+    });
+
+  map.addControl(new mapboxgl.NavigationControl());
+</script>
+
+<script>
+  function myMoreLess() {
+    var dots = document.getElementById("dots");
+    var moreText = document.getElementById("more");
+    var btnText = document.getElementById("myBtn");
+  
+    if (dots.style.display === "none") {
+      dots.style.display = "inline";
+      btnText.innerHTML = "Leer más"; 
+      moreText.style.display = "none";
+    } else {
+      dots.style.display = "none";
+      btnText.innerHTML = "Leer menos"; 
+      moreText.style.display = "inline";
+    }
+  }
+  </script>
+
+
+  <script>
+    //OPENLAYERS
+
+    const style = new ol.style.Style({
+      fill: new ol.style.Fill({
+        color: 'rgba(255,0,0,0.2)',
+      }),
+      stroke: new ol.style.Stroke({
+        color: 'rgba(255,0,0,1.0)',
+      })
+    });
+
+    
+    
+    
+    var map_ol = new ol.Map({ 
+      layers: [ 
+        
+        
+        new ol.layer.Tile({ 
+          source: new ol.source.OSM() 
+        }), 
+        ], 
+        target: 'map-ol', 
+        view: new ol.View({ 
+          //projection: 'EPSG:4326',
+          center: ol.proj.fromLonLat([-71.9774868, -13.5169427]),
+          zoom: 12 
+        }) 
+      });
+      
+      const vectorLayer = new ol.layer.Vector({
+        
+        background: '#1a2b39',
+        source: new ol.source.Vector({
+          //url: 'https://openlayers.org/data/vector/ecoregions.json',
+          url: 'http://sgot.cusco.gob.pe/geoserver/sgotp-41zre/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=sgotp-41zre%3Agis_base_zonas_zre_v2_latlng&maxFeatures=50&outputFormat=application%2Fjson',
+          format: new ol.format.GeoJSON(),
+        }),
+        style: function (feature) {
+          const color = feature.get('COLOR') || 'rgba(255,0,0,0.5)';
+          const color_stroke = feature.get('COLOR') || 'rgba(10,10,10,0.8)';
+          style.getFill().setColor(color);
+          style.getStroke().setColor(color_stroke);
+          return style;
+        },
+        
+      });
+
+      map_ol.addLayer(vectorLayer);
+      let select = null; // ref to currently selected interaction
+
+      const selected = new ol.style.Style({
+        fill: new ol.style.Fill({
+          color: 'rgba(255,0,0,0.2)',
+        }),
+        stroke: new ol.style.Stroke({
+          // red
+          color: 'rgba(255, 0, 0, 0.7)',
+          width: 3,
+        }),
+      });
+
+      function selectStyle(feature) {
+        const color = feature.get('COLOR') || '#eeeeee';
+        selected.getFill().setColor(color);
+        return selected;
+      }
+
+      // select interaction working on "singleclick"
+      const selectSingleClick = new ol.interaction.Select({style: selectStyle});
+
+      // select interaction working on "click"
+      const selectClick = new ol.interaction.Select({
+        condition: ol.events.condition.click,
+        style: selectStyle,
+      });
+
+      // select interaction working on "pointermove"
+      const selectPointerMove = new ol.interaction.Select({
+        condition: ol.events.condition.pointerMove,
+        style: selectStyle,
+      });
+
+      const selectAltClick = new ol.interaction.Select({
+        style: selectStyle,
+        condition: function (mapBrowserEvent) {
+          return ol.events.condition.click(mapBrowserEvent) && ol.events.condition.altKeyOnly(mapBrowserEvent);
+        },
+      });
+
+      const selectElement = document.getElementById('type');
+
+      const changeInteraction = function () {
+        if (select !== null) {
+          map_ol.removeInteraction(select);
+        }
+        const value = selectElement.value;
+        if (value == 'singleclick') {
+          select = selectSingleClick;
+        } else if (value == 'click') {
+          select = selectClick;
+        } else if (value == 'pointermove') {
+          select = selectPointerMove;
+        } else if (value == 'altclick') {
+          select = selectAltClick;
+        } else {
+          select = null;
+        }
+        if (select !== null) {
+          map_ol.addInteraction(select);
+          select.on('select', function (e) {
+            document.getElementById('status').innerHTML =
+              '&nbsp;' +
+              e.target.getFeatures().getLength() +
+              ' selected features (last operation selected ' +
+              e.selected.length +
+              ' and deselected ' +
+              e.deselected.length +
+              ' features)';
+          });
+        }
+      };
+
+      /**
+      * onchange callback on the select element.
+      */
+      selectElement.onchange = changeInteraction;
+      changeInteraction();
+  </script>
+
 
 {% endblock  %}

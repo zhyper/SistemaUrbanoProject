@@ -1,0 +1,189 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block title %}{{title}}{% endblock  %}
+
+{% block style_header %}
+
+ <style>
+    
+    .x-scroll{
+        width:100%;
+        padding: 5px 10px;
+        border:1px solid #e3e3e3;
+        overflow-x: scroll;
+        white-space: nowrap;
+        border-radius: 5px;
+        font-size: 11px;
+        color: #9f9f9f;
+      }
+
+      
+
+ </style>
+ <style>
+    #example_button_A img {
+        width: 15px;
+    }
+    .link-container{
+        display: flex;
+    }
+ </style>
+
+ <link rel="stylesheet" href="{% static '/css/tooltipster.css' %}">
+
+{% endblock %}
+
+
+{% block navbar %}
+    {% include 'includes/navbar2.html' %}
+{% endblock  %}
+
+{% block content %}
+
+<section id="home-41zre" class="features home-41zre" style="background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' {% static "/images/misc/zre41-background.jpg" %} ') center center ">
+
+    
+    
+</section>
+
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-12">
+            <h2>39 ZRE en <strong>Areas de Peligro Muy Alto</strong></h2>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12 col-sm-12">
+            <h4><i class="ri-database-2-line"></i>&nbsp;&nbsp;GEODATA - <strong>Base de Datos de Caracterización</strong></h4>
+            <ul class="list-group mt-5">
+
+                {% for item in geodata_items %}
+                    
+                    <li class="list-group-item ">
+
+                        <a href="#" class="list-group-item-action" aria-current="true">
+                            <div class="d-flex w-100 justify-content-between">
+                              <h5 class="mb-1">{{item.name}}</h5>
+                              <small>Actualizado a: </small>
+                            </div>
+                            <p class="mb-1">Geometría: {{item.geometry_type}}</p>
+                            
+                        </a>
+                        <p>
+                            <div class="link-container">
+                                <button class="btn btn-sm m-2">WMS</button>
+                                <div class="x-scroll" id="{{item.codigo}}1">{{item.wms_link}} </div>
+                                <button id="example_button_A" class="btn btn-warning btn-sm example_button m-2" data-clipboard-target="#{{item.codigo}}1" data-copy="Copiar al portapapeles" data-copied="Copiado!" data-copyerror="Error, please copy manually">
+                                    <img src="https://zenorocha.github.io/clipboard.js/assets/images/clippy.svg" alt="Copiar al portapapeles">
+                                </button>
+                            </div>
+                            <br>
+                            <div class="link-container">
+                                <button class="btn btn-sm m-2">SHP</button>
+                                <div class="x-scroll" id="{{item.codigo}}2">{{item.shp_link}} </div>
+                                <button id="example_button_A" class="btn btn-warning btn-sm example_button m-2" data-clipboard-target="#{{item.codigo}}2" data-copy="Copiar al portapapeles" data-copied="Copiado!" data-copyerror="Error, please copy manually">
+                                    <img src="https://zenorocha.github.io/clipboard.js/assets/images/clippy.svg" alt="Copiar al portapapeles">
+                                </button>
+
+                            </div>
+
+
+                        </p>
+                    </li>                
+                {% endfor %}
+                
+              </ul>
+
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12 col-sm-12">
+            <h3><i class="ri-database-2-fill"></i>&nbsp;&nbsp;GEODATA - <strong>Base de Datos de Propuesta</strong></h3>
+            <ul class="list-group mt-5">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+                <li class="list-group-item">A fourth item</li>
+                <li class="list-group-item">And a fifth one</li>
+              </ul>
+
+        </div>
+    </div>
+
+
+    
+
+</div>
+
+
+{% endblock  %}
+
+{% block javascript_extra_footer %}
+
+    <script src="{% static '/js/tooltipster.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.4/clipboard.min.js"></script>
+
+
+    <script>
+        //intentar con jquery !!
+
+
+        
+        function myFunction0(text_id) {
+            /* Get the text field */
+            var copyText = document.getElementById(text_id);
+          
+            /* Select the text field */
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+          
+            /* Copy the text inside the text field */
+            navigator.clipboard.writeText(copyText.value);
+            
+            /* Alert the copied text */
+            alert("Copied the text: " + copyText.value);
+          }
+    </script>
+
+
+      <script>
+        $('.example_button').each(function(i, el){
+
+            var $el = $(el),
+                // note: passing el seems buggy
+                clipboard = new Clipboard(el),
+                instance = $el
+                    .tooltipster({
+                        content: $el.attr('data-copy'),
+                        trigger: 'custom',
+                        triggerClose: {
+                            mouseleave: true,
+                            touchleave: true
+                        },
+                        triggerOpen: {
+                            mouseenter: true,
+                            touchstart: true
+                        }
+                    })
+                    .tooltipster('instance');
+        
+            clipboard
+                .on('success', function(e) {
+                    instance
+                        .content($el.attr('data-copied'))
+                        .one('after', function(){
+                            instance.content($el.attr('data-copy'));
+                        });
+                })
+                .on('error', function(e) {
+                    instance
+                        .content($el.attr('data-copyerror'))
+                        .one('after', function(){
+                            instance.content($el.attr('data-copy'));
+                        });
+                });
+        });
+      </script>
+
+
+{% endblock %}
