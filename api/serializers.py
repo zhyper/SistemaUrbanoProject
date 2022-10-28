@@ -1,7 +1,9 @@
 
+from dataclasses import fields
+from pyexpat import model
 from rest_framework import serializers
 from planes.models import ParametroUrbanoPDU
-from zonas.models import Componente, Plan, PlanEtapa, PlanMapa, Proyecto, TZona
+from zonas.models import Componente, GisLoteCentroidePoints, Plan, PlanEtapa, PlanMapa, Proyecto, TZona
 from zonas.models import ZonaPoblacion
 
 class PlanSerializer (serializers.ModelSerializer):
@@ -86,3 +88,10 @@ class PoblacionZonaSerializer (serializers.ModelSerializer):
         model = ZonaPoblacion
         # fields = '__all__'
         fields = ('ge_0_5','ge_6_12','ge_13_18','ge_19_30','ge_31_54','ge_55_65','ge_66_mas')
+
+
+""" Lotes API """
+class GisLoteCentroidePointsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GisLoteCentroidePoints
+        fields = ('lat','lng','poblacion')

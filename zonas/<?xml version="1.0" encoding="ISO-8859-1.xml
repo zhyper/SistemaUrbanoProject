@@ -1,0 +1,2148 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StyledLayerDescriptor version="1.0.0"
+                       xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd"
+                       xmlns="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc"
+                       xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <NamedLayer>
+    <Name>Propuesta de ZONA 41ZRE</Name>
+    <UserStyle>
+      <Title>A dark orange polygon style</Title>
+      <FeatureTypeStyle>
+
+
+        <Rule>
+          <Title>AP-6</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>AP-6</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#829948</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>AV (PDU)</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>AV (PDU)</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#00b300</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>AV</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>AV</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#00b300</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">99</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>AV-MODIF</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>AV-MODIF</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#00b300</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">99</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>CV</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>CV</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#F06666</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        
+
+
+        <Rule>
+          <Title>CE</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>CE</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#FA2E2E</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>C-3</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>C-3</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ff3333</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>C-3 (PDU)</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>C-3 (PDU)</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ff3333</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>C-5</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>C-5</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ff3333</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+
+        <Rule>
+          <Title>CP-3</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>CP-3</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ff3333</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>ZRP</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRP</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#8CCC59</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>ZRP-1</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRP-1</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#00b300</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>ZRP-2</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRP-2</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#00b300</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+
+        </Rule>
+
+        <Rule>
+          <Title>ZRP-3</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRP-3</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#00b300</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+
+        </Rule>
+
+
+        <Rule>
+          <Title>ZRP-A</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRP-A</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#00b300</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+
+        </Rule>
+
+
+        <Rule>
+          <Title>ZRP-B</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRP-B</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#00b300</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+
+        </Rule>
+
+        <Rule>
+          <Title>I-2</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>I-2</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffd9b3</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+
+        <Rule>
+          <Title>H1</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>H1</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#99ccff</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+
+
+        <Rule>
+          <Title>I1-R4</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>I1-R4</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#FAFA8A</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+
+        </Rule>
+
+        <Rule>
+          <Title>I1-RP4</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>I1-RP4</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffd9b3</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+
+        </Rule>
+
+        <Rule>
+          <Title>CDM3-RE</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>CDM3-RE</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#f4cccc</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+
+        </Rule>
+
+        <Rule>
+          <Title>CDM4-RE</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>CDM4-RE</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ea9999</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+
+        <Rule>
+          <Title>E</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>E</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#9fc5e8</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>E1</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>E1</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#9fc5e8</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>R-3 (*)</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>R-3 (*)</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#E6E600</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>RP-2</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RP-2</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffd86e</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+
+
+        </Rule>
+
+
+        <Rule>
+          <Title>RP-3 (PDU)</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RP-3 (PDU)</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ccc</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+
+        </Rule>
+
+        <Rule>
+          <Title>RP-3</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RP-3</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffcf4d</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>RP-4</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RP-4</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffe599</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>R-3 (PDU)</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>R-3 (PDU)</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffe599</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>R-4 (PDU)</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>R-4 (PDU)</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ccc</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>RDA</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDA</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#FBDB83</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>RDB</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDB</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#FFFFAB</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>RDB2</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDB2</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#FAD794</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>RDB2-RE1</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDB2-RE1</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffcf4d</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>RDB2-RE2</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDB2-RE2</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffcf4d</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>RDB2-A-RE</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDB2-A-RE</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffcf4d</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+
+
+
+        <Rule>
+          <Title>RDB2-B-RE</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDB2-B-RE</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffcf4d</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>RDB2-C-RE</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDB2-C-RE</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffcf4d</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>RDB2-D-RE</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDB2-D-RE</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffcf4d</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+
+        <Rule>
+          <Title>RDM</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDM</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#FFFF66</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+
+        <Rule>
+          <Title>RDM3</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDM3</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#E6E69E</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>RDM3-PDU</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDM3-PDU</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffcf4d</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+
+        <Rule>
+          <Title>RDM3-A</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDM3-A</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffcf4d</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>RDM3-B</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDM3-B</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffcf4d</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>RDM3-A-RE</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDM3-A-RE</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffcf4d</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>RDM3-B-RE</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDM3-B-RE</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffc933</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>RDM3-RE</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDM3-RE</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#F2F290</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+
+        <Rule>
+          <Title>RDM4-RE</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDM4-RE</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffcf4d</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>RDM4</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDM4</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffcf4d</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+
+
+        <Rule>
+          <Title>RDB2-RE</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDB2-RE</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#fce728
+              </CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+
+        </Rule>
+
+        <Rule>
+          <Title>RDB2-A</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDB2-A</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffe599
+              </CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+
+        </Rule>
+
+        <Rule>
+          <Title>RDB2-B</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDB2-B</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffd966
+              </CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+
+        </Rule>
+
+
+        <Rule>
+          <Title>RDB2-C-RE</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDB2-C-RE</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#fce728
+              </CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>RDB-3</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RDB-3</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#fce728
+              </CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+
+
+        
+
+        <Rule>
+          <Title>RP-2 (PDU)</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RP-2 (PDU)</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ccc</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>RL-PCH1</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>RL-PCH1</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffcc66</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>ZRE SA ARAWAY</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRE SA ARAWAY</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#f1c8f2</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>
+
+         <Rule>
+          <Title>OF</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>OF</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#999999</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>OF-1</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>OF-1</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#999999</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>OF-2</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>OF-2</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#999999</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>OF-3</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>OF-3</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#999999</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>OF-4</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>OF-4</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#999999</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>OF-5</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>OF-5</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#999999</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>OU</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>OU</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#b3b3b3</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>OU-VIVIENDA SOCIAL</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>OU-VIVIENDA SOCIAL</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#b3b3b3</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        
+
+        <Rule>
+          <Title>OU-SEGURIDAD</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>OU-SEGURIDAD</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#b3b3b3</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+
+        <Rule>
+          <Title>OU-SALON COMUNAL</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>OU-SALON COMUNAL</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#b3b3b3</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>OU-RESERVORIO</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>OU-RESERVORIO</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#b3b3b3</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>OU-COMISARIA</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>OU-COMISARIA</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#b3b3b3</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+
+        <Rule>
+          <Title>OU-CENTRO CULTURAL</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>OU-CENTRO CULTURAL</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#b3b3b3</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+
+
+        <Rule>
+          <Title>OU-ADMINISTRATIVO</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>OU-ADMINISTRATIVO</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#b3b3b3</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+
+        <Rule>
+          <Title>OU(PDU)</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>OU(PDU)</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#b3b3b3</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <Rule>
+          <Title>ZPA</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZPA</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#cccccc</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>
+        
+        <Rule>
+          <Title>ZPMA</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZPMA</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#BCBCBC</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>
+
+
+
+        <Rule>
+            <Title>ZPCE</Title>
+            <ogc:Filter>
+                <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>zona</ogc:PropertyName>
+                <ogc:Literal>ZPCE</ogc:Literal>
+                </ogc:PropertyIsEqualTo>
+            </ogc:Filter>
+            <PolygonSymbolizer>
+                <Stroke>
+                    <CssParameter name="stroke">#38761d</CssParameter>
+                    <CssParameter name="stroke-width">1.0</CssParameter>
+                    
+                </Stroke>
+                <Fill>
+                    <CssParameter name="fill">#40FF40</CssParameter>
+                    <CssParameter name="fill-opacity">0.5</CssParameter>
+
+                    <!--<GraphicFill>
+                        <Graphic>
+                            <Mark>
+                                <WellKnownName>shape://dot</WellKnownName>
+                                <Stroke>
+                                <CssParameter name="stroke">#38761d</CssParameter>
+                                <CssParameter name="stroke-width">2.5</CssParameter>
+                                </Stroke>
+                            </Mark>
+                            <Size>5</Size>
+                        </Graphic>
+                    </GraphicFill>-->
+                </Fill>
+            </PolygonSymbolizer>
+            <PolygonSymbolizer>
+                <Fill>
+                    
+                    <CssParameter name="fill-opacity">0.5</CssParameter>
+
+                    <GraphicFill>
+                        <Graphic>
+                            <Mark>
+                                <WellKnownName>shape://dot</WellKnownName>
+                                <Stroke>
+                                <CssParameter name="stroke">#00ff41</CssParameter>
+                                <CssParameter name="stroke-width">2.5</CssParameter>
+                                </Stroke>
+                            </Mark>
+                            <Size>5</Size>
+                        </Graphic>
+                    </GraphicFill>
+                </Fill>
+            </PolygonSymbolizer>
+
+        </Rule>
+
+        <!--VT-->
+        
+        <Rule>
+            <Title>VT</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>VT</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#996633</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+              <CssParameter name="fill-opacity">0.8</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>        
+
+        <!--ZRP-LP-->
+        
+        <Rule>
+            <Title>ZRP-LOZA POLIDEPORTIVA</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRP-LOZA POLIDEPORTIVA</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#73e600</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+
+        <!--ZRP-LP-->
+        
+        <Rule>
+            <Title>ZRP-CAMPO DEPORTIVO</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRP-CAMPO DEPORTIVO</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#73e600</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>
+
+        <!--ZRP-PLAZA BARRIAL-->
+        
+        <Rule>
+            <Title>ZRP-PLAZA BARRIAL</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRP-PLAZA BARRIAL</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#73e600</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>
+
+        <!--ZRP-PARQUE INFANTIL-->
+        
+        <Rule>
+            <Title>ZRP-PARQUE INFANTIL</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRP-PARQUE INFANTIL</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#73e600</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>
+
+        <!--ZRP-PARQUE ECOLOGICO-->
+        
+        <Rule>
+            <Title>ZRP-PARQUE ECOLOGICO</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRP-PARQUE ECOLOGICO</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#73e600</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>
+
+        <!--ZRP-PARQUE BOTANICO-->
+        
+        <Rule>
+            <Title>ZRP-PARQUE BOTANICO</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRP-PARQUE BOTANICO</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#73e600</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>
+
+        <!--ZRP-PARQUE BARRIAL-->
+        
+        <Rule>
+            <Title>ZRP-PARQUE BARRIAL</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRP-PARQUE BARRIAL</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#73e600</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>
+
+        <!--ZRP-MIRADOR-->
+        
+        <Rule>
+            <Title>ZRP-MIRADOR</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRP-MIRADOR</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#73e600</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>
+
+        <!--ZRP-ALAMEDA-->
+        
+        <Rule>
+            <Title>ZRP-ALAMEDA</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRP-ALAMEDA</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#73e600</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>
+
+        <!--ZRP-A-->
+        
+        <Rule>
+            <Title>ZRP-A</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRP-A</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#73e600</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>
+
+        <!--ZRP-B-->
+        
+        <Rule>
+            <Title>ZRP-B</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRP-B</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#73e600</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>
+
+        <!--ZRP-C-->
+        
+        <Rule>
+            <Title>ZRP-C</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRP-C</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#73e600</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>
+
+
+        <!--ZRP-D-->
+        
+        <Rule>
+            <Title>ZRP-D</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZRP-D</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#73e600</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>
+
+        <!--ZDM4-->
+        
+        <Rule>
+            <Title>ZDM4</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZDM4</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffba00</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>
+
+        <!--ZDM3-->
+
+        <Rule>
+        <Title>ZDM3</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZDM3</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ffdf00</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>
+
+        <!--ZDM2-RE-->
+
+        <Rule>
+        <Title>ZDM2-RE</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZDM2-RE</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#e4ef89</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>
+
+        <!--ZDB2-RE-->
+
+        <Rule>
+        <Title>ZDB2-RE</Title>
+          <ogc:Filter>
+            <ogc:PropertyIsEqualTo>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+              <ogc:Literal>ZDB2-RE</ogc:Literal>
+            </ogc:PropertyIsEqualTo>
+          </ogc:Filter>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#eeefa1</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="z-index">0</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+
+        </Rule>
+        
+        <!--ZP-RE-->
+        <Rule>
+            <Title>ZP-RE</Title>
+            <ogc:Filter>
+                <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>zona</ogc:PropertyName>
+                <ogc:Literal>ZP-RE</ogc:Literal>
+                </ogc:PropertyIsEqualTo>
+            </ogc:Filter>
+            <PolygonSymbolizer>
+                <Stroke>
+                    <CssParameter name="stroke">#000000</CssParameter>
+                    <CssParameter name="stroke-width">0.5</CssParameter>
+                    
+                </Stroke>
+                <Fill>
+                    <CssParameter name="fill">#339966</CssParameter>
+                    <CssParameter name="fill-opacity">0.5</CssParameter>
+
+                    <!--<GraphicFill>
+                        <Graphic>
+                            <Mark>
+                                <WellKnownName>shape://dot</WellKnownName>
+                                <Stroke>
+                                <CssParameter name="stroke">#38761d</CssParameter>
+                                <CssParameter name="stroke-width">2.5</CssParameter>
+                                </Stroke>
+                            </Mark>
+                            <Size>5</Size>
+                        </Graphic>
+                    </GraphicFill>-->
+                </Fill>
+            </PolygonSymbolizer>
+            <PolygonSymbolizer>
+                <Fill>
+                    
+                    <CssParameter name="fill-opacity">0.8</CssParameter>
+
+                    <GraphicFill>
+                        <Graphic>
+                            <Mark>
+                                <WellKnownName>shape://dot</WellKnownName>
+                                <Stroke>
+                                <CssParameter name="stroke">#fb94b2</CssParameter>
+                                <CssParameter name="stroke-width">2.5</CssParameter>
+                                </Stroke>
+                            </Mark>
+                            <Size>5</Size>
+                        </Graphic>
+                    </GraphicFill>
+                </Fill>
+            </PolygonSymbolizer>
+
+        </Rule>
+        
+
+       
+
+        <Rule>
+          <!--<MinScaleDenominator>1000</MinScaleDenominator>-->
+          <MaxScaleDenominator>8500</MaxScaleDenominator>
+          <TextSymbolizer>
+            <Label>
+              <ogc:PropertyName>zona</ogc:PropertyName>
+            </Label>
+            <Font>
+              <CssParameter name="font-family">DejaVu Sans Condensed Bold</CssParameter>
+              <CssParameter name="font-size">10</CssParameter>
+              <CssParameter name="font-style">normal</CssParameter>
+              <CssParameter name="font-weight">bold</CssParameter>
+            </Font>
+            <Halo>
+              <Radius>2</Radius>
+              <Fill>
+                <CssParameter name="fill">#FFFFFF</CssParameter>
+              </Fill>
+            </Halo>
+            <LabelPlacement>
+              <PointPlacement>
+                <AnchorPoint>
+                  <AnchorPointX>0.5</AnchorPointX>
+                  <AnchorPointY>0.5</AnchorPointY>
+                </AnchorPoint>
+              </PointPlacement>
+            </LabelPlacement>
+            <Fill>
+              <CssParameter name="fill">#000000</CssParameter>
+            </Fill>
+
+          </TextSymbolizer>
+        </Rule>
+
+
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+</StyledLayerDescriptor>

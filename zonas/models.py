@@ -1,10 +1,12 @@
 import datetime
-from tabnanny import verbose
-from wsgiref.validate import validator
+# from tabnanny import verbose
+# from wsgiref.validate import validator
 from django.utils import timezone
 #from django.db import models
-from django.contrib.gis.db import models
+from django.db import models
+from django.contrib.gis.db import models as models_gis
 from world.models import TZona
+
 #from tinymce.models import HTMLField
 
 # Create your models here.
@@ -400,11 +402,14 @@ class Editors(models.Model):
 """GIS"""        
 
 class GisBaseZonasZreV2(models.Model):
-    geom = models.MultiPolygonField(srid=32719, dim=3, blank=True, null=True)
+    geom = models_gis.MultiPolygonField()
     codigo_zre = models.CharField(max_length=50, blank=True, null=True)
     shape_leng = models.FloatField(blank=True, null=True)
     shape_area = models.FloatField(blank=True, null=True)
     tipo = models.CharField(max_length=200, blank=True, null=True)
+
+    def __str__(self):
+        return self.codigo_zre
 
     class Meta:
         managed = False
@@ -412,7 +417,7 @@ class GisBaseZonasZreV2(models.Model):
 
 
 class GisBaseZonasZreVertices(models.Model):
-    geom = models.PointField(srid=32719, dim=3, blank=True, null=True)
+    geom = models_gis.PointField(srid=32719, dim=3, blank=True, null=True)
     etiqueta = models.CharField(max_length=5, blank=True, null=True)
     codigo_zre = models.CharField(max_length=15, blank=True, null=True)
     utm_este = models.FloatField(blank=True, null=True)
@@ -430,7 +435,7 @@ class GisBaseZonasZreVertices(models.Model):
 
 
 class GisBaseZonasAmbitosVertices(models.Model):
-    geom = models.PointField(srid=32719, dim=3, blank=True, null=True)
+    geom = models_gis.PointField()
     etiqueta = models.CharField(max_length=5, blank=True, null=True)
     codigo_zre = models.CharField(max_length=15, blank=True, null=True)
     utm_este = models.FloatField(blank=True, null=True)
@@ -518,3 +523,12 @@ class GeodataItem(models.Model):
     
     
 
+class GisLoteCentroidePoints(models.Model):
+    codigo_zre = models.CharField(max_length=20, blank=True, null=True),
+    lng = models.FloatField(blank=True, null=True)
+    lat = models.FloatField(blank=True, null=True)
+    poblacion = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = u'\"gdb_apma_41zre\".\"gis_apma_carac_fc_lotes_points_2022"'   

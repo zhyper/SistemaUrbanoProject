@@ -4,6 +4,8 @@ from django.contrib.gis import admin as admin_gis
 from .models import Editors, Plan,PlanMapa, ZonaCaracterizacionLegal, ZonaCaracterizacionSocioeconomica,  ZonaConsideracionesGenerales, ZonaDelimitacion, ZonaDensidadPoblacionalTabla, ZonaJustificacion, ZonaMetodologia, ZonaNivelInstruccionTabla, ZonaObjetivos, ZonaPlaneamiento, ZonaPoblacion, ZonaPoblacionTabla, ZonaPresentacion, Zony2, GisBaseZonasZreV2,GeodataZonasPorPeligroMuyAltoItem
 from .models import GeodataItem
 
+from leaflet.admin import LeafletGeoAdmin
+
 from django_summernote.admin import SummernoteModelAdmin
 
 # Register your models here.
@@ -101,7 +103,7 @@ admin.site.register(ZonaCaracterizacionSocioeconomica, ZonaCaracterizacionSocioe
 admin.site.register(ZonaCaracterizacionLegal, ZonaCaracterizacionLegalAdmin)
 
 
-admin.site.register(GisBaseZonasZreV2, admin_gis.GeoModelAdmin)
+
 
 class GeodataItemAdmin(admin.ModelAdmin):
     list_display = ('id','codigo','name','tipo_zona','componente','etapa')
@@ -110,3 +112,8 @@ class GeodataItemAdmin(admin.ModelAdmin):
 
 admin.site.register(GeodataItem, GeodataItemAdmin)
 
+#GEODJANGO-------------------------------------------------------------------------------------------
+class GisBaseZonasZreV2Admin(LeafletGeoAdmin):
+    list_display = ('codigo_zre','tipo',)
+
+admin.site.register(GisBaseZonasZreV2,GisBaseZonasZreV2Admin)

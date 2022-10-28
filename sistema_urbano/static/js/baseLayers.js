@@ -220,6 +220,7 @@ var baseLayerPDU2013 = new ol.layer.Group({
         //transition: 0,
       }),
     }),
+
     //BORDE - URBANO - PDU
     new ol.layer.Image({
         title: 'Borde Urbano 2013',
@@ -238,6 +239,25 @@ var baseLayerPDU2013 = new ol.layer.Group({
           //transition: 0,
         }),
       }),
+
+    //BORDE - AMBITO PI - MOLLERAY
+    new ol.layer.Image({
+      title: 'Ambito PI - Moleleray',
+      visible:true,
+      source: new ol.source.ImageWMS({
+        url: urlGeoserver,
+        //params: {'LAYERS': URL_WS_V2+'sectores','STYLES': 'cat_sectores_only_label_sld', 'TILED': true},
+        params: {
+          LAYERS: 'sgotp-41zre:gis_carac_base_pi_molleray_ambito',
+          TILED: true,
+          'STYLES': 'plan_pi_molleray_ambito',
+          //'cql_filter': "codigo_zre ='" + this.codigo+ "'"
+        },
+        serverType: 'geoserver',
+        // Countries have transparency, so do not fade tiles:
+        //transition: 0,
+      }),
+    }),
   ],
 });
 
@@ -1040,6 +1060,29 @@ var baseLayer41ZRECarac = new ol.layer.Group({
           }),
           new ol.layer.Image({
             properties: {
+              title: 'Zonif. 41ZRE Actualiz. PDU2013',
+            },
+            visible:false,
+            source: new ol.source.ImageWMS({
+              // url: urlGeoserver,
+              url: urlGeoserver,
+              //params: {'LAYERS': URL_WS_V2+'sectores','STYLES': 'cat_sectores_only_label_sld', 'TILED': true},
+              params: {
+                LAYERS: 'sgotp-41zre:gis_prop_fc_zonificacion_actuali_pdu2013',
+                TILED: true,
+                'STYLES': 'gis_prop_fc_zonificacion_style',
+                //'cql_filter': "codigo_zre ='" + this.codigo +"'",
+                // 'FORMAT_OPTIONS': 'antialias:none',
+                'FORMAT_OPTIONS': 'antialias:text',
+                //'cql_filter': "codigo_zre ='" + this.infoZona_autostart.codigo_zona +"'",
+              },
+              serverType: 'geoserver',
+              // Countries have transparency, so do not fade tiles:
+              //transition: 0,
+            }),
+          }),
+          new ol.layer.Image({
+            properties: {
               title: 'Trazo y Replanteo de Manzanas',
             },
             visible:false,
@@ -1506,7 +1549,7 @@ var baseLayer41ZRECarac = new ol.layer.Group({
               url: urlGeoserver,
               //params: {'LAYERS': URL_WS_V2+'sectores','STYLES': 'cat_sectores_only_label_sld', 'TILED': true},
               params: {
-                LAYERS: 'sgotp-41zre:gis_prop_grd_no_estructurales_polygon',
+                LAYERS: 'sgotp-41zre:gis_prop_grd_no_estruc_franja_proteccion',
                 TILED: true,
                 'STYLES': 'gis_prop_grd_no_estructurales_franja_proteccion_style',
                 //'cql_filter': "codigo_zre ='" + this.codigo+ "'"
@@ -1548,9 +1591,9 @@ var baseLayer41ZRECarac = new ol.layer.Group({
               url: urlGeoserver,
               //params: {'LAYERS': URL_WS_V2+'sectores','STYLES': 'cat_sectores_only_label_sld', 'TILED': true},
               params: {
-                LAYERS: 'sgotp-41zre:gis_prop_grd_no_estructurales_polygon',
+                LAYERS: 'sgotp-41zre:gis_prop_grd_no_estruc_franja_aislamiento',
                 TILED: true,
-                'STYLES': 'gis_prop_grd_no_estructurales_franja_aislamiento_style',
+                'STYLES': 'gis_prop_grd_no_estructurales_franja_aislamiento_2_style',
                 //'cql_filter': "codigo_zre ='" + this.codigo+ "'"
               },
               serverType: 'geoserver',

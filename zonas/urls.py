@@ -1,10 +1,11 @@
 from django.urls import path, include
 
-from .views import Home41ZRE, HomeZonaCaracterizacionGRDAnalisisVulnerabilidad, HomeZonaCaracterizacionGRDDeterminacionPeligro, HomeZonaCaracterizacionLegal, HomeZonaCaracterizacionSocioeconomica, HomeZonaDelimitacion, HomeZonaJustificacion, HomeZonaMapas, HomeZonaConsideraGenerales, HomeZonaMain, HomeZonaMetodogia, HomeZonaObjetivos, HomeZonaPlaneamiento
+from .views import Home41ZRE, HomeZonaCaracterizacionGRDAnalisisVulnerabilidad, HomeZonaCaracterizacionGRDDeterminacionPeligro, HomeZonaCaracterizacionLegal, HomeZonaCaracterizacionSocioeconomica, HomeZonaDelimitacion, HomeZonaJustificacion, HomeZonaMapas, HomeZonaConsideraGenerales, HomeZonaMain, HomeZonaMetodogia, HomeZonaObjetivos, HomeZonaPlaneamiento, ScrollyTellingMapbox
 from .views import HomeGeodataAreasPeligroMuyAlto, HomeGeodataAreasConservacionProteccionAmbiental
 from .views import ConsultaWebPlan, EditorChartView,EnviarEmail,my_view, ZonaByCodigoApiView
 from .views import stats, HomeZonaLocal
 
+#from django.views.generic import TemplateView
 
 
 
@@ -47,6 +48,8 @@ urlpatterns = [
 
     path('<str:codigozona>/mapas/', HomeZonaMapas, name='zona_by_codigo_by_etapa' ),
     path('<str:codigozona>/mapas/<str:etapaplan>', HomeZonaMapas, name='zona_by_codigo_by_etapa' ),
+
+    path('iframe/scrollytelling', ScrollyTellingMapbox.as_view(), name='scrollytelling'),
     
 
 

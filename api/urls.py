@@ -2,7 +2,7 @@ import django
 
 
 from django.urls import path, include
-from zonas.views import ParametroUrbanoByCodigoApiView, ParametrosUrbanosApiView, PlanApiView, PlanFullByCodigoZonaApiView, PoblacionZonaByCodigoZonaApiView,ZonasApiView,PlanFullApiView
+from zonas.views import GisLoteCentroidePointsApiView, ParametroUrbanoByCodigoApiView, ParametrosUrbanosApiView, PlanApiView, PlanFullByCodigoZonaApiView, PoblacionZonaByCodigoZonaApiView,ZonasApiView,PlanFullApiView
 
 
 urlpatterns = [
@@ -14,6 +14,7 @@ urlpatterns = [
     path('parametrospdu/', ParametrosUrbanosApiView.as_view(), name='parametros_pdu_list_api'),   
     path('parametrospdu/<str:codzona>/', ParametroUrbanoByCodigoApiView.as_view(), name='parametros_pdu_list_api'),  
     path('zonas/poblacion/<str:codzona>/', PoblacionZonaByCodigoZonaApiView.as_view(), name='poblacion_zonas_by_codigozona_api'),  
+    path('lotes/', GisLoteCentroidePointsApiView.as_view(), name='lotes_list_api'),  
 
 
 ]

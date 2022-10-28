@@ -244,35 +244,30 @@
     <br>
 
     <br>
+    
     <div class="container">
-
-        <!-- corousel-->
         <div class="owl-carousel owl-theme" id="carousel-zonas-all" data-aos="fade-up" data-aos-once="true">
             {% for zona  in zonas %}
                 <div class="item container-owl-item text-light"> 
                     <img src="{{WebsiteName.ip_production}}:90/zre41media/images/cards/{{zona.image}}" alt="">
-                    <!--<h5>{{item}}</h5>-->
+                    
                     <div class="container-body home-carousel">
                         <p class="container-body-title">{{zona.codigo_zona}}</p>
                         <p>{{zona.plan_nombre}}</p>
                         {% for plan in zona.planes.all %}
-                        
                             <p class="container-body-subtitle" data-bs-toggle="tooltip" data-bs-html="true" title="{{plan.nombre}}">{{plan.nombre|slice:30}} ...</p>
-                            
                         {% endfor %}
-
                         <p class="container-body-subtitle">distrito {{zona.distrito}}</p>
-                        
-                        {% comment %} <a href="{{WebsiteName.ip_production}}/41zre/41zre{{zona.codigo_zona}}" class="btn btn-outline-warning btn-block">ver más</a> {% endcomment %}
                         <a href="{{WebsiteName.ip_production}}/zonas/{{zona.codigo_zona}}" class="btn btn-outline-warning btn-block">ver más</a>
                     </div>
                 </div>
             {% endfor %}
-
         </div>
     </div>
+    
     <br>
     <br>
+
 
 
 

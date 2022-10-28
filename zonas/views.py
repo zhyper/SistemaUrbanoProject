@@ -1,6 +1,8 @@
 import json
+from multiprocessing import context
 
 from django.core.serializers import serialize
+from django.core import serializers
 
 from django.db.models import Count,Sum
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -28,8 +30,9 @@ from .models import GeodataZonasPorPeligroMuyAltoItem
 from .models import ViewGraph
 
 from world.models import TZona
+from zonas.models import GisLoteCentroidePoints
 from portal.models import Slide, SlideItem, WebsiteName
-from api.serializers import ParametroUrbanoSerializer, PlanSerializer, PoblacionZonaSerializer, ZonaSerializer, PlanFullSerializer
+from api.serializers import GisLoteCentroidePointsSerializer, ParametroUrbanoSerializer, PlanSerializer, PoblacionZonaSerializer, ZonaSerializer, PlanFullSerializer
 
 # Create your views here.
 
@@ -168,6 +171,13 @@ class ParametroUrbanoByCodigoApiView(APIView):
         serializer = ParametroUrbanoSerializer(parametros, many=False)
         return Response(serializer.data)
 
+class GisLoteCentroidePointsApiView(APIView):
+    def get(self, request):
+        lotes = GisLoteCentroidePoints.objects.all()
+        serializer = GisLoteCentroidePointsSerializer(lotes, many=True)
+        return Response(serializer.data)
+
+
 """NO API views"""
 
 def stats(request):
@@ -210,6 +220,8 @@ def HomeZonaMain(request,codigozona,etapaplan=None):
     zona = TZona.objects.get(codigo_zona=codigozona)
     #zona_presentacion = ZonaPresentacion.objects.get(codigo_zona=codigozona)
 
+    
+
     zona_gis = GisBaseZonasZreV2.objects.all().filter(codigo_zre=codigozona)
     zona_vertices_gis = GisBaseZonasZreVertices.objects.all().filter(codigo_zre=codigozona).order_by('etiqueta')
     zona_ambito_vertices_gis = GisBaseZonasAmbitosVertices.objects.all().filter(codigo_zre=codigozona).order_by('etiqueta')
@@ -231,6 +243,7 @@ def HomeZonaMain(request,codigozona,etapaplan=None):
     context = {
         "title": "Zona de Reglamentación Especial : "+zona.codigo_zona,
         "zona": zona,
+        
         "zona_gis": zona_gis,
         "zona_vertices_gis": zona_vertices_gis,
         "zona_ambito_vertices_gis": zona_ambito_vertices_gis,
@@ -372,8 +385,16 @@ def HomeZonaMapas(request,codigozona,etapaplan=None):
 
 
 def Home41ZRE(request):
+    zonas = TZona.objects.all().exclude(codigo_zona="CUSCO").order_by('codigo_zona')
+    zonas_apma = TZona.objects.all().filter(tipo_zre = 'apma').exclude(codigo_zona="CUSCO").order_by('codigo_zona')
+    zonas_acpa = TZona.objects.all().filter(tipo_zre = 'acpa').exclude(codigo_zona="CUSCO").order_by('codigo_zona')
+    
     context = {
-        "title": "Zona: CUSCO",
+        "title": "Zonas de Reglamentación Especial : CUSCO",
+        "zonas": zonas,
+        "zonas_apma": zonas_apma,
+        'zonas_acpa': zonas_acpa,
+    
     }
     return render(request,'zonas/home41ZRE.html', context)
 
@@ -532,3 +553,19 @@ def HomeGeodataAreasConservacionProteccionAmbiental(request):
 #           geometry_field='multipolygon',
 #           fields=('codigo_zre',))
 #         return Response(serializer)
+
+
+
+
+class ScrollyTellingMapbox(TemplateView):
+
+    template_name = 'zonas/iframes/scrollytelling.html'
+
+    
+    def get_context_data(selft, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'ScrollyTelling'
+        context['zonas'] = TZona.objects.all().exclude(codigo_zona='CUSCO').order_by('codigo_zona')
+        context['zonasjson'] = serializers.serialize("json",TZona.objects.all().exclude(codigo_zona='CUSCO').order_by('codigo_zona'))
+
+        return context

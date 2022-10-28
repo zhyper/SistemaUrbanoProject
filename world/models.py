@@ -2,6 +2,8 @@
 
 from django.contrib.gis.db import models
 
+
+
 # Create your models here.
 
 
@@ -92,6 +94,10 @@ class Ambitosutm(models.Model):
     def __str__(self):
         return str(self.admapkey)      
 
+TIPO_ZRE_CHOICES = [
+    ('apma','Areas de Peligro Muy Alto'),
+    ('acpa','Areas de Conservación y Protección Ambiental'),
+]
 
 class TZona(models.Model):
     #id = models.IntegerField(primary_key=True)
@@ -103,6 +109,10 @@ class TZona(models.Model):
     lng = models.DecimalField(decimal_places=10, max_digits=20, null=True)
     zoom = models.DecimalField(decimal_places=10, max_digits=20, null=True)
     observacion = models.TextField(null=True)
+    tipo_zre = models.CharField(max_length=15,null=True, choices=TIPO_ZRE_CHOICES)
+    pitch = models.DecimalField(decimal_places=2, max_digits=3, null=True)
+    bearing = models.DecimalField(decimal_places=2, max_digits=3, null=True)
+    duration = models.DecimalField(decimal_places=2, max_digits=6, null=True)
 
     class Meta:
         managed = True

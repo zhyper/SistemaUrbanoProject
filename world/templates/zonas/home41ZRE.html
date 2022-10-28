@@ -1,12 +1,21 @@
 {% extends 'base2.html' %}
+{% load sass_tags %}
 {% load static %}
 {% block title %}{{title}}{% endblock  %}
 
 
 {% block style_header %}
 
+  <link rel="stylesheet" href="{% static '/css/home-style.css' %}">
+
   <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css" rel="stylesheet">
   <link rel="stylesheet" href="https://openlayers.org/en/v6.5.0/css/ol.css" type="text/css"> 
+
+  <!-- LEAFLET-->
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+
+
+  {% comment %} <link href="{% sass_src 'scss/main.scss' %}" rel="stylesheet" type="text/css" /> {% endcomment %}
 
   <style>
     #more {display: none;}
@@ -15,14 +24,30 @@
   <style>
    
     #map-mapbox { 
-
       width: 100%; 
       height: 700px;
     }
-    #map-ol { 
+    #mapbox-apma { 
+      width: 100%; 
+      height: 400px;
+    }
+    #mapbox-acpa { 
+      width: 100%; 
+      height: 400px;
+    }
+    #map-ol-apma { 
 
       width: 100%; 
-      height: 700px;
+      height: 400px;
+    }
+    #map-ol-acpa { 
+
+      width: 100%; 
+      height: 400px;
+    }
+    #map-leaflet{
+      width: 100%; 
+      height: 400px;
     }
   </style>
   <!-- Cards ZONAS-->
@@ -211,6 +236,32 @@
     }
   </style>
   <link rel="stylesheet" href="{% static '/css/zona/card-customed.css' %}">
+  <style>
+
+    .zre-card-container {
+      --scrollbar-width: 8px;
+      overflow-y: scroll;
+      max-height: 400px;
+      padding: 15px;
+      scrollbar-width: thin; /* can also be normal, or none, to not render scrollbar */
+      scrollbar-color: rgba(155, 5, 5,0.6) transparent; /* foreground background */
+    }
+
+    /* Webkit / Blink */
+    .zre-card-container::-webkit-scrollbar {
+      width: var(--scrollbar-width);
+    }
+
+    .zre-card-container::-webkit-scrollbar-thumb {
+      background-color: rgba(155, 5, 5,0.6);
+      border-radius: 9999px; /* always round */
+    }
+
+    .zre-card-container::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+    
+  </style>
 
 {% endblock %}
 
@@ -221,6 +272,7 @@
 {% block content %}
 
 <section id="home-41zre" class="features home-41zre" style="background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' {% static "/images/misc/zre41-background.jpg" %} ') center center ">
+
 
     <div class="container mt-3" data-aos="fade-up">
         <div class="row">
@@ -285,10 +337,10 @@
           </div>
         </div>
       </div>
-    </section>
+</section>
 
     <!-- ======= Why Choose Us Section ======= -->
-    <section id="why-us m-0" class="why-us mb-5">
+<section id="why-us m-0" class="why-us mb-5">
       <div class="container-fluid m-0" data-aos="fade-up">
 
         <div class="section-header mt-3 mb-5">
@@ -359,10 +411,18 @@
         </div>
 
       </div>    
-    </section>
+</section>
+
 <div class="container-fluid">
-  <div class="row">
-    
+  <div class="container">
+
+    <div class="row">
+      <div class="col-12">
+        
+        {% include 'includes/carouselZonasAll.html' %}
+        
+      </div>
+    </div>
   </div>
 </div>    
     
@@ -371,13 +431,14 @@
 </section> {% endcomment %}
 
 
-  <div class="container-fluid mt-5 mb-5">
+<div class="container-fluid mt-5 mb-5">
     <div class="section-header">
 
       <h1 class="display-5 mx-auto"><strong>Ámbito</strong> de Estudio de las 41ZRE</h1>
     </div>
-  </div>
+</div>
 
+<!--
 
 <div class="container-fluid p-0">
 
@@ -385,10 +446,13 @@
 
 </div>
 
+-->
+
+<!--
 <div class="container-fluid p-0">
-  <div class="row">
-    <div class="col-12 col-sm-6 col-md-6">
-      <div id="map-ol"></div>
+  <div class="row g-0">
+    <div class="col-12 col-sm-9 col-md-9">
+      <div id="map-ol-apma"></div>
       <form>
         <label for="type">Action type &nbsp;</label>
         <select id="type">
@@ -402,44 +466,97 @@
       </form>
     </div>
   </div>
+  <div class="row g-0">
+    <div class="col-12 col-sm-9 col-md-9">
+      <div id="map-ol-acpa"></div>
+      <form>
+        <label for="type_acpa">Action type &nbsp;</label>
+        <select id="type_acpa">
+          <option value="click" selected>Click</option>
+          <option value="singleclick">Single-click</option>
+          <option value="pointermove">Hover</option>
+          <option value="altclick">Alt+Click</option>
+          <option value="none">None</option>
+        </select>
+        <span id="status_acpa">&nbsp;0 selected features</span>
+      </form>
+    </div>
+  </div>
+
 </div>
 
+-->
 
-  <div class="container-fluid mt-0 mb-0 pt-5 pb-5 bg-light">
+
+<div class="container-fluid mt-0 mb-0 pt-5 pb-5 bg-light">
     
     
-      <div class="section-header">
+  <div class="section-header">
 
-        {% comment %} <h1 class="display-5 mx-auto">Zonas de <strong>Reglamentación Especial</strong> </h1> {% endcomment %}
-        <br>
-            {% comment %} <h1 class="display-6">Clasificación </h1> {% endcomment %}
-              <article class="postcard dark red">
-                <a class="postcard__img_link" href="#">
-                  <img class="postcard__img" src="{{WebsiteName.ip_production}}:90/zre41media/slides/home_41zre_index/ZRECU03-situacion-actual-01.jpg" alt="Image Title" />
-                </a>
-                <div class="postcard__text">
-                  <h1 class="postcard__title red"><a href="#">39 ZRE por ocupación en <strong>Áreas de Peligro Muy Alto</strong></a></h1>
-                  <div class="postcard__subtitle small">
-                    <time datetime="2020-05-25 12:00:00">
-                      <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
-                    </time>
-                  </div>
-                  <div class="postcard__bar"></div>
-                  <div class="postcard__preview-txt">Se localizan mayoritariamente en las áreas denominadas "Paisajista en Laderas". <br> Comprenden 1’718,427.17 m2 de extensión, y en ellas se ubican 170 agrupaciones de vivienda, 43.95% de ellos informales</div>
-                  <ul class="postcard__tagbox">
-                    <li class="tag__item"><i class="ri-earthquake-line"></i>&nbsp; Peligro Geológico</li>
-                    <li class="tag__item"><i class="ri-map-line"></i> &nbsp; 39 Areas</li>
-                    <li class="tag__item play red">
-                      <a href="#"><i class="ri-eye-line"></i>&nbsp;ver más</a>
-                    </li>
-                  </ul>
-                </div>
-              </article> 
+    {% comment %} <h1 class="display-5 mx-auto">Zonas de <strong>Reglamentación Especial</strong> </h1> {% endcomment %}
+    <br>
+        {% comment %} <h1 class="display-6">Clasificación </h1> {% endcomment %}
+          <article class="postcard dark red">
+            <a class="postcard__img_link" href="#">
+              <img class="postcard__img" src="{{WebsiteName.ip_production}}:90/zre41media/slides/home_41zre_index/ZRECU03-situacion-actual-01.jpg" alt="Image Title" />
+            </a>
+            <div class="postcard__text">
+              <h1 class="postcard__title red"><a href="#">39 ZRE por ocupación en <strong>Áreas de Peligro Muy Alto</strong></a></h1>
+              <div class="postcard__subtitle small">
+                <time datetime="2020-05-25 12:00:00">
+                  <i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
+                </time>
+              </div>
+              <div class="postcard__bar"></div>
+              <div class="postcard__preview-txt">Se localizan mayoritariamente en las áreas denominadas "Paisajista en Laderas". <br> Comprenden 1’718,427.17 m2 de extensión, y en ellas se ubican 170 agrupaciones de vivienda, 43.95% de ellos informales</div>
+              <ul class="postcard__tagbox">
+                <li class="tag__item"><i class="ri-earthquake-line"></i>&nbsp; Peligro Geológico</li>
+                <li class="tag__item"><i class="ri-map-line"></i> &nbsp; 39 Areas</li>
+                <li class="tag__item play red">
+                  <a href="#"><i class="ri-eye-line"></i>&nbsp;ver más</a>
+                </li>
+              </ul>
+            </div>
+          </article> 
+  </div>
+
+  <div class="container-fluid">
+    <div class="row g-0">
+      <div class="col-12 col-sm-6 col-md-6">
+        <div id="mapbox-apma"></div>
       </div>
+      <div class="col-12 col-sm-6 col-md-6">
+        <div class="zre-card-container">
+          <div class="list-group">
+            {% for zona in zonas_apma %}
+                <a href="{{WebsiteName.ip_production}}/zonas/{{zona.codigo_zona}}" class="list-group-item list-group-item-action" aria-current="true">
+                  <div class="d-flex justify-content-start align-items-center">
+                    <img src="{{WebsiteName.ip_production}}:90/zre41media/images/cards/{{zona.image}}" class="rounded" height="100" alt="">
+                    <div class="d-flex flex-column p-2">
+                      <h5 class="mb-1">{{zona.codigo_zona}}</h5>
+                      {% for plan in zona.planes.all %}
+                        <small class="mb-1"><strong>nombre:&nbsp;</strong>{{plan.nombre}}</small> 
+                      {% endfor %}
+                      <small><strong>distrito:&nbsp;</strong>{{zona.distrito}}</small>
+                    </div>
+                  </div>
+                  
+                </a>
+            {% endfor %}
+          </div>
+            
+          
+        </div>
+          
+      </div>
+    </div>
+  </div>
+      
+      
     
 
 
-    <div class="container mt-0 mb-3">
+    <div class="container mt-0 py-5">
       <div class="row">
         <div class="col-6 col-sm-6 col-md-3">
           
@@ -560,10 +677,10 @@
           </div>
       </div>
     </div>
-  </div>
+</div>
 
 
-  <div class="container-fluid mt-0 mb-0 pt-5 pb-5 bg-light">
+<div class="container-fluid mt-0 mb-0 pt-5 pb-5 bg-light">
     
       <div class="section-header">
         <article class="postcard dark green">
@@ -590,14 +707,44 @@
         </article> 
       </div>
     
+</div>
+
+
+<div class="container-fluid">
+  <div class="row g-0">
+    <div class="col-12 col-sm-6 col-md-6">
+      <div id="mapbox-acpa"></div>
+    </div>
+    <div class="col-12 col-sm-6 col-md-6">
+      <div class="zre-card-container">
+        <div class="list-group">
+          {% for zona in zonas_acpa %}
+              <a href="{{WebsiteName.ip_production}}/zonas/{{zona.codigo_zona}}" class="list-group-item list-group-item-action" aria-current="true">
+                <div class="d-flex justify-content-start align-items-center">
+                  <img src="{{WebsiteName.ip_production}}:90/zre41media/images/cards/{{zona.image}}" class="rounded" height="100" alt="">
+                  <div class="d-flex flex-column p-2">
+                    <h5 class="mb-1">{{zona.codigo_zona}}</h5>
+                    {% for plan in zona.planes.all %}
+                      <small class="mb-1"><strong>nombre:&nbsp;</strong>{{plan.nombre}}</small> 
+                    {% endfor %}
+                    <small><strong>distrito:&nbsp;</strong>{{zona.distrito}}</small>
+                  </div>
+                </div>
+                
+              </a>
+          {% endfor %}
+        </div>
+          
+        
+      </div>
+        
+    </div>
   </div>
+</div>
 
+<div class="container-fluid bg-light py-5">
 
-
-
-<div class="container-fluid bg-light">
-
-  <div class="container">
+  <div class="container py-5">
     <div class="row">
       <div class="col-6 col-sm-6 col-md-3">
         <div class="profile-card-4 green-card text-center"><img src="{{WebsiteName.ip_production}}:90/zre41media/misc/images/plan-especifico.png" class="img-fluid" style="max-height: 200px;">
@@ -711,8 +858,27 @@
           
         </div>
     </div>
+    <!--<div class="row">
+      <div class="col-12">
+        <div id="map-leaflet"></div>
+        <form>
+          <label for="radius">radius size</label>
+          <input id="radius" type="range" min="1" max="50" step="1" value="5"/>
+          <label for="blur">blur size</label>
+          <input id="blur" type="range" min="1" max="50" step="1" value="15"/>
+        </form>
+      </div>
+    </div>-->
+
   </div>
 </div>
+
+<!--
+<div class="container-fluid">
+  <iframe id="encoder_iframe" height="400" width="100%" src="{% url 'scrollytelling' %}">
+  </iframe>
+</div>
+-->
 
 
 
@@ -723,14 +889,19 @@
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
 <script src="https://openlayers.org/en/v6.5.0/build/ol.js" type="text/javascript"></script>
 
+<!--LEAFLET-->
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<script src="{% static '/js/heatmap/heatmap.js' %}"></script>
+<script src="{% static '/js/heatmap/plugins/leaflet-heatmap.js' %}"></script>
+
 <script>
 	mapboxgl.accessToken = 'pk.eyJ1Ijoiemh5cGVyIiwiYSI6ImNpdGdiM3d1dDAwODQyeG8zZGVkYnc2b24ifQ.cwgujm_x_QPQ668K2hTQFA';
   const map = new mapboxgl.Map({
     container: 'map-mapbox',
     zoom: 12.5,
     center: [-71.93229, -13.53632],
-    pitch: 80,
-    bearing: 0,
+    pitch: 60,
+    bearing: 50,
     // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
     //style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y'
     style: 'mapbox://styles/zhyper/ckxf3to4l0vvz15qd9z7o9n6b',
@@ -738,17 +909,17 @@
   });
   
   map.on('load', () => {
-  map.addSource('mapbox-dem', {
-  'type': 'raster-dem',
-  'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
-  'tileSize': 512,
-  'maxzoom': 14
-  });
+    map.addSource('mapbox-dem', {
+    'type': 'raster-dem',
+    'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+    'tileSize': 512,
+    'maxzoom': 14
+    });
 
 
 
-  // add the DEM source as a terrain layer with exaggerated height
-  map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+    // add the DEM source as a terrain layer with exaggerated height
+    map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
 
     //ZREs: *******************************************************************************************
 
@@ -782,81 +953,81 @@
       }
     });
 
-    map.addLayer(
-      {
-      'id': 'zonas41-layer-highlighted',
-      'type': 'fill',
-      'source': 'zonas41-source',
-      'source-layer': '41ZRE-V1-9682nn',
-      'paint': {
-        'fill-outline-color': "#000",
-        
-        'fill-color': 'rgb(255,204,0)',
-        'fill-opacity': 0.5,
-      },
-      'filter': ['in', 'codigo', '']
-      },
-      //'settlement-label'
-      ); // Place polygon under these labels.
+      map.addLayer(
+        {
+        'id': 'zonas41-layer-highlighted',
+        'type': 'fill',
+        'source': 'zonas41-source',
+        'source-layer': '41ZRE-V1-9682nn',
+        'paint': {
+          'fill-outline-color': "#000",
+          
+          'fill-color': 'rgb(255,204,0)',
+          'fill-opacity': 0.5,
+        },
+        'filter': ['in', 'codigo', '']
+        },
+        //'settlement-label'
+        ); // Place polygon under these labels.
 
-    map.addLayer({
-      'id': 'zre-labels',
-      'type': 'symbol',
-      'source': 'zonas41-source',
-      'source-layer': '41ZRE-V1-9682nn',
-      'layout': {
-        'text-field': ['get', 'codigo'],
-        //'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
-        'text-radial-offset': 0.5,
-        'text-justify': 'auto',
+      map.addLayer({
+        'id': 'zre-labels',
+        'type': 'symbol',
+        'source': 'zonas41-source',
+        'source-layer': '41ZRE-V1-9682nn',
+        'layout': {
+          'text-field': ['get', 'codigo'],
+          //'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+          'text-radial-offset': 0.5,
+          'text-justify': 'auto',
 
-        //'icon-image': ['get', 'icon'],
-        'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
-        "text-size": 10
-      },
-      "paint": {
-        "text-color": "#202",
-        "text-halo-color": "#fff",
-        "text-halo-width": 2,
-      }
+          //'icon-image': ['get', 'icon'],
+          'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+          "text-size": 10
+        },
+        "paint": {
+          "text-color": "#202",
+          "text-halo-color": "#fff",
+          "text-halo-width": 2,
+        }
+      });
+
+
+      // BORDE URBANO *************************************************************************************
+      map.addSource('border-urbano-pdu-2013-prov-cusco-source', {
+        type: 'vector',
+        url: 'mapbox://zhyper.dsuszr7h'
+      });
+
+      map.addLayer({
+        "id": "border-urbano-pdu-2013-prov-cusco-layer",
+        "minzoom": 11,
+        "paint": {
+          //"fill-color": "hsla(0, 92%, 39%, 0.75)", 
+          'line-color': "hsl(0, 0%, 0%)",
+          'line-width': 3.0,
+          //'line-dasharray': [1, 0.5]
+          
+        },
+        "type": "line",
+        'source': 'border-urbano-pdu-2013-prov-cusco-source',
+        'source-layer': 'borde_urbano__prop_pdu-1ow35f',
+
+        "layout": {
+          "visibility": "visible"
+        }
+      });
+
+
+    
+    // add sky styling with `setFog` that will show when the map is highly pitched
+    map.setFog({
+    'horizon-blend': 0.3,
+    'color': '#f8f0e3',
+    'high-color': '#add8e6',
+    'space-color': '#d8f2ff',
+    'star-intensity': 0.0
     });
-
-
-    // BORDE URBANO *************************************************************************************
-    map.addSource('border-urbano-pdu-2013-prov-cusco-source', {
-      type: 'vector',
-      url: 'mapbox://zhyper.dsuszr7h'
-    });
-
-    map.addLayer({
-      "id": "border-urbano-pdu-2013-prov-cusco-layer",
-      "minzoom": 11,
-      "paint": {
-        //"fill-color": "hsla(0, 92%, 39%, 0.75)", 
-        'line-color': "hsl(0, 0%, 0%)",
-        'line-width': 3.0,
-        //'line-dasharray': [1, 0.5]
-        
-      },
-      "type": "line",
-      'source': 'border-urbano-pdu-2013-prov-cusco-source',
-      'source-layer': 'borde_urbano__prop_pdu-1ow35f',
-
-      "layout": {
-        "visibility": "visible"
-      }
-    });
-
-
-  
-  // add sky styling with `setFog` that will show when the map is highly pitched
-  map.setFog({
-  'horizon-blend': 0.3,
-  'color': '#f8f0e3',
-  'high-color': '#add8e6',
-  'space-color': '#d8f2ff',
-  'star-intensity': 0.0
-  });
   });
 
   map.on('click', (e) => {
@@ -912,7 +1083,7 @@
     });
 
     
-    
+    //Map Openlayer APMA----------------------------------------------------------------------
     
     var map_ol = new ol.Map({ 
       layers: [ 
@@ -922,20 +1093,24 @@
           source: new ol.source.OSM() 
         }), 
         ], 
-        target: 'map-ol', 
+        target: 'map-ol-apma', 
         view: new ol.View({ 
           //projection: 'EPSG:4326',
-          center: ol.proj.fromLonLat([-71.9774868, -13.5169427]),
-          zoom: 12 
+          //center: ol.proj.fromLonLat([-71.9774868, -13.5169427]), 
+          center: ol.proj.fromLonLat([-71.961147, -13.526230]), 
+          zoom: 12.5 
         }) 
-      });
+    });
+
+      //--------------------------------------------------------------------------------------------------------------------
+      
       
       const vectorLayer = new ol.layer.Vector({
         
         background: '#1a2b39',
         source: new ol.source.Vector({
           //url: 'https://openlayers.org/data/vector/ecoregions.json',
-          url: 'http://sgot.cusco.gob.pe/geoserver/sgotp-41zre/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=sgotp-41zre%3Agis_base_zonas_zre_v2_latlng&maxFeatures=50&outputFormat=application%2Fjson',
+          url: 'http://sgot.cusco.gob.pe/geoserver/sgotp-41zre/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=sgotp-41zre%3Agis_base_zonas_zre_v2_latlng&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=(tipo=\'AREA DE PELIGRO MUY ALTO\')',
           format: new ol.format.GeoJSON(),
         }),
         style: function (feature) {
@@ -1028,7 +1203,375 @@
       */
       selectElement.onchange = changeInteraction;
       changeInteraction();
+
+    //Map Openlayer ACPA-------------------------------------------------------------------------------------------
+
+    var map_ol_acpa = new ol.Map({ 
+      layers: [ 
+        
+        
+        new ol.layer.Tile({ 
+          source: new ol.source.OSM() 
+        }), 
+        ], 
+        target: 'map-ol-acpa', 
+        view: new ol.View({ 
+          //projection: 'EPSG:4326',
+          //center: ol.proj.fromLonLat([-71.9774868, -13.5169427]),
+          center: ol.proj.fromLonLat([-71.911150, -13.546967]),
+          zoom: 14 
+        }) 
+    });
+
+      
+      
+      const vectorLayer_acpa = new ol.layer.Vector({
+        
+        background: '#1a2b39',
+        source: new ol.source.Vector({
+          //url: 'https://openlayers.org/data/vector/ecoregions.json',
+          url: 'http://sgot.cusco.gob.pe/geoserver/sgotp-41zre/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=sgotp-41zre%3Agis_base_zonas_zre_v2_latlng&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=(tipo=\'AREA DE CONSERVACION Y PROTECCION AMBIENTAL\')',
+          format: new ol.format.GeoJSON(),
+        }),
+        style: function (feature) {
+          const color = feature.get('COLOR') || 'rgba(152, 230, 9,0.5)';
+          const color_stroke = feature.get('COLOR') || 'rgba(10,10,10,0.8)';
+          style.getFill().setColor(color);
+          style.getStroke().setColor(color_stroke);
+          return style;
+        },
+        
+      });
+
+      map_ol_acpa.addLayer(vectorLayer_acpa);
+      let select_acpa = null; // ref to currently selected interaction
+
+      const selected_acpa = new ol.style.Style({
+        fill: new ol.style.Fill({
+          color: 'rgba(152, 230, 9,0.2)',
+        }),
+        stroke: new ol.style.Stroke({
+          // red
+          color: 'rgba(152, 230, 9, 0.7)',
+          width: 3,
+        }),
+      });
+
+      function selectStyle_acpa(feature) {
+        const color = feature.get('COLOR') || '#eeeeee';
+        selected_acpa.getFill().setColor(color);
+        return selected_acpa;
+      }
+
+      // select interaction working on "singleclick"
+      const selectSingleClick_acpa = new ol.interaction.Select({style: selectStyle_acpa});
+
+      // select interaction working on "click"
+      const selectClick_acpa = new ol.interaction.Select({
+        condition: ol.events.condition.click,
+        style: selectStyle_acpa,
+      });
+
+      // select interaction working on "pointermove"
+      const selectPointerMove_acpa = new ol.interaction.Select({
+        condition: ol.events.condition.pointerMove,
+        style: selectStyle_acpa,
+      });
+
+      const selectAltClick_acpa = new ol.interaction.Select({
+        style: selectStyle_acpa,
+        condition: function (mapBrowserEvent) {
+          return ol.events.condition.click(mapBrowserEvent) && ol.events.condition.altKeyOnly(mapBrowserEvent);
+        },
+      });
+
+      const selectElement_acpa = document.getElementById('type_acpa');
+
+      const changeInteraction_acpa = function () {
+        if (select_acpa !== null) {
+          map_ol_acpa.removeInteraction(select_acpa);
+        }
+        const value_acpa = selectElement_acpa.value;
+        if (value_acpa == 'singleclick') {
+          select_acpa = selectSingleClick_acpa;
+        } else if (value_acpa == 'click') {
+          select_acpa = selectClick_acpa;
+        } else if (value_acpa == 'pointermove') {
+          select_acpa = selectPointerMove_acpa;
+        } else if (value_acpa == 'altclick') {
+          select_acpa = selectAltClick_acpa;
+        } else {
+          select_acpa = null;
+        }
+        if (select_acpa !== null) {
+          map_ol_acpa.addInteraction(select_acpa);
+          select_acpa.on('select', function (e) {
+            document.getElementById('status_acpa').innerHTML =
+              '&nbsp;' +
+              e.target.getFeatures().getLength() +
+              ' selected features (last operation selected ' +
+              e.selected.length +
+              ' and deselected ' +
+              e.deselected.length +
+              ' features)';
+          });
+        }
+      };
+
+      /**
+      * onchange callback on the select element.
+      */
+      selectElement_acpa.onchange = changeInteraction_acpa;
+      changeInteraction_acpa();
+
   </script>
 
+  <script>
+    var owl3 = $('#carousel-zonas-all');
+        owl3.owlCarousel({
+            //items:4,
+            responsive:{
+                0:{
+                    items:1
+                },
+                300:{
+                    items:2
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:5
+                }
+            },
+            loop:true,
+            margin:10,
+            lazyLoad:true,
+            navigation : false,
+            stagePadding: 50,
+            dots:false,
+            autoplay:true,
+            autoplayTimeout:2000,
+            autoplayHoverPause:true,
+            nav: true,
+            
+            navText: ['<span class="ri-arrow-left-s-line ri-2x"></span>','<span class="ri-arrow-right-s-line ri-2x"></span>'],
+        });
+  </script>
+
+  <script>
+    //mapboxgl.accessToken = 'pk.eyJ1Ijoiemh5cGVyIiwiYSI6ImNpdGdiM3d1dDAwODQyeG8zZGVkYnc2b24ifQ.cwgujm_x_QPQ668K2hTQFA';
+    const mapbox_apma = new mapboxgl.Map({
+      container: 'mapbox-apma', // container ID
+      // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+      //style: 'mapbox://styles/mapbox/satellite-v9', // style URL
+      style: 'mapbox://styles/zhyper/ckxf3to4l0vvz15qd9z7o9n6b',
+      zoom: 13.0, // starting zoom
+      pitch: 60,
+      bearing: 50,
+      center: [-71.93229, -13.53632], // // starting center in [lng, lat]
+      projection: 'globe' // display map as a 3D globe
+    });
+
+    
+    mapbox_apma.on('load', () => {
+      mapbox_apma.addSource('mapbox-dem', {
+        'type': 'raster-dem',
+        'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+        'tileSize': 512,
+        'maxzoom': 14
+      });
+      mapbox_apma.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.2 });
+      mapbox_apma.setFog({}); // enable atmosphere and stars
+      mapbox_apma.addSource('zonas41-source', {
+        type: 'vector',
+        url: 'mapbox://zhyper.07utu87q' 
+      });
+      mapbox_apma.addSource('zre-source', {
+        type: 'geojson',
+        // Use a URL for the value for the `data` property.
+        data: 'http://sgot.cusco.gob.pe/geoserver/sgotp-41zre/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=sgotp-41zre%3Agis_base_zonas_zre_v2_latlng&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=(tipo=\'AREA DE PELIGRO MUY ALTO\')'
+        });
+  
+      mapbox_apma.addLayer({
+        'id': 'zre-fill-layer',
+        'type': 'fill',
+        'source': 'zre-source',
+        'layout': {},
+        "paint": {
+          'fill-color': 'rgba(255,0,0,0.8)', // red color fill
+          'fill-opacity': 0.5
+        },
+      });
+
+      mapbox_apma.addLayer({
+        'id': 'zre-outline-layer',
+        'type': 'line',
+        'source': 'zre-source',
+        'layout': {},
+        'paint': {
+        'line-color': '#fff',
+        'line-width': 1
+        }
+        });
+
+      mapbox_apma.addLayer({
+        'id': 'zre-labels',
+        'type': 'symbol',
+        'source': 'zonas41-source',
+        'source-layer': '41ZRE-V1-9682nn',
+        'layout': {
+          'text-field': ['get', 'codigo'],
+          //'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+          'text-radial-offset': 0.5,
+          'text-justify': 'auto',
+
+          //'icon-image': ['get', 'icon'],
+          'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+          "text-size": 10
+        },
+        "paint": {
+          "text-color": "#202",
+          "text-halo-color": "#fff",
+          "text-halo-width": 2,
+        }
+      });
+    });
+
+
+
+      
+  </script>
+
+  <script>
+    //mapboxgl.accessToken = 'pk.eyJ1Ijoiemh5cGVyIiwiYSI6ImNpdGdiM3d1dDAwODQyeG8zZGVkYnc2b24ifQ.cwgujm_x_QPQ668K2hTQFA';
+    const mapbox_acpa = new mapboxgl.Map({
+      container: 'mapbox-acpa', // container ID
+      // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+      //style: 'mapbox://styles/mapbox/satellite-v9', // style URL
+      style: 'mapbox://styles/zhyper/ckxf3to4l0vvz15qd9z7o9n6b',
+      zoom: 13.0, // starting zoom
+      pitch: 60,
+      bearing: 50,
+      center: [-71.911150, -13.546967], // // starting center in [lng, lat]
+      projection: 'globe' // display map as a 3D globe
+    });
+
+    
+    mapbox_acpa.on('load', () => {
+      mapbox_acpa.addSource('mapbox-dem', {
+        'type': 'raster-dem',
+        'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+        'tileSize': 512,
+        'maxzoom': 14
+      });
+      mapbox_acpa.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.2 });
+      mapbox_acpa.setFog({}); // enable atmosphere and stars
+      mapbox_acpa.addSource('zonas41-source', {
+        type: 'vector',
+        url: 'mapbox://zhyper.07utu87q' 
+      });
+      mapbox_acpa.addSource('zre-source', {
+        type: 'geojson',
+        // Use a URL for the value for the `data` property.
+        data: 'http://sgot.cusco.gob.pe/geoserver/sgotp-41zre/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=sgotp-41zre%3Agis_base_zonas_zre_v2_latlng&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=(tipo=\'AREA DE CONSERVACION Y PROTECCION AMBIENTAL\')'
+        });
+  
+        mapbox_acpa.addLayer({
+        'id': 'zre-fill-layer',
+        'type': 'fill',
+        'source': 'zre-source',
+        'layout': {},
+        "paint": {
+          'fill-color': 'rgba(152, 230, 9,0.8)', // red color fill
+          'fill-opacity': 0.8
+        },
+      });
+
+      mapbox_acpa.addLayer({
+        'id': 'zre-outline-layer',
+        'type': 'line',
+        'source': 'zre-source',
+        'layout': {},
+        'paint': {
+        'line-color': '#fff',
+        'line-width': 1
+        }
+        });
+
+        mapbox_acpa.addLayer({
+        'id': 'zre-labels',
+        'type': 'symbol',
+        'source': 'zonas41-source',
+        'source-layer': '41ZRE-V1-9682nn',
+        'layout': {
+          'text-field': ['get', 'codigo'],
+          //'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+          'text-radial-offset': 0.5,
+          'text-justify': 'auto',
+
+          //'icon-image': ['get', 'icon'],
+          'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+          "text-size": 10
+        },
+        "paint": {
+          "text-color": "#202",
+          "text-halo-color": "#fff",
+          "text-halo-width": 2,
+        }
+      });
+    });
+
+
+  </script>
+      
+
+  <!---->
+  <script>
+    /*
+    const blur = document.getElementById('blur');
+    const radius = document.getElementById('radius');
+
+    const vector = new ol.layer.Heatmap({
+      source: new ol.source.Vector({
+        url: 'http://sgot.cusco.gob.pe/geoserver/sgotp-41zre/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=sgotp-41zre%3Agis_apma_carac_fc_lotes_points_2022_wgs84&maxFeatures=50&outputFormat=application%2Fjson',
+        format: new ol.format.GeoJSON({
+          
+        }),
+      }),
+      blur: parseInt(blur.value, 10),
+      radius: parseInt(radius.value, 10),
+      weight: function (feature) {
+        // 2012_Earthquakes_Mag5.kml stores the magnitude of each earthquake in a
+        // standards-violating <magnitude> tag in each Placemark.  We extract it from
+        // the Placemark's name instead.
+        const name = feature.get('poblacion_');
+        //const magnitude = parseFloat(name.substr(2));
+        return name;
+      },
+    });
+
+    const raster = new ol.layer.Tile({
+      source: new ol.source.OSM(),
+    });
+
+    new ol.Map({
+      layers: [raster, vector],
+      target: 'map-leaflet',
+      view: new ol.View({
+        center: ol.proj.fromLonLat([-71.961147, -13.526230]), 
+        zoom: 12,
+      }),
+    });
+
+    blur.addEventListener('input', function () {
+      vector.setBlur(parseInt(blur.value, 10));
+    });
+
+    radius.addEventListener('input', function () {
+      vector.setRadius(parseInt(radius.value, 10));
+    });
+    */
+  </script>
 
 {% endblock  %}

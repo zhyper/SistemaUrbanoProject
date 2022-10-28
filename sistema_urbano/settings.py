@@ -48,9 +48,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
+    'sass_processor',
+    'leaflet',
     'rest_framework',
-    #'tinymce',
-    #'froala_editor',
     'django_summernote',
     'mathfilters',
     'django_social_share',
@@ -139,6 +139,12 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -159,6 +165,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
+SASS_PROCESSOR_ROOT = STATIC_ROOT
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "sistema_urbano/static"),)
 
